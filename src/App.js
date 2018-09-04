@@ -1,18 +1,54 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from "axios"
 
 class App extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      questions: [],
+      difficulty: "easy",
+      category: "24", 
+    }
+  }
+
+  getQuestions = () => {
+    axios.get("https://opentdb.com/api.php?", {
+      params: {
+        amount: 10,
+        category: this.state.category,
+        difficulty: this.state.difficulty,
+        // type: "multiple"
+      }
+    }).then(({ data }) => {
+      console.log(data.results);
+      this.setState({
+        questions: data.results,
+      })
+    })
+  }
+  // componentDidMount(){
+  //   axios.get("https://opentdb.com/api.php?", {
+  //     params: {
+  //       amount: 10,
+  //       category: this.state.category,
+  //       difficulty: this.state.difficulty, 
+  //       type: "multiple"
+  //     }
+  //   }).then(({data}) => {
+  //     console.log(data.results);
+  //     this.setState({
+  //      questions: data.results,
+
+  //     })
+      
+  //   })
+  // }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button onClick={this.getQuestions}>Button</button>
       </div>
     );
   }
