@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from "axios"
 
+// ===============
+// COMPONENTS
+// ===============
+
+import Choice from "./components/choice/Choice"
+
 class App extends Component {
 
   constructor(){
@@ -49,6 +55,7 @@ class App extends Component {
     return (
       <div className="App">
         <button onClick={this.getQuestions}>Button</button>
+        <Choice category={this.state.category} difficulty={this.state.difficulty} questions={this.state.questions}/>
       </div>
     );
   }
