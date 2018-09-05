@@ -34,7 +34,7 @@ class StartingPage extends Component {
 
                     {/* <Link to="/choice" onClick={this.handleSubmit}>submit</Link> */}
 
-                    <Link to="/choice">
+                    <Link to="/players">
                         <button onClick={() => { this.handleSubmit()} }>submit</button>
                     </Link>
                     
