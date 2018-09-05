@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from "axios"
-import Players from './Players'
+import axios from "axios";
+import Players from './Players';
+import StartingPage from './StartingPage';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import LandingPage from './LandingPage';
+
+// ===============
+// COMPONENTS
+// ===============
+
+import Choice from "./components/choice/Choice"
 
 class App extends Component {
 
@@ -11,6 +20,7 @@ class App extends Component {
       questions: [],
       difficulty: "easy",
       category: "23", 
+      numberOfPlayers: ""
     }
   }
 
@@ -30,12 +40,32 @@ class App extends Component {
     })
   }
 
+  submitPlayers = (numberOfPlayers) => {
+    console.log(numberOfPlayers)
+    this.setState({
+      numberOfPlayers
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <button onClick={this.getQuestions}>Button</button>
-        {/* <Players /> */}
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={LandingPage}/>
+
+          <Route exact path="/start" render={(props) => <StartingPage {...props}
+          submitPlayers={this.submitPlayers} />}/>
+          
+          <Route exact path="/choice" component={Choice} />
+
+          {/* <StartingPage submitPlayers={this.submitPlayers}/> */}
+
+          
+
+          {/* <button onClick={this.getQuestions}>Button</button> */}
+          {/* <Choice category={this.state.category} difficulty={this.state.difficulty} questions={this.state.questions}/> */}
+        </div>
+      </Router>
     );
   }
 }
