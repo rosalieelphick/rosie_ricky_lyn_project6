@@ -3,9 +3,10 @@
 // get player(s) to choose difficulty 
 
 // what states do we need?
-// http://react.tips/radio-buttons-in-reactjs/ 
+// http://react.tips/radio-buttons-in-reactjs/  
 
 import React, { Component } from "react"
+import { Link } from 'react-router-dom';
 
 class Choice extends Component {
     constructor(){
@@ -20,16 +21,28 @@ class Choice extends Component {
         }
     }
 
+
+
     handleClickCategory = (e) => {
         e.preventDefault();
         console.log("clicked category");
+        this.setState({
+            categoryValue: e.target.value
+        })
         
     }
 
     handleClickDifficulty = (e) => {
         e.preventDefault();
         console.log("clicked difficulty");
+        this.setState({
+            difficultyValue: e.target.value
+        })
         
+    }
+
+    handleSubmit = (e) => {
+        this.props.getQuestions(this.state.categoryValue, this.state.difficultyValue)
     }
 
     render(){
@@ -37,7 +50,7 @@ class Choice extends Component {
             <div>
                 <section>
                     <h1>Choose a category</h1>
-
+                    
                     <button value="27" className="categoryButton" onClick={this.handleClickCategory}>Animals</button>
 
                     <button value="20" className="categoryButton" onClick={this.handleClickCategory}>Mythology</button>
@@ -59,6 +72,14 @@ class Choice extends Component {
                     <button value="hard" className="difficultyButton" onClick={this.handleClickDifficulty}>Hard</button>
 
                 </section>
+
+
+                {/* <Link to="/players">
+                    <button onClick={() => { this.handleSubmit() }}>submit</button>
+                </Link> */}
+                <Link to="/questions">
+                    <button onClick={() => { this.handleSubmit()}} >Submit</button>
+                </Link>
             </div>
         );
     }

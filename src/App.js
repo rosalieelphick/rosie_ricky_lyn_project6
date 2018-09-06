@@ -11,6 +11,7 @@ import LandingPage from './LandingPage';
 // ===============
 
 import Choice from "./components/choice/Choice"
+import Questions from './Questions';
 
 class App extends Component {
 
@@ -20,25 +21,38 @@ class App extends Component {
       questions: [],
       difficulty: "easy",
       category: "23", 
-      numberOfPlayers: ""
+      numberOfPlayers: "",
+      promise:{}
     }
   }
 
-  getQuestions = () => {
-    axios.get("https://opentdb.com/api.php?", {
+  getQuestions = (category, difficulty) => {
+   const apiRequest = axios.get("https://opentdb.com/api.php?", {
       params: {
         amount: 10,
-        category: this.state.category,
-        difficulty: this.state.difficulty,
+        category: category,
+        difficulty: difficulty,
         // type: "multiple"
       }
-    }).then(({ data }) => {
+    })
+    apiRequest.then(({ data }) => {
       console.log(data.results);
       this.setState({
         questions: data.results,
       })
     })
+    this.setState({
+      promise: apiRequest
+    })
   }
+
+  // async function getData() {
+  //   const getQuestions = await getQuestions();
+  //   console.log(getQuestions);
+    
+  // }
+
+  // getData();
 
   submitPlayers = (numberOfPlayers) => {
     console.log(numberOfPlayers)
@@ -55,8 +69,9 @@ class App extends Component {
 
           <Route exact path="/start" render={(props) => <StartingPage {...props}
           submitPlayers={this.submitPlayers} />}/>
-          
-          <Route exact path="/choice" component={Choice} />
+          <Route exact path="/players" component={Players}/ >
+          <Route exact path="/choice" render={(props) => <Choice {...props} getQuestions={this.getQuestions} /> } />
+  <Route exact path="/questions" render={(props) => <Questions {...props} questions={this.state.questions} promise={this.state.promise}/> } />
 
           {/* <StartingPage submitPlayers={this.submitPlayers}/> */}
 
