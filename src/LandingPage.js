@@ -10,6 +10,9 @@ class LandingPage extends Component {
                 <Link to="/start">
                     <button>start playing</button>
                 </Link>
+                <Link to="/leaderboard">
+                    <button>Leader board</button>
+                </Link>
             </div>
             
         );

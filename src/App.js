@@ -13,6 +13,7 @@ import Players from './Players';
 import Choice from "./components/choice/Choice"
 import Questions from './Questions';
 import Results from "./Results"
+import LeaderBoard from "./LeaderBoard"
 
 class App extends Component {
 
@@ -23,7 +24,8 @@ class App extends Component {
       difficulty: "easy",
       category: "23", 
       numberOfPlayers: "",
-      promise:{}
+      promise:{},
+      playerArray: []
     }
   }
 
@@ -65,24 +67,44 @@ class App extends Component {
     })
   }
 
+  addPlayers = (playerArray) => {
+    this.setState({
+      playerArray
+    }, () => {
+      playerArray.forEach((player) => {
+        const playerName = player.username
+        this.setState({
+          [playerName]:{score:0}
+        })
+      })
+    })
+  }
+
   render() {
     return (
       <Router>
+
         <div className="App">
           <Route exact path="/" component={LandingPage}/>
 
           <Route exact path="/start" render={(props) => <StartingPage {...props}
           submitPlayers={this.submitPlayers} />}/>
-          <Route exact path="/players" component={Players}/ >
+
+          <Route exact path="/players" render={(props) => <Players {...props} 
+          numberOfPlayers={this.state.numberOfPlayers}
+          addPlayers={this.addPlayers} />} />
+            
           <Route exact path="/choice" render={(props) =>
               <Choice {...props} getQuestions={this.getQuestions} /> 
             } />
+
           <Route 
             exact path="/questions" 
             render={(props) =>
               <Questions {...props} questions={this.state.questions}/> 
             } />
-          <Route path="/results" component={Results} />
+          <Route exact path="/results" component={Results} />
+          <Route exact path="/leaderboard" component={LeaderBoard} />
         </div>
       </Router>
     );
