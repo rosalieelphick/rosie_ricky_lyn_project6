@@ -6,8 +6,6 @@ class Questions extends Component {
         this.state = {
             questionNumber: 0,
             questions: [],
-
-
         }
     }
 
@@ -25,9 +23,10 @@ class Questions extends Component {
             <div>
                 <h1>Questions</h1>
                 {this.test()}
-                {this.state.questions[0].question ? 
+                {/* {console.log(this.state.questions)} */}
+                {/* {this.state.questions[0].question ? 
                     <p>{this.state.questions[0].question}</p>
-                : null }
+                : null } */}
              
             </div>
         );

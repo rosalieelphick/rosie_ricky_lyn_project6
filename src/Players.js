@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
 class Players extends Component {
     constructor() {
         super();
@@ -18,19 +17,15 @@ class Players extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-
     }
 
     render(){
         return (
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="username"></label>
-
                 <input onChange={this.handleChange} type="text" id="username" value={this.state.username} placeholder="submit username"/>
-
                 <input type="submit" value="submit username" />
-
+                
                 <Link to="/choice" >
                 <button>Submit</button>
                 </Link>
