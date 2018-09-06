@@ -25,7 +25,8 @@ class App extends Component {
       category: "23", 
       numberOfPlayers: "",
       promise:{},
-      playerArray: []
+      playerArray: [],
+      questionProgress: 0,
     }
   }
 
@@ -80,6 +81,23 @@ class App extends Component {
     })
   }
 
+  scoreCount = (username, i) => {
+    const updatedUser = this.state[username]
+    updatedUser.score++;
+
+    const arrayClone = Array.from(this.state.playerArray);
+
+    arrayClone[i].correct = true;
+
+
+    // const newScore = this.state[username].score;
+
+    this.setState({
+      [username]: updatedUser,
+      playerArray: arrayClone
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -101,9 +119,20 @@ class App extends Component {
           <Route 
             exact path="/questions" 
             render={(props) =>
-              <Questions {...props} questions={this.state.questions}/> 
+              <Questions {...props} 
+              questions={this.state.questions}
+              questionProgress={this.state.questionProgress}
+              players={this.state.playerArray}
+              scoreCount={this.scoreCount} /> 
             } />
-          <Route exact path="/results" component={Results} />
+          <Route exact path="/results" 
+           render={(props) =>
+            <Results {...props} 
+            questions={this.state.questions}
+            questionProgress={this.state.questionProgress}
+            players={this.state.playerArray}
+            scoreCount={this.scoreCount} /> 
+          }/>
           <Route exact path="/leaderboard" component={LeaderBoard} />
         </div>
       </Router>
