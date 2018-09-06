@@ -46,14 +46,14 @@ class Questions extends Component {
                     return( 
                         <form key={player.username}>
                             {this.props.questions[0]
-                                ? this.props.questions[this.props.questionProgress].allChoices.map((answer, i) => { 
+                                ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
                                     return(answer && (
                                         <div className="choice">
-                                            <label htmlFor={choice[i]} key={i}> {choice[i]}: {answer} </label>
+                                            <label htmlFor={`${player.username}${j}`} key={j}> {choice[j]}: {answer} </label>
                                             <input 
-                                                id={choice[i]} 
+                                                id={`${player.username}${j}`} 
                                                 type="radio" 
-                                                name="multipleChoice"
+                                                name={`multipleChoice${i}`}
                                                 onChange={this.handleChange}
                                                 value={answer}
                                             />
