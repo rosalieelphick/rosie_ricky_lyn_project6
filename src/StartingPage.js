@@ -27,15 +27,25 @@ class StartingPage extends Component {
 
                 <h1>select number of players</h1>
                 <form action="">
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="1"/>
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="2"/>
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="3"/>
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="4"/>
+                    <label htmlFor="one">One player</label>
+                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="1" id="one"/>
+
+                    <label htmlFor="two">Two players</label>
+                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="2" id="two"/>
+
+                    <label htmlFor="three">Three players</label>
+                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="3" id="three"/>
+
+                    <label htmlFor="four">Four players</label>
+                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="4" id="four"/>
 
                     {/* <Link to="/choice" onClick={this.handleSubmit}>submit</Link> */}
 
                     <Link to="/players">
                         <button onClick={() => { this.handleSubmit()} }>submit</button>
+                    </Link>
+                    <Link to="/leaderboard">
+                        <button>Leader board</button>
                     </Link>
                     
                 </form>
