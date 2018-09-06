@@ -1,6 +1,6 @@
 // get info from app.js using state and props
 // get player(s) to choose categroy 
-// get player(s) to choose difficulty 
+// get player(s) to choose difficulty  
 
 // what states do we need?
 // http://react.tips/radio-buttons-in-reactjs/  
@@ -12,73 +12,83 @@ class Choice extends Component {
     constructor(){
         super();
         this.state = {
-            isCategorySelected: false,
-            isDifficultySelected: false,
-            choiceClass: "",
             categoryValue: "",
             difficultyValue: "",
-
         }
     }
 
-
-
-    handleClickCategory = (e) => {
+    handleChangeCategory = (e) => {
         e.preventDefault();
-        console.log("clicked category");
+        console.log(e.target.value);
+        
         this.setState({
             categoryValue: e.target.value
         })
-        
     }
 
     handleClickDifficulty = (e) => {
         e.preventDefault();
-        console.log("clicked difficulty");
         this.setState({
             difficultyValue: e.target.value
         })
         
     }
 
-    handleSubmit = (e) => {
+    handleChangeDifficulty = (e) => {
         this.props.getQuestions(this.state.categoryValue, this.state.difficultyValue)
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
     }
 
     render(){
         return(
             <div>
                 <section>
-                    <h1>Choose a category</h1>
+                    <h1>Choose a category</h1>                    
+                    <form onSubmit={this.handleSubmit} action="">
+
+                        {/* <input type="radio" name="category" value="770" id="music" class="category">
+                            <label for="music"><i class="fas fa-music"></i> Pop Music</label> */}
+                        <label htmlFor="animals">Animals</label>
+                        <input onChange={this.handleChangeCategory} type="radio" value="27" id="animals"/>
+
+                        <label htmlFor="mythology">Computers</label>
+                        <input onChange={this.handleChangeCategory} type="radio" value="18" id="mythology"/>
+
+                        <label htmlFor="history">History</label>
+                        <input onChange={this.handleChangeCategory} type="radio" value="23" id="history"/>
+
+                        <label htmlFor="sports">Film</label>
+                        <input onChange={this.handleChangeCategory} type="radio" value="11" id="sports"/>
+
+                        <label htmlFor="politics">Politics</label>
+                        <input onChange={this.handleChangeCategory} type="radio" value="24"id="politics"/>
+                    </form>
                     
-                    <button value="27" className="categoryButton" onClick={this.handleClickCategory}>Animals</button>
 
-                    <button value="20" className="categoryButton" onClick={this.handleClickCategory}>Mythology</button>
-
-                    <button value="23" className="categoryButton" onClick={this.handleClickCategory}>History</button>
-
-                    <button value="21" className="categoryButton" onClick={this.handleClickCategory}>Sports</button>
-
-                    <button value="24" className="categoryButton" onClick={this.handleClickCategory}>Politics</button>
                 </section>
                 
                 <section>
                     <h1>Choose your difficulty level</h1>
 
-                    <button value="easy" className="difficultyButton" onClick={this.handleClickDifficulty}>Easy</button>
+                    <form onSubmit={this.handleSubmit} action="">
 
-                    <button value="medium" className="difficultyButton" onClick={this.handleClickDifficulty}>Medium</button>
+                        <label htmlFor="easy">Easy</label>
+                        <input onChange={this.handleChangeDifficulty} type="radio" value="easy" id="easy"/>
 
-                    <button value="hard" className="difficultyButton" onClick={this.handleClickDifficulty}>Hard</button>
+                        <label htmlFor="medium">Medium</label>
+                        <input onChange={this.handleChangeDifficulty} type="radio" value="medium" id="medium"/>
+
+                        <label htmlFor="hard">Hard</label>
+                        <input onChange={this.handleChangeDifficulty} type="radio" value="hard" id="hard"/>
+                    </form>
 
                 </section>
 
-
-                {/* <Link to="/players">
-                    <button onClick={() => { this.handleSubmit() }}>submit</button>
-                </Link> */}
                 <Link to="/questions">
-                    <button onClick={() => { this.handleSubmit()}} >Submit</button>
+                    <button>Submit</button>
                 </Link>
             </div>
         );

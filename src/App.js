@@ -13,6 +13,7 @@ import Players from './Players';
 import Choice from "./components/choice/Choice"
 import Questions from './Questions';
 import Results from "./Results"
+import LeaderBoard from "./LeaderBoard"
 
 class App extends Component {
 
@@ -98,9 +99,8 @@ class App extends Component {
             render={(props) =>
               <Questions {...props} questions={this.state.questions}/> 
             } />
-
-          <Route path="/results" component={Results} />
-
+          <Route exact path="/results" component={Results} />
+          <Route exact path="/leaderboard" component={LeaderBoard} />
         </div>
       </Router>
     );
