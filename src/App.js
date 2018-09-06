@@ -47,12 +47,16 @@ class App extends Component {
     const newQuestions = questions.map((question) => {
       const allChoices = Array.from(question.incorrect_answers);
       allChoices.push(question.correct_answer);
+      
+      allChoices.sort(() => .5 - Math.random());
+      
       question.allChoices = allChoices;
 
       return question;
     })
     return newQuestions;
   }
+
 
   submitPlayers = (numberOfPlayers) => {
     console.log(numberOfPlayers)
