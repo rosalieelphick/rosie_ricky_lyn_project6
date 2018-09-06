@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Choice from './components/choice/Choice';
-import { Link, Route } from 'react-router-dom';
+// import Choice from './components/choice/Choice';
+import { Link } from 'react-router-dom';
 
 
 class StartingPage extends Component {
