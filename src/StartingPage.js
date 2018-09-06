@@ -32,7 +32,9 @@ class StartingPage extends Component {
                     <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="3"/>
                     <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="4"/>
 
-                    <Link to="/choice">
+                    {/* <Link to="/choice" onClick={this.handleSubmit}>submit</Link> */}
+
+                    <Link to="/players">
                         <button onClick={() => { this.handleSubmit()} }>submit</button>
                     </Link>
                     

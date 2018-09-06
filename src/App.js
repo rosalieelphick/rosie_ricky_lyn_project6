@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from "axios";
-import Players from './Players';
-import StartingPage from './StartingPage';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import LandingPage from './LandingPage';
 
 // ===============
 // COMPONENTS
 // ===============
 
+import LandingPage from './LandingPage';
+import StartingPage from './StartingPage';
+import Players from './Players';
 import Choice from "./components/choice/Choice"
+import Questions from './Questions';
+import Results from "./Results"
 
 class App extends Component {
 
@@ -20,24 +22,36 @@ class App extends Component {
       questions: [],
       difficulty: "easy",
       category: "23", 
-      numberOfPlayers: ""
+      numberOfPlayers: "",
+      promise:{}
     }
   }
 
-  getQuestions = () => {
+  getQuestions = (category, difficulty) => {
     axios.get("https://opentdb.com/api.php?", {
       params: {
         amount: 10,
-        category: this.state.category,
-        difficulty: this.state.difficulty,
+        category: category,
+        difficulty: difficulty,
         // type: "multiple"
       }
     }).then(({ data }) => {
-      console.log(data.results);
+      const questions = this.combineChoices(data.results);
       this.setState({
-        questions: data.results,
+        questions,
       })
     })
+  }
+
+  combineChoices = (questions) => {
+    const newQuestions = questions.map((question) => {
+      const allChoices = Array.from(question.incorrect_answers);
+      allChoices.push(question.correct_answer);
+      question.allChoices = allChoices;
+
+      return question;
+    })
+    return newQuestions;
   }
 
   submitPlayers = (numberOfPlayers) => {
@@ -55,15 +69,16 @@ class App extends Component {
 
           <Route exact path="/start" render={(props) => <StartingPage {...props}
           submitPlayers={this.submitPlayers} />}/>
-          
-          <Route exact path="/choice" component={Choice} />
-
-          {/* <StartingPage submitPlayers={this.submitPlayers}/> */}
-
-          
-
-          {/* <button onClick={this.getQuestions}>Button</button> */}
-          {/* <Choice category={this.state.category} difficulty={this.state.difficulty} questions={this.state.questions}/> */}
+          <Route exact path="/players" component={Players}/ >
+          <Route exact path="/choice" render={(props) =>
+              <Choice {...props} getQuestions={this.getQuestions} /> 
+            } />
+          <Route 
+            exact path="/questions" 
+            render={(props) =>
+              <Questions {...props} questions={this.state.questions}/> 
+            } />
+          <Route path="/results" component={Results} />
         </div>
       </Router>
     );
