@@ -7,12 +7,14 @@ class LandingPage extends Component {
         return (
 
             <div>
+                {/* link that goies to start page */}
                 <Link to="/start">
                     <button>start playing</button>
                 </Link>
+                {/* link that goes to leaderboard page */}
                 <Link to="/leaderboard">
                     <button>Leader board</button>
-                </Link>
+                </Link> 
             </div>
             
         );
