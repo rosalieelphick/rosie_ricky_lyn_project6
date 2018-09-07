@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Choice from './components/choice/Choice';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom'; 
 
 
 class StartingPage extends Component {
@@ -11,10 +11,13 @@ class StartingPage extends Component {
         }
     }
 
+    // send a function through a props to App.js 
     handleSubmit = (e) => {
         this.props.submitPlayers(this.state.numberOfPlayers)
     }
 
+    // getting the value that the user(s) chose 
+    // and seeing the state for numberOfPlayers in the constructor
     handleChange = (e) => {
         this.setState({
             numberOfPlayers: e.target.value
@@ -24,7 +27,7 @@ class StartingPage extends Component {
     render() {
         return (
             <div>
-
+                {/* choosing the number of players 1-4 */}
                 <h1>select number of players</h1>
                 <form action="">
                     <label htmlFor="one">One player</label>
@@ -40,7 +43,8 @@ class StartingPage extends Component {
                     <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="4" id="four"/>
 
                     {/* <Link to="/choice" onClick={this.handleSubmit}>submit</Link> */}
-
+                    {/* want the button to submit players and link to next page, two funtionalisties */}
+                    {/* on submit changes the state of numberof Players in App.js */}
                     <Link to="/players">
                         <button onClick={() => { this.handleSubmit()} }>submit</button>
                     </Link>
