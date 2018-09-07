@@ -50,6 +50,20 @@ class App extends Component {
     })
   }
 
+  nextQuestion = () => {
+    const arrayClone = Array.from(this.state.playerArray);
+    arrayClone.forEach((player) => {
+      player.correct = false
+    })
+    this.setState({
+      questionProgress: this.state.questionProgress + 1,
+      playerArray: arrayClone
+
+    })
+  }
+
+  
+
   combineChoices = (questions) => {
     const newQuestions = questions.map((question) => {
       const allChoices = Array.from(question.incorrect_answers);
@@ -73,16 +87,10 @@ class App extends Component {
   // giving them the array for each player where they have properties of playerNumber and username
   // ???what is going on here with these brackets around playerName: where are you setting the state? Is that how you set the state inside of an object? 
 
+
   addPlayers = (playerArray) => {
     this.setState({
       playerArray
-    }, () => {
-      playerArray.forEach((player) => {
-        const playerName = player.username
-        this.setState({
-          [playerName]:{score:0}
-        })
-      })
     })
   }
 
@@ -91,14 +99,17 @@ class App extends Component {
   // cloning the array from above 
   // 
   scoreCount = (username, i) => {
-    const updatedUser = this.state[username]
-    updatedUser.score++;
     const arrayClone = Array.from(this.state.playerArray);
     arrayClone[i].correct = true;
-    // const newScore = this.state[username].score;
+    arrayClone[i].score++;
     this.setState({
-      [username]: updatedUser,
       playerArray: arrayClone
+    })
+  }
+
+  resetQuestions = () => {
+    this.setState({
+      questionProgress: 0
     })
   }
 
@@ -148,7 +159,10 @@ class App extends Component {
             questions={this.state.questions}
             questionProgress={this.state.questionProgress}
             players={this.state.playerArray}
-            scoreCount={this.scoreCount} /> 
+            scoreCount={this.scoreCount} 
+            nextQuestion={this.nextQuestion}
+            resetQuestions={this.resetQuestions}
+            /> 
           }/>
 
           <Route exact path="/leaderboard" component={LeaderBoard} />

@@ -24,11 +24,39 @@ class Questions extends Component {
         } else {
             console.log(`Wrong the answer is: ${answer}`);
         }
+
+        // array clone that goes into playersArray
+        const arrayClone = Array.from(this.props.players);
+        arrayClone[i].answerSubmitted = true
+        this.setState({
+            players: arrayClone
+        }, () => {
+            this.setState({
+                allAnswersSubmitted: this.state.players.every(this.allAnswersSubmitted)
+            })
+        })
+    }
+
+    allAnswersSubmitted = (players) => {
+        return players.answerSubmitted
     }
 
     handleChange = (e) => {
         this.setState({
             chosenAnswer: e.target.value
+        })
+    }
+
+    // clong the array of players 
+    // going through each player and setting answerSubmitted to false 
+    resetSubmit = () => {
+        const arrayClone = Array.from(this.props.players);
+        arrayClone.forEach((player) => {
+            player.answerSubmitted = false
+        })
+        this.setState({
+            allAnswersSubmitted: false,
+            playerArray: arrayClone
         })
     }
 
@@ -75,10 +103,14 @@ class Questions extends Component {
                       )
                 })}
 
+
+            {this.state.allAnswersSubmitted 
+                ? <Link to="/results" >
+                    <button onClick={() => {this.resetSubmit()}}>Submit All</button>
+                </Link>
+                : null
+            }
              
-             <Link to="/results" >
-                    <button>Submit All</button>
-             </Link>
 
             </div>
         );
