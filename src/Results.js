@@ -14,6 +14,7 @@ class Results extends Component {
                                 ? <p>CORRECT</p>
                                 : <p>wrong</p>
                             }
+                            <p>{`your score is currently ${player.score}`}</p>
                         </div>
                     )
                 })}

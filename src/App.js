@@ -68,32 +68,18 @@ class App extends Component {
     })
   }
 
+
   addPlayers = (playerArray) => {
     this.setState({
       playerArray
-    }, () => {
-      playerArray.forEach((player) => {
-        const playerName = player.username
-        this.setState({
-          [playerName]:{score:0}
-        })
-      })
     })
   }
 
   scoreCount = (username, i) => {
-    const updatedUser = this.state[username]
-    updatedUser.score++;
-
     const arrayClone = Array.from(this.state.playerArray);
-
     arrayClone[i].correct = true;
-
-
-    // const newScore = this.state[username].score;
-
+    arrayClone[i].score++;
     this.setState({
-      [username]: updatedUser,
       playerArray: arrayClone
     })
   }
@@ -125,6 +111,7 @@ class App extends Component {
               players={this.state.playerArray}
               scoreCount={this.scoreCount} /> 
             } />
+
           <Route exact path="/results" 
            render={(props) =>
             <Results {...props} 
@@ -133,6 +120,7 @@ class App extends Component {
             players={this.state.playerArray}
             scoreCount={this.scoreCount} /> 
           }/>
+
           <Route exact path="/leaderboard" component={LeaderBoard} />
         </div>
       </Router>

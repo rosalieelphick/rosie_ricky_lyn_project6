@@ -28,7 +28,7 @@ class Players extends Component {
             let array = [];
 
             for (let i = 1; i <= this.state.numberOfPlayers; i = i + 1) {
-                array.push({playerNumber:`player ${i}`, username:''})
+                array.push({playerNumber:`player ${i}`, username:'', score:0})
             }
 
             this.setState({
