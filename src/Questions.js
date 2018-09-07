@@ -24,6 +24,20 @@ class Questions extends Component {
         } else {
             console.log(`Wrong the answer is: ${answer}`);
         }
+
+        const arrayClone = Array.from(this.props.players);
+        arrayClone[i].answerSubmitted = true
+        this.setState({
+            players: arrayClone
+        }, () => {
+            this.setState({
+                allAnswersSubmitted: this.state.players.every(this.allAnswersSubmitted)
+            })
+        })
+    }
+
+    allAnswersSubmitted = (players) => {
+        return players.answerSubmitted
     }
 
     handleChange = (e) => {
@@ -66,10 +80,14 @@ class Questions extends Component {
                       )
                 })}
 
-             
-             <Link to="/results" >
+
+            {this.state.allAnswersSubmitted 
+                ? <Link to="/results" >
                     <button>Submit All</button>
-             </Link>
+                </Link>
+                : null
+            }
+             
 
             </div>
         );
