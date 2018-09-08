@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
+import './partials/main.css'
 import axios from "axios"; 
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
@@ -10,7 +11,7 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import LandingPage from './LandingPage';
 import StartingPage from './StartingPage';
 import Players from './Players';
-import Choice from "./components/choice/Choice"
+import Choice from "./Choice"
 import Questions from './Questions';
 import Results from "./Results"
 import LeaderBoard from "./LeaderBoard"
