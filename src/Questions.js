@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"; 
 import posed from 'react-pose';
+import Typing from "react-typing-animation"
 
 const Container = posed.div({
     enter: { staggerChildren: 50 }
@@ -10,6 +11,7 @@ const Section = posed.section({
     enter: { x: 0, opacity: 1, beforeChildren: true },
     exit: { x: 50, opacity: 0 }
 });
+
 
 const choice = ["A", "B", "C", "D"]
 
@@ -56,7 +58,6 @@ class Questions extends Component {
             chosenAnswer: e.target.value
         })
     }
-
     // clong the array of players 
     // going through each player and setting answerSubmitted to false 
     resetSubmit = () => {
@@ -70,6 +71,10 @@ class Questions extends Component {
         })
     }
 
+    // typingAnimation = () => {
+        
+    // }
+
     render() {
         return (
             <Container>
@@ -81,12 +86,12 @@ class Questions extends Component {
                 {/* first question is the first question in the array with [0] index */}
                 {/* keeping track of which questionw we're on */}
                 {/* checking if there are questions in array then display question if there are */}
-                {this.props.questions[0]
-                    ? <p>
-                        {this.props.questions[this.props.questionProgress].question}
-                    </p>
-                : null}
-                
+                    {this.props.questions[0]
+                        ? <Typing speed={35}><p>
+                            {this.props.questions[this.props.questionProgress].question}
+                        </p>
+                        </Typing>
+                    : null}
                 {/* getting the array with the players that have username, score and other properties  */}
                 {/* i is to keep track of the answer each player gave  */}
                 {/* mapping through the players and then mapping through all the possible answers for each player. it's a loop inside a loop */}
@@ -94,8 +99,7 @@ class Questions extends Component {
                 {/* undefined error if you don't check to see if we have the answer bc the answer will render first if we don't have the actual.*/}
                 {/* making sure we have all the info the the API before it's rendered on the page  */}
                 {this.props.players.map((player, i) => {
-                    return(
-                        
+                    return( 
                         <form key={player.username}>
                             {this.props.questions[0]
                                 ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
