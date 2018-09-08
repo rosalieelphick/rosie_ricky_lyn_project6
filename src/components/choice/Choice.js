@@ -17,29 +17,24 @@ class Choice extends Component {
         }
     }
 
-    handleChangeCategory = (e) => {
-        e.preventDefault();
-        console.log(e.target.value);
-        
+    handleChangeCategory = (e) => {        
         this.setState({
             categoryValue: e.target.value
         })
     }
 
-    handleClickDifficulty = (e) => {
-        e.preventDefault();
+    // 
+    handleChangeDifficulty = (e) => {
+        // e.preventDefault();
+        console.log(e.target.value)
         this.setState({
             difficultyValue: e.target.value
         })
-        
     }
-
-    handleChangeDifficulty = (e) => {
+    
+    // giving the data to App.js 
+    handleSubmit = () => {
         this.props.getQuestions(this.state.categoryValue, this.state.difficultyValue)
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
     }
 
     render(){
@@ -47,24 +42,24 @@ class Choice extends Component {
             <div>
                 <section>
                     <h1>Choose a category</h1>                    
-                    <form onSubmit={this.handleSubmit} action="">
+                    <form action="">
 
                         {/* <input type="radio" name="category" value="770" id="music" class="category">
                             <label for="music"><i class="fas fa-music"></i> Pop Music</label> */}
                         <label htmlFor="animals">Animals</label>
-                        <input onChange={this.handleChangeCategory} type="radio" value="27" id="animals"/>
+                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="27" id="animals"/>
 
                         <label htmlFor="mythology">Computers</label>
-                        <input onChange={this.handleChangeCategory} type="radio" value="18" id="mythology"/>
+                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="18" id="mythology"/>
 
                         <label htmlFor="history">History</label>
-                        <input onChange={this.handleChangeCategory} type="radio" value="23" id="history"/>
+                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="23" id="history"/>
 
                         <label htmlFor="sports">Film</label>
-                        <input onChange={this.handleChangeCategory} type="radio" value="11" id="sports"/>
+                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="11" id="sports"/>
 
                         <label htmlFor="politics">Politics</label>
-                        <input onChange={this.handleChangeCategory} type="radio" value="24"id="politics"/>
+                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="24" id="politics"/>
                     </form>
                     
 
@@ -73,22 +68,22 @@ class Choice extends Component {
                 <section>
                     <h1>Choose your difficulty level</h1>
 
-                    <form onSubmit={this.handleSubmit} action="">
+                    <form action="">
 
                         <label htmlFor="easy">Easy</label>
-                        <input onChange={this.handleChangeDifficulty} type="radio" value="easy" id="easy"/>
+                        <input onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="easy" id="easy"/>
 
                         <label htmlFor="medium">Medium</label>
-                        <input onChange={this.handleChangeDifficulty} type="radio" value="medium" id="medium"/>
+                        <input onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="medium" id="medium"/>
 
                         <label htmlFor="hard">Hard</label>
-                        <input onChange={this.handleChangeDifficulty} type="radio" value="hard" id="hard"/>
+                        <input onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="hard" id="hard"/>
                     </form>
 
                 </section>
 
                 <Link to="/questions">
-                    <button>Submit</button>
+                    <button onClick={() => {this.handleSubmit()}}>Submit</button>
                 </Link>
             </div>
         );

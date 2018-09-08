@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 
 class Players extends Component {
     constructor() {
@@ -14,6 +14,11 @@ class Players extends Component {
         e.preventDefault();
     }
 
+    // waits for everything to mount on component, then it cgoes through compoennt did 
+    // components are mounted, then do stuff after 
+    // creating an array to push players into an array 
+    // each player gets pushed into an array with the values 
+    // settingState so we have it locally in this Component
     componentDidMount() {
         console.log("component mounted")
         this.setState({
@@ -32,6 +37,9 @@ class Players extends Component {
         })     
     }
 
+    // this is for the uder entering their name 
+    // e.target.id is relevant to where the player is in the array 
+    // updating the array in the state with the username inputed 
     handleChange = (e) => {
         const index = e.target.id
         const playerArray = this.state.playerArray
@@ -42,6 +50,8 @@ class Players extends Component {
         })
     }
 
+    // getting avatar to display on the page 
+    // making sure  auser name is submited and if it's true then you can get an avatar 
     submitUsername = (e) => {
         e.preventDefault();
         const index = e.target.id;
@@ -57,8 +67,9 @@ class Players extends Component {
         console.log("rendered")
         return (
 
-            <div>
-
+            <div>   
+                    {/* going through how many players there are in the playerArray and mapping through it to generate a from for each of them */}
+                    {/* created a form to enter username and then a random robot is generated */}
                     {this.state.playerArray.map((player) => {
                         return (
                             <div key={this.state.playerArray.indexOf(player)}>
@@ -71,6 +82,7 @@ class Players extends Component {
                                     <input onClick={this.submitUsername} id={this.state.playerArray.indexOf(player)} type="submit"></input>
                                 </form>
 
+                                {/* if the player inputed a username then generate a robot avatar */}
                                 <div className="avatar">
                                     {player.usernameSubmit 
                                     ? <img src={`https://robohash.org/${player.username}.png`}></img>
@@ -80,7 +92,8 @@ class Players extends Component {
                             </div>
                         )
                     })}
-
+                
+                {/* sending the info onClick so that  */}
                 <Link to="/choice" >
                     <button onClick={() => {this.props.addPlayers(this.state.playerArray)}}>Submit Users</button>
                 </Link>
