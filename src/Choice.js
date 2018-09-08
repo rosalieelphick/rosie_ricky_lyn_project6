@@ -8,6 +8,18 @@
 import React, { Component } from "react"
 import { Link } from 'react-router-dom';
 
+import posed from 'react-pose';
+
+const Container = posed.div({
+    enter: { staggerChildren: 100 }
+});
+
+const Section = posed.section({
+    enter: { x: 0, opacity: 1 },
+    exit: { x: 50, opacity: 0 }
+});
+
+
 class Choice extends Component {
     constructor(){
         super();
@@ -39,9 +51,12 @@ class Choice extends Component {
 
     render(){
         return(
-            <div>
-                <section>
-                    <h1>Choose a category</h1>                    
+            <Container>
+
+                <h1>Trivia Options</h1>
+
+                <Section>
+                    <h2>Choose a category</h2>                    
                     <form action="">
 
                         {/* <input type="radio" name="category" value="770" id="music" class="category">
@@ -61,12 +76,11 @@ class Choice extends Component {
                         <label htmlFor="politics">Politics</label>
                         <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="24" id="politics"/>
                     </form>
-                    
 
-                </section>
+                </Section>
                 
-                <section>
-                    <h1>Choose your difficulty level</h1>
+                <Section>
+                    <h2>Choose your difficulty level</h2>
 
                     <form action="">
 
@@ -80,12 +94,12 @@ class Choice extends Component {
                         <input onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="hard" id="hard"/>
                     </form>
 
-                </section>
+                </Section>
 
                 <Link to="/questions">
                     <button onClick={() => {this.handleSubmit()}}>Submit</button>
                 </Link>
-            </div>
+            </Container>
         );
     }
 }

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 // import './App.css';
 import './partials/main.css'
 import axios from "axios"; 
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+
+import posed, { PoseGroup } from 'react-pose';
 
 // ===============
 // COMPONENTS
@@ -15,6 +17,11 @@ import Choice from "./Choice"
 import Questions from './Questions';
 import Results from "./Results"
 import LeaderBoard from "./LeaderBoard"
+
+const RouteContainer = posed.div({
+  enter: { x: 0, opacity: 1, delay: 0, beforeChildren: true},
+  exit: { x: 50, opacity: 0 }
+});
 
 class App extends Component {
 
@@ -171,60 +178,63 @@ class App extends Component {
   // Routes to all the pages Components are linked to
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Route exact path="/" component={LandingPage}/>
-          {/* sending  */}
-          {/* sending a function to the StartingPage where we figure out the number of players inside the Route */}
-          {/* this is connected to the submitPlayers function above */}
-          <Route exact path="/start" render={(props) => <StartingPage {...props}
-          submitPlayers={this.submitPlayers} />}/>
+      <BrowserRouter>
+        <Route
+          render={({location}) => (
+            <div className="App">
 
-          {/* transferring data from the Players page where each peron puts in their name and they get a robo avatar */}
-          {/* connected to addPlayers function above  */}
-          <Route exact path="/players" render={(props) => <Players {...props} 
-          numberOfPlayers={this.state.numberOfPlayers}
-          addPlayers={this.addPlayers} />} />
-          
-          {/* transferring data from Choice so we can get the questions */}
-          {/* sending info from getQuestions to the Choice component*/}
-          <Route exact path="/choice" render={(props) =>
-              <Choice {...props} getQuestions={this.getQuestions} /> 
-            } />
-          
-          {/* tranferring data from Questions page */}
-          {/* giving questions, question progress, players info to other components */}
-          {/* scoreCount connected to scoreCount functio above */}
-          <Route 
-            exact path="/questions" 
-            render={(props) =>
-              <Questions {...props} 
-              questions={this.state.questions}
-              questionProgress={this.state.questionProgress}
-              players={this.state.playerArray}
-              scoreCount={this.scoreCount} /> 
-            } />
-          
-          {/* transferring data from Results page */}
-          {/* giving questions, questionprogress, players info to other components */}
-          {/* scoreCount connected to scoreCount functio above */}
-          <Route exact path="/results" 
-           render={(props) =>
-            <Results {...props} 
-            questions={this.state.questions}
-            questionProgress={this.state.questionProgress}
-            players={this.state.playerArray}
-            scoreCount={this.scoreCount} 
-            nextQuestion={this.nextQuestion}
-            resetQuestions={this.resetQuestions}
-            difficulty={this.state.difficulty}
-            category={this.state.category}
-            /> 
-          }/>
+              <PoseGroup>
+                <RouteContainer key={location.key}>
+                  <Switch location={location}>
 
-          <Route exact path="/leaderboard" component={LeaderBoard} />
-        </div>
-      </Router>
+                    <Route exact path="/" component={LandingPage} />
+
+                    <Route exact path="/start" render={(props) => <StartingPage {...props}
+                      submitPlayers={this.submitPlayers} />} />
+
+                    <Route exact path="/players" render={(props) => <Players {...props}
+                      numberOfPlayers={this.state.numberOfPlayers}
+                      addPlayers={this.addPlayers} />} />
+
+                    <Route exact path="/choice" render={(props) =>
+                      <Choice {...props} getQuestions={this.getQuestions} />
+                    } />
+
+                    <Route
+                      exact path="/questions"
+                      render={(props) =>
+                        <Questions {...props}
+                          questions={this.state.questions}
+                          questionProgress={this.state.questionProgress}
+                          players={this.state.playerArray}
+                          scoreCount={this.scoreCount} />
+                      } />
+
+                    <Route exact path="/results"
+                      render={(props) =>
+                        <Results {...props}
+                          questions={this.state.questions}
+                          questionProgress={this.state.questionProgress}
+                          players={this.state.playerArray}
+                          scoreCount={this.scoreCount}
+                          nextQuestion={this.nextQuestion}
+                          resetQuestions={this.resetQuestions}
+                          difficulty={this.state.difficulty}
+                          category={this.state.category}
+                        />
+                      } />
+
+                    <Route exact path="/leaderboard" component={LeaderBoard} />
+
+                  </Switch>
+                </RouteContainer>
+              </PoseGroup>
+              
+            </div>
+          )}
+          
+        />    
+      </BrowserRouter>
     );
   }
 }

@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"; 
+import posed from 'react-pose';
 import Typing from "react-typing-animation"
+
+const Container = posed.div({
+    enter: { staggerChildren: 50 }
+});
+
+const Section = posed.section({
+    enter: { x: 0, opacity: 1, beforeChildren: true },
+    exit: { x: 50, opacity: 0 }
+});
+
+
 const choice = ["A", "B", "C", "D"]
 
 class Questions extends Component {
@@ -65,11 +77,12 @@ class Questions extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
+
+
                 <h1>Questions</h1>
-                {/* <Typing>
-                    <p>This will have a typing animation</p>
-                </Typing> */}
+
+                <Section>
                 {/* first question is the first question in the array with [0] index */}
                 {/* keeping track of which questionw we're on */}
                 {/* checking if there are questions in array then display question if there are */}
@@ -117,8 +130,9 @@ class Questions extends Component {
                 : null
             }
              
+            </Section>
 
-            </div>
+            </Container>
         );
     }
 };

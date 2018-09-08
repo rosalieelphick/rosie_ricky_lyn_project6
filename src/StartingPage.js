@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 // import Choice from './components/choice/Choice';
 import { Link, Route } from 'react-router-dom'; 
 
+import posed from 'react-pose';
+
+const Container = posed.div({
+    enter: { staggerChildren: 50 }
+});
+
+const Form = posed.form({
+    enter: { x: 0, opacity: 1, beforeChildren: true},
+    exit: { x: 50, opacity: 0 }
+});
+
 
 class StartingPage extends Component {
     constructor() {
@@ -26,10 +37,10 @@ class StartingPage extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 {/* choosing the number of players 1-4 */}
                 <h1>select number of players</h1>
-                <form action="">
+                <Form action="">
                     <label htmlFor="one">One player</label>
                     <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="1" id="one"/>
 
@@ -53,8 +64,8 @@ class StartingPage extends Component {
                         <button>Leader board</button>
                     </Link>
                     
-                </form>
-            </div>
+                </Form>
+            </Container>
         );
     }
 };

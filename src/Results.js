@@ -1,6 +1,16 @@
 import React, { Component } from "react"; 
 import { Link } from 'react-router-dom';
 import firebase from './firebase';
+import posed from 'react-pose';
+
+const Container = posed.div({
+    enter: { staggerChildren: 50 }
+});
+
+const Section = posed.section({
+    enter: { x: 0, opacity: 1, beforeChildren: true },
+    exit: { x: 50, opacity: 0 }
+});
 
 
 const categoryNames = {
@@ -97,8 +107,9 @@ class Results extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 <h1>Results</h1>
+                <Section>
                 <h2>{this.props.questions[this.props.questionProgress].correct_answer}</h2>
                 {this.props.players.map((player) => {
                     return(
@@ -123,8 +134,8 @@ class Results extends Component {
                         <button onClick={() => { this.props.nextQuestion() }}>Next Question</button>
                     </Link>
                 }
-
-            </div>
+                </Section>
+            </Container>
         );
     }
 }

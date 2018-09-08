@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; 
 
+import posed from 'react-pose';
+
+const Container = posed.div({
+    enter: { staggerChildren: 100 }
+});
+
+const Section = posed.section({
+    enter: { x: 0, opacity: 1 },
+    exit: { x: 50, opacity: 0 }
+});
+
 class Players extends Component {
     constructor() {
         super();
@@ -67,12 +78,13 @@ class Players extends Component {
         console.log("rendered")
         return (
 
-            <div>   
+            <Container>   
                     {/* going through how many players there are in the playerArray and mapping through it to generate a from for each of them */}
                     {/* created a form to enter username and then a random robot is generated */}
+                    <h1>Trivia Options</h1>
                     {this.state.playerArray.map((player) => {
                         return (
-                            <div key={this.state.playerArray.indexOf(player)}>
+                            <Section key={this.state.playerArray.indexOf(player)}>
                                 <p>{player.playerNumber}</p>
                                 <form action="">
                                     <label>enter your username</label>
@@ -89,7 +101,7 @@ class Players extends Component {
                                     : null
                                     }
                                 </div>
-                            </div>
+                            </Section>
                         )
                     })}
                 
@@ -97,7 +109,8 @@ class Players extends Component {
                 <Link to="/choice" >
                     <button onClick={() => {this.props.addPlayers(this.state.playerArray)}}>Submit Users</button>
                 </Link>
-            </div>
+
+            </Container>
             
             
         )
