@@ -36,6 +36,12 @@ class App extends Component {
 
   // getting data from our API 
   getQuestions = (category, difficulty) => {
+
+    this.setState({
+      category: category,
+      difficulty: difficulty
+    })
+
     axios.get("https://opentdb.com/api.php?", {
       params: {
         amount: 10,
@@ -110,7 +116,6 @@ class App extends Component {
 
     })
   }
-
   
 
   combineChoices = (questions) => {
@@ -211,6 +216,8 @@ class App extends Component {
             scoreCount={this.scoreCount} 
             nextQuestion={this.nextQuestion}
             resetQuestions={this.resetQuestions}
+            difficulty={this.state.difficulty}
+            category={this.state.category}
             /> 
           }/>
 
