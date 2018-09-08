@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
-
 class LandingPage extends Component {
     render() {
         return (
-
             <div>
                 {/* link that goies to start page */}
                 <Link to="/start">
@@ -15,8 +13,7 @@ class LandingPage extends Component {
                 <Link to="/leaderboard">
                     <button>Leader board</button>
                 </Link> 
-            </div>
-            
+            </div>      
         );
     }
 };
