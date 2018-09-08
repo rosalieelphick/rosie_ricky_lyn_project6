@@ -46,7 +46,6 @@ class Questions extends Component {
             chosenAnswer: e.target.value
         })
     }
-
     // clong the array of players 
     // going through each player and setting answerSubmitted to false 
     resetSubmit = () => {
@@ -58,6 +57,10 @@ class Questions extends Component {
             allAnswersSubmitted: false,
             playerArray: arrayClone
         })
+    }
+
+    filterQuestion = () => {
+        let re = /<\/?[\w\s="/.':;#-\/\?]+>|[\/\\:+="#]+/gi;
     }
 
     render() {

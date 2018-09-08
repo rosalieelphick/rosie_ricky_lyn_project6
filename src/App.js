@@ -30,6 +30,7 @@ class App extends Component {
       promise:{},
       playerArray: [],
       questionProgress: 0,
+      newQuestions: []
     }
   }
 
@@ -43,9 +44,57 @@ class App extends Component {
         // type: "multiple"
       }
     }).then(({ data }) => {
-      const questions = this.combineChoices(data.results);
+      
+      // get each question in the original array 
+      // then 
+      let questions = this.combineChoices(data.results);  
+      // ===============
+      // REGEX STUFF STARTS 
+      // ===============
+
+        // let newAnswersWithoutRandomCharacters;
+        // let emptyArray = [];
+        // let re = /<\/?[\w\s="/.':;#-\/\?]+>|[\/\\:+="#]+/gi
+        // let answersWithoutRandomCharacters = result.forEach((item) => {
+        //     newAnswersWithoutRandomCharacters = item.replace(re, '');
+        //     emptyArray.push(newAnswersWithoutRandomCharacters)
+        // })
+
+      // const re = /&quot;/;
+      const regex = /<\/?[\w\s="/.':;#-\/\&?]+>|[\/\\:+="#]+>|[&quot;]/gi;
+
+      // let eachQuestion = [];
+      // create a clone and set state with it 
+      // put all the questions back into the array 
+      let eachQuestion = questions.map(question => question.question);
+
+      let emptyArray = [];
+      let newFiltredArray;
+      eachQuestion.forEach((item) => {
+        newFiltredArray = item.replace([/&quot;/g], '"');
+        // newFiltredArray = item.replace(regex, "")
+        emptyArray.push(newFiltredArray)
+      })
+      
+      // trying to do it again with some other regex
+      let arrayClone = Array.from(this.state.questions);
+        arrayClone.forEach((item) => {
+          // newFiltredArray = item.replace(//, "'")
+        })
+
+      // let newEmptyArray = [];
+
+      console.log('This is the original question');
+      console.log(eachQuestion);
+      console.log('This is the new Filtered one');
+      console.log(emptyArray);
+      console.log("These are the new questions");
+      console.log(this.state.newQuestions);
+      
+      
       this.setState({
         questions,
+        newQuestions: emptyArray
       })
     })
   }
