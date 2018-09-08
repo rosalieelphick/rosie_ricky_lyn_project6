@@ -10,13 +10,6 @@ class Players extends Component {
         }
     }
 
-    // ???we have two handlechange functions here, not really sure why? 
-    // handleChange = (e) => {
-    //     this.setState({
-    //         [e.target.id]: e.target.value
-    //     })
-    // }
-
     handleSubmit = (e) => {
         e.preventDefault();
     }

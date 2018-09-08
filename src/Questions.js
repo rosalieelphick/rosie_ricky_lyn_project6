@@ -80,7 +80,8 @@ class Questions extends Component {
                 {/* undefined error if you don't check to see if we have the answer bc the answer will render first if we don't have the actual.*/}
                 {/* making sure we have all the info the the API before it's rendered on the page  */}
                 {this.props.players.map((player, i) => {
-                    return( 
+                    return(
+                        
                         <form key={player.username}>
                             {this.props.questions[0]
                                 ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 

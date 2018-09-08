@@ -17,18 +17,16 @@ class Choice extends Component {
         }
     }
 
-    handleChangeCategory = (e) => {
-        // e.preventDefault();
-        console.log(e.target.value);
-        
+    handleChangeCategory = (e) => {        
         this.setState({
             categoryValue: e.target.value
         })
     }
 
     // 
-    handleClickDifficulty = (e) => {
+    handleChangeDifficulty = (e) => {
         // e.preventDefault();
+        console.log(e.target.value)
         this.setState({
             difficultyValue: e.target.value
         })
