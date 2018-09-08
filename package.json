@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "axios": "^0.18.0",
+    "firebase": "^5.4.2",
     "react-pose": "^3.3.0",
     "react-router-dom": "^4.3.1"
   }
