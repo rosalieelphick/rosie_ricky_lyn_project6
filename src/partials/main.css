@@ -131,17 +131,37 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.players {
+h1, p {
+  font-family: 'Montserrat', sans-serif; }
+
+h1 {
+  text-transform: uppercase; }
+
+.submitButton {
+  letter-spacing: 0;
+  border: none;
+  color: #ed1a1e; }
+
+.submitButton:hover, .submitButton:active {
+  letter-spacing: 3px; }
+
+.submitButton:after, .submitButton:before {
+  border: 1px solid rgba(237, 26, 30, 0);
+  content: " ";
+  display: block;
+  margin: 0 auto;
   position: relative;
-  height: 75vh;
-  overflow: hidden; }
+  transition: all 280ms ease-in-out;
+  width: 0; }
 
-form.player {
-  width: 100%;
-  position: absolute;
+.submitButton:hover:after,
+.submitButton:hover:before {
+  backface-visibility: hidden;
+  border-color: #ed1a1e;
+  transition: width 350ms ease-in-out;
+  width: 100%; }
+
+.submitButton:hover:before {
+  bottom: auto;
   top: 0;
-  transition: 0.3s; }
-
-form.player2 {
-  position: absolute;
-  left: 100%; }
+  width: 100%; }
