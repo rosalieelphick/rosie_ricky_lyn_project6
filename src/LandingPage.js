@@ -13,7 +13,7 @@ class LandingPage extends Component {
                 </Link>
                 {/* link that goes to leaderboard page */}
                 <Link to="/leaderboard">
-                    <button>Leader board</button>
+                    <button className="submitButton">Leaderboard</button>
                 </Link> 
             </div>
             
