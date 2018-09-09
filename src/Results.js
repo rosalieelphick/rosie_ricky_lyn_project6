@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import firebase from './firebase';
 import posed from 'react-pose';
+import Typing from "react-typing-animation"
+import './Results.css'
+import wrongImg from './assets/wrench.png'
 
 const Container = posed.div({
     enter: { staggerChildren: 50 }
@@ -27,7 +30,7 @@ class Results extends Component {
         super();
         this.state = {
             endOfGame: false,
-
+            confetti: []
         }
     }
 
@@ -44,6 +47,8 @@ class Results extends Component {
                 endOfGame: false
             })
         }
+
+        this.celebrate();
     }
 
     // checking if we're done the questions in the array 
@@ -105,20 +110,54 @@ class Results extends Component {
         })
     }
 
+    celebrate = () => {
+        const confetti = [];
+        for (let i = 0; i < 50; i++) {
+            confetti[i] = "";
+        }
+        this.setState({
+            confetti
+        })
+
+    }
+
     render() {
         return (
-            <Container>
+            <Container className="results">
+                
                 <h1>Results</h1>
                 <Section>
-                <h2>{this.props.questions[this.props.questionProgress].correct_answer}</h2>
-                {this.props.players.map((player) => {
+                {this.props.questions[0]
+                    ? <p>
+                        {this.props.questions[this.props.questionProgress].question}
+                    </p>                    
+                : null}
+
+                <Typing speed={35}>
+                    <h2>The answer is: {this.props.questions[this.props.questionProgress].correct_answer}</h2>
+                </Typing>
+
+                {this.props.players.map((player, i) => {
                     return(
-                        <div>
+                        <div className={`player player${i + 1}`}>
                             <h3>{player.username}</h3>
-                            {player.correct 
-                                ? <p>CORRECT</p>
-                                : <p>wrong</p>
-                            }
+                            <div className="avatar">
+                                <img src={`https://robohash.org/${player.username}.png`} alt="" />
+                                
+                                {player.correct 
+                                    ? <div>
+                                        <p className="correct">CORRECT</p>
+                                        {this.state.confetti.map((eachConfetti, i) => {
+                                            return <div className={`confetti confetti${i}`}></div>
+                                        })}
+                                    </div>
+                                    : <div>
+                                        <img src={wrongImg} alt="" className="wrongAnimation"/>
+                                        <div className="overlay"></div>
+                                        <p className="wrong">WRONG</p>
+                                    </div>
+                                }
+                            </div>
                             <p>{`your score is currently ${player.score}`}</p>
                         </div>
                     )
