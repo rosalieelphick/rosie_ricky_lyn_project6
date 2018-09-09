@@ -2,6 +2,7 @@
 @import "_utils.scss";
 @import "_typography.scss"; 
 @import "_landingPage.scss";
+@import "_players.scss"; 
 
 .wrapper {
     margin: 0 auto;
@@ -13,6 +14,10 @@ body {
   // background-color: $grey;
   // background-color: $red;
 }
+
+// body {
+//     // background-color: $grey;
+// }
 
 // ===============
 // BUTTONS
