@@ -92,10 +92,9 @@ class Questions extends Component {
                 <Section>
   
                     {this.props.questions[0]
-                        ? <Typing speed={35}><p>
+                        ? <p>
                             {this.props.questions[this.props.questionProgress].question}
                         </p>
-                        </Typing>
                     : null}
 
                 <div className="players">

@@ -131,11 +131,23 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-h1, p {
+h1, p, button {
   font-family: 'Montserrat', sans-serif; }
 
 h1 {
   text-transform: uppercase; }
+
+button {
+  font-weight: 600; }
+
+.landingPage {
+  text-align: center;
+  margin: 0 auto; }
+  .landingPage h1 {
+    margin-top: 125px; }
+  .landingPage img {
+    border-bottom: 4px solid black;
+    margin-top: -50px; }
 
 .container {
   position: relative;
@@ -193,31 +205,60 @@ h1 {
   width: 60%;
   left: 20%; }
 
-.submitButton {
-  letter-spacing: 0;
-  border: none;
-  color: #ed1a1e; }
-
-.submitButton:hover, .submitButton:active {
-  letter-spacing: 3px; }
-
-.submitButton:after, .submitButton:before {
-  border: 1px solid rgba(237, 26, 30, 0);
-  content: " ";
-  display: block;
+.wrapper {
   margin: 0 auto;
+  widows: 800px; }
+
+body {
+  background-color: #9ad4e6; }
+
+.btn {
+  background: none;
+  color: black;
+  width: 240px;
+  height: 50px;
+  border: 1px solid black;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: .6s;
+  overflow: hidden;
   position: relative;
-  transition: all 280ms ease-in-out;
-  width: 0; }
+  margin: 5px; }
 
-.submitButton:hover:after,
-.submitButton:hover:before {
-  backface-visibility: hidden;
-  border-color: #ed1a1e;
-  transition: width 350ms ease-in-out;
-  width: 100%; }
+.btn:focus {
+  outline: none; }
 
-.submitButton:hover:before {
-  bottom: auto;
+.btn:before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  width: 60px;
+  height: 100%;
+  left: 0;
   top: 0;
-  width: 100%; }
+  opacity: .5s;
+  filter: blur(30px);
+  transform: translateX(-130px) skewX(-15deg); }
+
+.btn:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 100%;
+  left: 30px;
+  top: 0;
+  opacity: 0;
+  filter: blur(30px);
+  transform: translate(-100px) scaleX(-15deg); }
+
+.btn:hover {
+  background: none;
+  cursor: pointer; }
+
+.btn:hover:before {
+  transform: translateX(300px) skewX(-15deg);
+  opacity: 1;
+  transition: .7s; }

@@ -38,7 +38,6 @@ class Choice extends Component {
     // 
     handleChangeDifficulty = (e) => {
         // e.preventDefault();
-        console.log(e.target.value)
         this.setState({
             difficultyValue: e.target.value
         })
