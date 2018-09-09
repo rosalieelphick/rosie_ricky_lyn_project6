@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; 
-
+import Icon from './Icon'
 import posed from 'react-pose';
 
 const Container = posed.div({
@@ -17,7 +17,8 @@ class Players extends Component {
         super();
         this.state = {
            username: "player1",
-           playerArray: []
+           playerArray: [],
+           position: 0
         }
     }
 
@@ -25,11 +26,6 @@ class Players extends Component {
         e.preventDefault();
     }
 
-    // waits for everything to mount on component, then it cgoes through compoennt did 
-    // components are mounted, then do stuff after 
-    // creating an array to push players into an array 
-    // each player gets pushed into an array with the values 
-    // settingState so we have it locally in this Component
     componentDidMount() {
         console.log("component mounted")
         this.setState({
@@ -48,9 +44,6 @@ class Players extends Component {
         })     
     }
 
-    // this is for the uder entering their name 
-    // e.target.id is relevant to where the player is in the array 
-    // updating the array in the state with the username inputed 
     handleChange = (e) => {
         const index = e.target.id
         const playerArray = this.state.playerArray
@@ -61,8 +54,6 @@ class Players extends Component {
         })
     }
 
-    // getting avatar to display on the page 
-    // making sure  auser name is submited and if it's true then you can get an avatar 
     submitUsername = (e) => {
         e.preventDefault();
         const index = e.target.id;
@@ -74,41 +65,99 @@ class Players extends Component {
         })
     }
 
+    nextPlayer = () => {
+        this.setState({
+            position: this.state.position - 100
+        })
+    }
+
+    previousPlayer = () => {
+        this.setState({
+            position: this.state.position + 100
+        })
+    }
+
     render(){
-        console.log("rendered")
         return (
 
-            <Container>   
-                    {/* going through how many players there are in the playerArray and mapping through it to generate a from for each of them */}
-                    {/* created a form to enter username and then a random robot is generated */}
-                    <h1>Trivia Options</h1>
-                    {this.state.playerArray.map((player) => {
+            <Container className="container clearfix"> 
+
+                <div className="containerWrapper">  
+
+                    <h1>Players</h1>
+
+                    <div className="playerContainer" 
+                    style={{left: `${this.state.position}%`, width: `${this.state.playerArray.length * 100}%`}}
+                    >
+
+                    {this.state.playerArray.map((player, i) => {
+
                         return (
-                            <Section key={this.state.playerArray.indexOf(player)}>
-                                <p>{player.playerNumber}</p>
-                                <form action="">
-                                    <label>enter your username</label>
+                        
+                            <Section 
+                            className={"player"}
+                            style={{width: `${100 / this.state.playerArray.length}%`}}
+                            key={this.state.playerArray.indexOf(player)}>
 
-                                    <input onChange={this.handleChange} id={this.state.playerArray.indexOf(player)} type="text" placeholder="enter your username"></input>
+                                <div className="containerWrapper">  
 
-                                    <input onClick={this.submitUsername} id={this.state.playerArray.indexOf(player)} type="submit"></input>
+                                {i !== 0 ?
+
+                                <button
+                                    className={"changePlayer previousPlayer"}
+                                    onClick={(e) => { this.previousPlayer() }}>
+                                    <Icon icon={"leftArrow"} />
+                                </button>
+                                
+                                : null
+
+                                }
+
+                                <h2>{player.playerNumber}</h2>
+                                <form action="" className={"usernameForm"}>
+
+                                    <input className={"enterUsername"} aria-label="enter your username" onChange={this.handleChange} id={this.state.playerArray.indexOf(player)} type="text" placeholder="username"></input>
+
+                                    <input className={"submitUsername"} onClick={this.submitUsername} id={this.state.playerArray.indexOf(player)} type="submit"></input>
+
                                 </form>
 
-                                {/* if the player inputed a username then generate a robot avatar */}
                                 <div className="avatar">
                                     {player.usernameSubmit 
                                     ? <img src={`https://robohash.org/${player.username}.png`}></img>
                                     : null
                                     }
                                 </div>
+
+                                {i !== this.state.playerArray.length - 1 ?
+                                
+                                <button 
+                                className={"changePlayer nextPlayer"}
+                                onClick={(e) => {this.nextPlayer()}}>
+                                    <Icon icon={"rightArrow"} />
+                                </button>
+
+                                : null
+                                    
+                                }
+
+                                </div>
+
                             </Section>
                         )
                     })}
                 
+                    </div>
+
                 {/* sending the info onClick so that  */}
                 <Link to="/choice" >
-                    <button onClick={() => {this.props.addPlayers(this.state.playerArray)}}>Submit Users</button>
+                    <button 
+                        className={"submitUsers"}
+                        onClick={() => { this.props.addPlayers(this.state.playerArray) }}>Submit Users
+                    </button>
                 </Link>
+
+                </div>
 
             </Container>
             
