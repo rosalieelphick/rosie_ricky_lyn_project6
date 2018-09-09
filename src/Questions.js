@@ -87,10 +87,9 @@ class Questions extends Component {
                 {/* keeping track of which questionw we're on */}
                 {/* checking if there are questions in array then display question if there are */}
                     {this.props.questions[0]
-                        ? <Typing speed={35}><p>
+                        ? <p>
                             {this.props.questions[this.props.questionProgress].question}
                         </p>
-                        </Typing>
                     : null}
                 {/* getting the array with the players that have username, score and other properties  */}
                 {/* i is to keep track of the answer each player gave  */}
