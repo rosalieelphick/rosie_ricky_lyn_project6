@@ -4,13 +4,25 @@
 // Montserrat
 // 
 
-h1, p, button {
+html {
+    font-size: 62.5%;
+}
+
+h1, p, button, label {
     font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
+    font-size: 4rem;
     text-transform: uppercase;
-    // color: $red;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p, label {
+    font-size: 1.5rem;
 }
 
 button {
