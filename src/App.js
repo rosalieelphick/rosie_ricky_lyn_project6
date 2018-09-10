@@ -63,9 +63,6 @@ class App extends Component {
       // get each question in the original array 
       let questions = this.combineChoices(data.results);  
 
-      console.log("all the questions")
-      console.log(questions)
-
       // console.log(data.results);
       
       this.setState({
@@ -74,29 +71,21 @@ class App extends Component {
       })
 
       // ===============
-      // REGEX STUFF STARTS 
+      // REGEX STUFF STARTS FOR QUESTIONS
       // ===============
 
-      // FOR QUESTIONS 
-
-      // const doubleQuoteRegex = /(&quot;)/g
       const doubleQuoteRegex = /(&quot;)+|(&ldquo)+|(&rdquo;)/g;
       const singleQuoteRegex = /(&#039;)/g;
+      const ampersandRegex = /(&amp;)/g;
 
       // &ldquo = quote add to double quotes
       //,&rdquo; = double quote
-
-      // clone the original array with the questions 
-      // filter the cloned array so it doesn't have &quot; anymore 
-      // set the state of that new filtered array 
-      // take that new filtered array and filter so it doesn't have &#039; anymore 
-      // set the state of questions so that 
 
       // cloning and then mapping through each question 
       const clonedArayOne = Array.from(this.state.questions)
       const eachQuestion = clonedArayOne.map(question => question.question);
 
-      // filtering through /(&quot;)/g
+      // filtering through for double quotes
       let filteredArrayOne = [];
       let filtredQuestionsOne;
       eachQuestion.forEach((item) => {
@@ -104,43 +93,48 @@ class App extends Component {
         filteredArrayOne.push(filtredQuestionsOne)
       })
 
-      // filtering through /(&#039;)/g
-      let filteredArrayTwo = []
+      // filtering through for single quotes
+      let filteredArrayTwo = [];
       let filtredQuestionsTwo;
-        filteredArrayOne.forEach((item) => {
-          filtredQuestionsTwo = item.replace(singleQuoteRegex, "'")
-          filteredArrayTwo.push(filtredQuestionsTwo)
-        })
+      filteredArrayOne.forEach((item) => {
+        filtredQuestionsTwo = item.replace(singleQuoteRegex, "'")
+        filteredArrayTwo.push(filtredQuestionsTwo)
+      })
+
+      // filtering through for &ampersands&
+      let filteredArrayThree = [];
+      let filtredQuestionsThree;
+      filteredArrayTwo.forEach((item) => {
+        filtredQuestionsThree = item.replace(ampersandRegex, "&")
+        filteredArrayThree.push(filtredQuestionsThree)
+      })
 
       // putting the filtered questions back 
-      // ???how come it seems like it's manipulating the question right away
       let clonedArray = Array.from(this.state.questions);      
-      for (let i = 0; i <= (clonedArray.length -1); i++){
-        clonedArray[i].question = filteredArrayTwo[i]
+      for (let i = 0; i <= (clonedArray.length - 1); i++){
+        clonedArray[i].question = filteredArrayThree[i]
       }
-
+      
       this.setState({
         questions: clonedArray
       })
+      
+      // create a new filtereted array 
 
-
-
+      // let clonedAnswers = Array.from(this.state.questions.allChoices)
+      // console.log("answers")
+      // console.log(clonedAnswers)
+      
       // FILTERIGN RIGHT ANSWER
       // const clonedForRightAnswer = Array.from(this.state.questions);      
       // const eachCorrectAnswer = clonedForRightAnswer.map(answer => answer.correct_answer);
       
       // const allChoices = Array.from(question.incorrect_answers);
       // const clonedAnswers = Array.from(this.state.questions.allChoices)
-      const clonedAnswers = data.results.allChoices
-      console.log('cloned answers');
-      console.log(clonedAnswers);
+      // const clonedAnswers = data.results.allChoices
+      // console.log('cloned answers');
+      // console.log(data.results.allChoices);
       
-
-      let filteredAnswer = [];
-      let filteredAnswerOne;
-      
-
-
       // let filteredAnswer = [];
       // let filteredAnswerOne; 
       // eachCorrectAnswer.forEach((item) => {
@@ -188,10 +182,12 @@ class App extends Component {
     })
   }
   
-// FILTER THROUGH combined choices too 
+// FILTER THROUGH COMBINED CHOICES
   combineChoices = (questions) => {
-    const newQuestions = questions.map((question) => {
-      const allChoices = Array.from(question.incorrect_answers);
+
+    // big loop, looping through questions
+      const newQuestions = questions.map((question) => {
+      const allChoices = Array.from(question.incorrect_answers); 
       allChoices.push(question.correct_answer);
       allChoices.sort(() => .5 - Math.random());
       question.allChoices = allChoices;
@@ -199,37 +195,49 @@ class App extends Component {
       // ==============
       // REGEX FILTERING ANSWER
       // ==============
-      const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
+
+      // const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
+      const doubleQuoteRegex = /(&quot;)+|(&ldquo)+|(&rdquo;)/g;
       const singleQuoteRegex = /(&#039;)/g;
-
-      // let filteredAnswer = [];
-      // let filteredAnswerOne;
-      //   allChoices.forEach((item) => {
-      //   filteredAnswerOne = item.replace(doubleQuoteRegex, '"');
-      //   filteredAnswer.push(filteredAnswerOne)
-      // })
-
-      // let filteredAnswerSingle = [];
-      // let filteredAnswerTwo;
-      //   filteredAnswer.forEach((item) => {
-      //   filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
-      //   filteredAnswerSingle.push(filteredAnswerTwo)
-      // })
-
-      // // console.log('filtered answers all');
-      // // console.log(filteredAnswerSingle)
+      const ampersandRegex = /(&amp;)/g;
       
-      // const clonedArray = Array.from(this.state.questions)
-      // console.log(clonedArray)
-      // for (let i = 0; i <= (clonedArray.length -1); i++){
-      //   clonedArray[i] = filteredAnswerSingle[i]
-      // }
+      // filtering through double quotes
+      let filteredAnswerDouble = [];
+      let filteredAnswerOne;
+      allChoices.forEach((item) => {
+        filteredAnswerOne = item.replace(doubleQuoteRegex, '"');
+        filteredAnswerDouble.push(filteredAnswerOne)
+      })
 
-      // console.log('filtered cloned array for quest');
-      // console.log(clonedArray);
+      // filtering through single quotes 
+      let filteredAnswerSingle = [];
+      let filteredAnswerTwo;
+      filteredAnswerDouble.forEach((item) => {
+        filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
+        filteredAnswerSingle.push(filteredAnswerTwo)
+      })
+
+      let filteredAnswerAnd = [];
+      let filteredAnswerThree;
+        filteredAnswerSingle.forEach((item) => {
+          filteredAnswerThree = item.replace(ampersandRegex, "&");
+          filteredAnswerAnd.push(filteredAnswerThree)
+        })
+
+        console.log("filteredAnswer")
+        console.log(filteredAnswerAnd);
+        
+
+      // replacing each question's allChoices with the filtered answers  
+      question.allChoices = filteredAnswerAnd
     
       return question;
     })
+
+    this.setState({
+      questions: questions
+    })
+
     return newQuestions;
   }
 
