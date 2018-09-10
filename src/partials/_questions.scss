@@ -1,0 +1,133 @@
+
+// HEADER 
+
+header {
+    background-image: url(./../assets/roboHostEdit2.png);
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: 40%;
+    // background-position: center;
+    // background-repeat: repeat;
+    background-color: $lightBlue;
+    padding: 1px;
+    position: relative;
+}
+
+
+// HOST AND QUESTION
+
+.hostQuestion {
+    // z-index: 0;
+    margin-bottom: 20px;
+    img {
+        // float: left;
+        width: 40%;
+    }
+    p {
+        // margin-top: 100px;
+        // margin-left: 100px;
+        margin: 0 auto;
+        // float: left;
+        padding: 25px;
+        border: 1px solid black;
+        width: 40%;
+        border-radius: 20px;
+    }
+}
+
+// ????need to figureout floats 
+
+.answers {
+    // display: inline-block;
+}
+
+.eachChoice, .answersLabel {
+    // display: block;
+}
+
+.player {
+    display: inline-block;
+    // width: 100%;
+}
+
+// .answersLabel, .eachChoice {
+//     // display: block;
+//     // clear: both;
+// }
+
+.playerSubmit {
+    display: inline-block;
+    // float: left;
+}
+
+// end of figuring things outtt
+
+.players {
+    clear: both;
+}
+
+.player {
+    float: left;
+}
+
+.playerSubmit {
+    // float: left;
+    // clear: both;
+    h2 {
+        // width: 10%;
+        // border-top: 3px solid black;
+        margin: 20px auto;
+    }
+    img {
+        // margin-top: 5px auto;;
+        border: 2px solid black;
+        border-radius: 50%;
+        width: 60%;
+        // border-top: 3px solid black;
+    }
+    button {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+    }
+}
+
+// ANSWERS STYLE 
+
+.answers {
+    margin: 0 auto;
+    width: 20%;
+    height: 50px; 
+    border: 1px solid black;
+    // float: left;
+    &:hover {
+        font-weight: 800;
+        color: $red;
+    }
+}
+
+.answers input[type="radio"]{
+    position: fixed;
+    opacity: 0;
+}
+
+.answers:focus-within {
+    font-weight: 800;
+    color: $red;
+}
+
+.answers:focus + label {
+    font-weight: 800;
+    color: $red;
+}
+
+// .eachChoice {
+//     clear: both;
+// }
+
+
+// .answers:hover {
+//     font-weight: 800;
+//     color: $red;
+// }
+// button 

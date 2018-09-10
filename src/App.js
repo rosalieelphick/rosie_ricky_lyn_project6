@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import './App.css';
+// import './styles/partials/main.css'
 import './partials/main.css'
+import './questions.css'
 import axios from "axios"; 
 import { BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 import posed, { PoseGroup } from 'react-pose';
@@ -61,6 +63,11 @@ class App extends Component {
       // get each question in the original array 
       let questions = this.combineChoices(data.results);  
 
+      console.log("all the questions")
+      console.log(questions)
+
+      // console.log(data.results);
+      
       this.setState({
         questions,
         // newQuestions: emptyArray
@@ -73,7 +80,7 @@ class App extends Component {
       // FOR QUESTIONS 
 
       // const doubleQuoteRegex = /(&quot;)/g
-      const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
+      const doubleQuoteRegex = /(&quot;)+|(&ldquo)+|(&rdquo;)/g;
       const singleQuoteRegex = /(&#039;)/g;
 
       // &ldquo = quote add to double quotes
@@ -116,38 +123,56 @@ class App extends Component {
         questions: clonedArray
       })
 
+
+
       // FILTERIGN RIGHT ANSWER
-      const clonedForRightAnswer = Array.from(this.state.questions);      
-      const eachCorrectAnswer = clonedForRightAnswer.map(answer => answer.correct_answer);
+      // const clonedForRightAnswer = Array.from(this.state.questions);      
+      // const eachCorrectAnswer = clonedForRightAnswer.map(answer => answer.correct_answer);
+      
+      // const allChoices = Array.from(question.incorrect_answers);
+      // const clonedAnswers = Array.from(this.state.questions.allChoices)
+      const clonedAnswers = data.results.allChoices
+      console.log('cloned answers');
+      console.log(clonedAnswers);
+      
 
       let filteredAnswer = [];
-      let filteredAnswerOne; 
-      eachCorrectAnswer.forEach((item) => {
-        filteredAnswerOne = item.replace(doubleQuoteRegex, '"');
-        filteredAnswer.push(filteredAnswerOne)
-      })
-
-      let filteredAnswerSingle =[];
-      let filteredAnswerTwo;
-      filteredAnswer.forEach((item) => {
-        filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
-        filteredAnswerSingle.push(filteredAnswerTwo)
-      })
-
-      // replace the correct answer in the questions object
-      let clonedForRightAnswerLast = Array.from(this.state.questions)
-      for (let i = 0; i <= (clonedForRightAnswerLast.length - 1); i++){
-        clonedForRightAnswerLast[i].correct_answer = filteredAnswerSingle[i]
-      }
-
-      // console.log('filtered Answers');
-      // console.log(filteredAnswerSingle);
-      // console.log('new array');
-      // console.log(clonedForRightAnswerLast);
+      let filteredAnswerOne;
       
-      this.setState({
-        questions: clonedForRightAnswerLast
-      })
+
+
+      // let filteredAnswer = [];
+      // let filteredAnswerOne; 
+      // eachCorrectAnswer.forEach((item) => {
+      //   filteredAnswerOne = item.replace(doubleQuoteRegex, '"');
+      //   filteredAnswer.push(filteredAnswerOne)
+      // })
+
+      // let filteredAnswerSingle =[];
+      // let filteredAnswerTwo;
+      // filteredAnswer.forEach((item) => {
+      //   filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
+      //   filteredAnswerSingle.push(filteredAnswerTwo)
+      // })
+
+      // // replace the correct answer in the questions object
+      // let clonedForRightAnswerLast = Array.from(this.state.questions)
+      // for (let i = 0; i <= (clonedForRightAnswerLast.length - 1); i++){
+      //   clonedForRightAnswerLast[i].correct_answer = filteredAnswerSingle[i]
+      // }
+
+      // // FILTERING WRONG ANSWERS
+      //   const clonedArrayWrong = Array.from(this.state.questions);
+      //   // here we get 10 arrays of all the wrong answers 
+      //   const allWrongAnswers = clonedArrayWrong.map(answer => answer.incorrect_answers)
+      //   // we need to map through each of the 10 arrays and then filter the wrong answers 
+      //   console.log("wrong answer")
+      //   console.log(allWrongAnswers);
+      
+      // this.setState({
+      //   questions: clonedForRightAnswerLast
+      // })
+
     })
   }
 
@@ -164,19 +189,18 @@ class App extends Component {
   }
   
 // FILTER THROUGH combined choices too 
-// 
   combineChoices = (questions) => {
     const newQuestions = questions.map((question) => {
       const allChoices = Array.from(question.incorrect_answers);
       allChoices.push(question.correct_answer);
       allChoices.sort(() => .5 - Math.random());
       question.allChoices = allChoices;
-      console.log('all choices');
-      console.log(question.allChoices)
 
-      // // FILTERIGN RIGHT ANSWER
-      // const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
-      // const singleQuoteRegex = /(&#039;)/g;
+      // ==============
+      // REGEX FILTERING ANSWER
+      // ==============
+      const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
+      const singleQuoteRegex = /(&#039;)/g;
 
       // let filteredAnswer = [];
       // let filteredAnswerOne;
@@ -187,27 +211,23 @@ class App extends Component {
 
       // let filteredAnswerSingle = [];
       // let filteredAnswerTwo;
-      // filteredAnswer.forEach((item) => {
+      //   filteredAnswer.forEach((item) => {
       //   filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
       //   filteredAnswerSingle.push(filteredAnswerTwo)
       // })
 
-      // console.log('filtered');
-      // console.log(filteredAnswerSingle);
+      // // console.log('filtered answers all');
+      // // console.log(filteredAnswerSingle)
       
-
-      // // replace the correct answer in the questions object
-      // // let clonedForRightAnswerLast = Array.from(this.state.questions)
-      // const clonedQuestions = Array.from(this.state.questions)
-      // for (let i = 0; i <= (clonedQuestions.length - 1); i++) {
-      //   clonedQuestions[i].correct_answer = filteredAnswerSingle[i]
+      // const clonedArray = Array.from(this.state.questions)
+      // console.log(clonedArray)
+      // for (let i = 0; i <= (clonedArray.length -1); i++){
+      //   clonedArray[i] = filteredAnswerSingle[i]
       // }
 
-      // this.setState({
-      //   questions: clonedQuestions
-      // })
-
-
+      // console.log('filtered cloned array for quest');
+      // console.log(clonedArray);
+    
       return question;
     })
     return newQuestions;
