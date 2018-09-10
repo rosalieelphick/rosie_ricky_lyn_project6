@@ -233,6 +233,9 @@ header {
     width: 40%;
     border-radius: 20px; }
 
+.answers {
+  float: left; }
+
 .player {
   display: inline-block; }
 

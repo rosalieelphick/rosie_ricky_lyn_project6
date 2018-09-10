@@ -114,46 +114,52 @@ class App extends Component {
       for (let i = 0; i <= (clonedArray.length - 1); i++){
         clonedArray[i].question = filteredArrayThree[i]
       }
-      
+
+      // FILTER THROUGH CORRECT ANSWER 
+
+
+
       this.setState({
         questions: clonedArray
       })
       
-      // create a new filtereted array 
-
-      // let clonedAnswers = Array.from(this.state.questions.allChoices)
-      // console.log("answers")
-      // console.log(clonedAnswers)
       
       // FILTERIGN RIGHT ANSWER
-      // const clonedForRightAnswer = Array.from(this.state.questions);      
-      // const eachCorrectAnswer = clonedForRightAnswer.map(answer => answer.correct_answer);
+      const clonedForRightAnswer = Array.from(this.state.questions);      
+      const eachCorrectAnswer = clonedForRightAnswer.map(answer => answer.correct_answer);
+    
       
-      // const allChoices = Array.from(question.incorrect_answers);
-      // const clonedAnswers = Array.from(this.state.questions.allChoices)
-      // const clonedAnswers = data.results.allChoices
-      // console.log('cloned answers');
-      // console.log(data.results.allChoices);
-      
-      // let filteredAnswer = [];
-      // let filteredAnswerOne; 
-      // eachCorrectAnswer.forEach((item) => {
-      //   filteredAnswerOne = item.replace(doubleQuoteRegex, '"');
-      //   filteredAnswer.push(filteredAnswerOne)
-      // })
+      let filtereCorrectAnswer = [];
+      let filteredCorrectOne; 
+      eachCorrectAnswer.forEach((item) => {
+        filteredCorrectOne = item.replace(doubleQuoteRegex, '"');
+        filtereCorrectAnswer.push(filteredCorrectOne)
+      })
 
-      // let filteredAnswerSingle =[];
-      // let filteredAnswerTwo;
-      // filteredAnswer.forEach((item) => {
-      //   filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
-      //   filteredAnswerSingle.push(filteredAnswerTwo)
-      // })
+      let filteredCorrectSingle =[];
+      let filteredCorrectTwo;
+      filtereCorrectAnswer.forEach((item) => {
+        filteredCorrectTwo = item.replace(singleQuoteRegex, "'");
+        filteredCorrectSingle.push(filteredCorrectTwo)
+      })
+
+      // filtering through for &ampersands&
+      let filteredCorrectAnd = [];
+      let filtredCorrectThree;
+      filteredCorrectSingle.forEach((item) => {
+        filtredCorrectThree = item.replace(ampersandRegex, "&")
+        filteredCorrectAnd.push(filtredCorrectThree)
+      })
 
       // // replace the correct answer in the questions object
-      // let clonedForRightAnswerLast = Array.from(this.state.questions)
-      // for (let i = 0; i <= (clonedForRightAnswerLast.length - 1); i++){
-      //   clonedForRightAnswerLast[i].correct_answer = filteredAnswerSingle[i]
-      // }
+      let clonedRightAnswer = Array.from(this.state.questions)
+      for (let i = 0; i <= (clonedRightAnswer.length - 1); i++){
+        clonedRightAnswer[i].correct_answer = filteredCorrectAnd[i]
+      }
+
+      this.setState({
+        questions: clonedRightAnswer
+      })
 
       // // FILTERING WRONG ANSWERS
       //   const clonedArrayWrong = Array.from(this.state.questions);

@@ -23,6 +23,7 @@ header {
         // float: left;
         width: 40%;
     }
+
     p {
         // margin-top: 100px;
         // margin-left: 100px;
@@ -39,6 +40,7 @@ header {
 
 .answers {
     // display: inline-block;
+    float: left
 }
 
 .eachChoice, .answersLabel {
