@@ -1,0 +1,81 @@
+@import "_setup.scss";
+@import "_utils.scss";
+@import "_typography.scss"; 
+@import "_landingPage.scss";
+@import "_players.scss"; 
+
+.wrapper {
+    margin: 0 auto;
+    widows: 800px;
+}
+
+body {
+  background-color: $lightBlue;
+  // background-color: $grey;
+  // background-color: $red;
+}
+
+// body {
+//     // background-color: $grey;
+// }
+
+// ===============
+// BUTTONS
+// ===============
+
+.btn {
+    background: none;
+    color: black;
+    width: 240px;
+    height: 50px;
+    border: 1px solid black;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: .6s;
+    overflow: hidden;
+    position: relative;
+    margin: 5px;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5s;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg)
+}
+
+.btn:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: rgba(255, 255, 255, .2);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top: 0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translate(-100px) scaleX(-15deg)
+}
+
+.btn:hover {
+    background: none;
+    cursor: pointer;
+}
+
+.btn:hover:before {
+    transform: translateX(300px) skewX(-15deg);
+    opacity: 1;
+    transition: .7s;
+}

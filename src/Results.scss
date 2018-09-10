@@ -1,0 +1,132 @@
+@import "partials/setup";
+
+
+* {
+    font-family: 'Montserrat', 
+}
+// Results Page Styling //
+
+.results {
+    section {
+        text-align: center;
+    }
+    
+    
+    h1 {
+        text-align: center;
+    }
+    
+    img {
+        display: block;
+    }
+    
+    button {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+    }
+
+    .player {
+        // position: relative;
+        float: none;
+        margin: auto 0;
+        overflow: hidden;
+        display: inline-block;
+        width: 300px;
+        text-align: center;
+        .wrongAnimation {
+            position: absolute;
+            right: -90px;
+            top: 0px;
+            animation: wrench 1.5s infinite linear;
+            transform: rotate(0)
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            animation: wrongOverlay 1.5s infinite;
+        }
+        .correct, .wrong {
+            position: absolute;
+            top: 80%;
+            right: 50%;
+            transform: translateX(50%);
+            font-size: 40px;
+            font-weight: 700;
+            text-shadow: 1px 1px 9px #000;
+            margin: 0;
+        }
+        .wrong {
+            color: red;
+            
+        }
+        .correct {
+            color: green;
+        }
+    }
+    .avatar {
+        // width: 200px;
+        position: relative;
+        transition: 0.3s;
+        overflow: hidden;
+    }    
+}
+
+.confetti {
+    position: absolute;
+    top: -16px;
+    width: 8px;
+    height: 16px;
+}
+
+
+@keyframes wrench {
+    50% {
+        right: 80px;
+        top: 80px;
+        transform: rotate(-470deg)
+    }
+
+    100% {
+        right: -100px;
+        top: 260px;
+    }
+}
+
+@keyframes wrongOverlay {
+    46% {
+        background-color: rgba(255, 255, 255, 0);
+    }
+    50% {
+        background: rgba(255, 0, 0, 0.363);
+    }
+}
+
+// @keyframes drop {
+//     to {
+//         top: 100%;
+//         // left: random(500) * 1px;
+//     }
+// }
+
+@for $i from 0 through 49 {
+    .confetti#{$i} {
+        animation: drop#{$i} linear 3s infinite;
+        animation-delay: (random(50)) * 0.1s;
+        left: random(500) * 1px;
+        background-color: hsl(random(360), 100, 70);
+        transform: rotate(random(360) * 1deg) rotateY(random(360) * 1deg);
+        transition: 0.3s;      
+    }
+    @keyframes drop#{$i} {
+        to {
+            top: calc(100%);
+            left: random(500) * 1px;
+            transform: rotate(random(360) * 1deg);
+        }
+    }
+}

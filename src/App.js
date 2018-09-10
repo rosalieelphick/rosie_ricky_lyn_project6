@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import './styles/styles.css'
+// import './App.css';
+import './partials/main.css'
 import axios from "axios"; 
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import posed, { PoseGroup } from 'react-pose';
 
 // ===============
 // COMPONENTS
@@ -11,10 +14,15 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import LandingPage from './LandingPage';
 import StartingPage from './StartingPage';
 import Players from './Players';
-import Choice from "./components/choice/Choice"
+import Choice from "./Choice"
 import Questions from './Questions';
 import Results from "./Results"
 import LeaderBoard from "./LeaderBoard"
+
+const RouteContainer = posed.div({
+  enter: { x: 0, opacity: 1, delay: 0, beforeChildren: true},
+  exit: { x: 50, opacity: 0 }
+});
 
 class App extends Component {
 
@@ -31,11 +39,18 @@ class App extends Component {
       promise:{},
       playerArray: [],
       questionProgress: 0,
+      newQuestions: []
     }
   }
 
   // getting data from our API 
   getQuestions = (category, difficulty) => {
+
+    this.setState({
+      category: category,
+      difficulty: difficulty
+    })
+
     axios.get("https://opentdb.com/api.php?", {
       params: {
         amount: 10,
@@ -44,9 +59,96 @@ class App extends Component {
         // type: "multiple"
       }
     }).then(({ data }) => {
-      const questions = this.combineChoices(data.results);
+      
+      // get each question in the original array 
+      let questions = this.combineChoices(data.results);  
+
       this.setState({
         questions,
+        // newQuestions: emptyArray
+      })
+
+      // ===============
+      // REGEX STUFF STARTS 
+      // ===============
+
+      // FOR QUESTIONS 
+
+      // const doubleQuoteRegex = /(&quot;)/g
+      const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
+      const singleQuoteRegex = /(&#039;)/g;
+
+      // &ldquo = quote add to double quotes
+      //,&rdquo; = double quote
+
+      // clone the original array with the questions 
+      // filter the cloned array so it doesn't have &quot; anymore 
+      // set the state of that new filtered array 
+      // take that new filtered array and filter so it doesn't have &#039; anymore 
+      // set the state of questions so that 
+
+      // cloning and then mapping through each question 
+      const clonedArayOne = Array.from(this.state.questions)
+      const eachQuestion = clonedArayOne.map(question => question.question);
+
+      // filtering through /(&quot;)/g
+      let filteredArrayOne = [];
+      let filtredQuestionsOne;
+      eachQuestion.forEach((item) => {
+        filtredQuestionsOne = item.replace(doubleQuoteRegex, '"');
+        filteredArrayOne.push(filtredQuestionsOne)
+      })
+
+      // filtering through /(&#039;)/g
+      let filteredArrayTwo = []
+      let filtredQuestionsTwo;
+        filteredArrayOne.forEach((item) => {
+          filtredQuestionsTwo = item.replace(singleQuoteRegex, "'")
+          filteredArrayTwo.push(filtredQuestionsTwo)
+        })
+
+      // putting the filtered questions back 
+      // ???how come it seems like it's manipulating the question right away
+      let clonedArray = Array.from(this.state.questions);      
+      for (let i = 0; i <= (clonedArray.length -1); i++){
+        clonedArray[i].question = filteredArrayTwo[i]
+      }
+
+      this.setState({
+        questions: clonedArray
+      })
+
+      // FILTERIGN RIGHT ANSWER
+      const clonedForRightAnswer = Array.from(this.state.questions);      
+      const eachCorrectAnswer = clonedForRightAnswer.map(answer => answer.correct_answer);
+
+      let filteredAnswer = [];
+      let filteredAnswerOne; 
+      eachCorrectAnswer.forEach((item) => {
+        filteredAnswerOne = item.replace(doubleQuoteRegex, '"');
+        filteredAnswer.push(filteredAnswerOne)
+      })
+
+      let filteredAnswerSingle =[];
+      let filteredAnswerTwo;
+      filteredAnswer.forEach((item) => {
+        filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
+        filteredAnswerSingle.push(filteredAnswerTwo)
+      })
+
+      // replace the correct answer in the questions object
+      let clonedForRightAnswerLast = Array.from(this.state.questions)
+      for (let i = 0; i <= (clonedForRightAnswerLast.length - 1); i++){
+        clonedForRightAnswerLast[i].correct_answer = filteredAnswerSingle[i]
+      }
+
+      // console.log('filtered Answers');
+      // console.log(filteredAnswerSingle);
+      // console.log('new array');
+      // console.log(clonedForRightAnswerLast);
+      
+      this.setState({
+        questions: clonedForRightAnswerLast
       })
     })
   }
@@ -62,15 +164,52 @@ class App extends Component {
 
     })
   }
-
   
-
+// FILTER THROUGH combined choices too 
+// 
   combineChoices = (questions) => {
     const newQuestions = questions.map((question) => {
       const allChoices = Array.from(question.incorrect_answers);
       allChoices.push(question.correct_answer);
       allChoices.sort(() => .5 - Math.random());
       question.allChoices = allChoices;
+      console.log('all choices');
+      console.log(question.allChoices)
+
+      // // FILTERIGN RIGHT ANSWER
+      // const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
+      // const singleQuoteRegex = /(&#039;)/g;
+
+      // let filteredAnswer = [];
+      // let filteredAnswerOne;
+      //   allChoices.forEach((item) => {
+      //   filteredAnswerOne = item.replace(doubleQuoteRegex, '"');
+      //   filteredAnswer.push(filteredAnswerOne)
+      // })
+
+      // let filteredAnswerSingle = [];
+      // let filteredAnswerTwo;
+      // filteredAnswer.forEach((item) => {
+      //   filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
+      //   filteredAnswerSingle.push(filteredAnswerTwo)
+      // })
+
+      // console.log('filtered');
+      // console.log(filteredAnswerSingle);
+      
+
+      // // replace the correct answer in the questions object
+      // // let clonedForRightAnswerLast = Array.from(this.state.questions)
+      // const clonedQuestions = Array.from(this.state.questions)
+      // for (let i = 0; i <= (clonedQuestions.length - 1); i++) {
+      //   clonedQuestions[i].correct_answer = filteredAnswerSingle[i]
+      // }
+
+      // this.setState({
+      //   questions: clonedQuestions
+      // })
+
+
       return question;
     })
     return newQuestions;
@@ -78,7 +217,7 @@ class App extends Component {
 
   // info from the props from the StartingPage where users pick the number of players (1-4) that are gonna play
   submitPlayers = (numberOfPlayers) => {
-    console.log(numberOfPlayers)
+    // console.log(numberOfPlayers)
     this.setState({
       numberOfPlayers
     })
@@ -117,58 +256,63 @@ class App extends Component {
   // Routes to all the pages Components are linked to
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Route exact path="/" component={LandingPage}/>
-          {/* sending  */}
-          {/* sending a function to the StartingPage where we figure out the number of players inside the Route */}
-          {/* this is connected to the submitPlayers function above */}
-          <Route exact path="/start" render={(props) => <StartingPage {...props}
-          submitPlayers={this.submitPlayers} />}/>
+      <BrowserRouter>
+        <Route
+          render={({location}) => (
+            <div className="App">
 
-          {/* transferring data from the Players page where each peron puts in their name and they get a robo avatar */}
-          {/* connected to addPlayers function above  */}
-          <Route exact path="/players" render={(props) => <Players {...props} 
-          numberOfPlayers={this.state.numberOfPlayers}
-          addPlayers={this.addPlayers} />} />
-          
-          {/* transferring data from Choice so we can get the questions */}
-          {/* sending info from getQuestions to the Choice component*/}
-          <Route exact path="/choice" render={(props) =>
-              <Choice {...props} getQuestions={this.getQuestions} /> 
-            } />
-          
-          {/* tranferring data from Questions page */}
-          {/* giving questions, question progress, players info to other components */}
-          {/* scoreCount connected to scoreCount functio above */}
-          <Route 
-            exact path="/questions" 
-            render={(props) =>
-              <Questions {...props} 
-              questions={this.state.questions}
-              questionProgress={this.state.questionProgress}
-              players={this.state.playerArray}
-              scoreCount={this.scoreCount} /> 
-            } />
-          
-          {/* transferring data from Results page */}
-          {/* giving questions, questionprogress, players info to other components */}
-          {/* scoreCount connected to scoreCount functio above */}
-          <Route exact path="/results" 
-           render={(props) =>
-            <Results {...props} 
-            questions={this.state.questions}
-            questionProgress={this.state.questionProgress}
-            players={this.state.playerArray}
-            scoreCount={this.scoreCount} 
-            nextQuestion={this.nextQuestion}
-            resetQuestions={this.resetQuestions}
-            /> 
-          }/>
+              <PoseGroup>
+                <RouteContainer key={location.key}>
+                  <Switch location={location}>
 
-          <Route exact path="/leaderboard" component={LeaderBoard} />
-        </div>
-      </Router>
+                    <Route exact path="/" component={LandingPage} />
+
+                    <Route exact path="/start" render={(props) => <StartingPage {...props}
+                      submitPlayers={this.submitPlayers} />} />
+
+                    <Route exact path="/players" render={(props) => <Players {...props}
+                      numberOfPlayers={this.state.numberOfPlayers}
+                      addPlayers={this.addPlayers} />} />
+
+                    <Route exact path="/choice" render={(props) =>
+                      <Choice {...props} getQuestions={this.getQuestions} />
+                    } />
+
+                    <Route
+                      exact path="/questions"
+                      render={(props) =>
+                        <Questions {...props}
+                          questions={this.state.questions}
+                          questionProgress={this.state.questionProgress}
+                          players={this.state.playerArray}
+                          scoreCount={this.scoreCount} />
+                      } />
+
+                    <Route exact path="/results"
+                      render={(props) =>
+                        <Results {...props}
+                          questions={this.state.questions}
+                          questionProgress={this.state.questionProgress}
+                          players={this.state.playerArray}
+                          scoreCount={this.scoreCount}
+                          nextQuestion={this.nextQuestion}
+                          resetQuestions={this.resetQuestions}
+                          difficulty={this.state.difficulty}
+                          category={this.state.category}
+                        />
+                      } />
+
+                    <Route exact path="/leaderboard" component={LeaderBoard} />
+
+                  </Switch>
+                </RouteContainer>
+              </PoseGroup>
+              
+            </div>
+          )}
+          
+        />    
+      </BrowserRouter>
     );
   }
 }
