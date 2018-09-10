@@ -35,34 +35,43 @@ class StartingPage extends Component {
         })
     }
 
+    buttonLabel = (e) => {
+        e.preventDefault();
+    }
+
     render() {
         return (
-            <Container>
+            <Container className="startingPageContainer">
                 {/* choosing the number of players 1-4 */}
-                <h1>select number of players</h1>
+                <h1>number of players</h1>
                 <Form action="">
-                    <label htmlFor="one">One player</label>
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="1" id="one"/>
-
-                    <label htmlFor="two">Two players</label>
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="2" id="two"/>
-
-                    <label htmlFor="three">Three players</label>
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="3" id="three"/>
-
-                    <label htmlFor="four">Four players</label>
-                    <input onChange={this.handleChange} name="numberOfPlayers" type="radio" value="4" id="four"/>
-
-                    {/* <Link to="/choice" onClick={this.handleSubmit}>submit</Link> */}
-                    {/* want the button to submit players and link to next page, two funtionalisties */}
-                    {/* on submit changes the state of numberof Players in App.js */}
-                    <Link to="/players">
-                        <button onClick={() => { this.handleSubmit()} }>submit</button>
-                    </Link>
                     
-                    <Link to="/leaderboard">
-                        <button>Leader board</button>
+                <div className="labelContainer">
+                    
+                    <input className="visuallyHidden" onChange={this.handleChange} name="numberOfPlayers" type="radio" value="1" id="one"/>
+                    <label className="label" htmlFor="one">1</label>
+
+                    
+                    <input className="visuallyHidden" onChange={this.handleChange} name="numberOfPlayers" type="radio" value="2" id="two"/>
+                    <label className="label" htmlFor="two">2</label>
+
+                    
+                    <input className="visuallyHidden" onChange={this.handleChange} name="numberOfPlayers" type="radio" value="3" id="three"/>
+                    <label className="label" htmlFor="three">3</label>
+
+                    
+                    <input className="visuallyHidden" onChange={this.handleChange} name="numberOfPlayers" type="radio" value="4" id="four"/>
+                    <label className="label" htmlFor="four">4</label>
+
+                </div>
+
+                    {this.state.numberOfPlayers ? 
+
+                    <Link to="/players">
+                        <button className="btn" onClick={() => { this.handleSubmit()} }>submit</button>
                     </Link>
+
+                    : null }
                     
                 </Form>
             </Container>

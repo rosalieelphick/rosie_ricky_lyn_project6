@@ -54,7 +54,7 @@ class Players extends Component {
         })
     }
 
-    submitUsername = (e) => {
+    submitUsername = (e, i) => {
         e.preventDefault();
         const index = e.target.id;
         const playerArray = this.state.playerArray
@@ -62,10 +62,18 @@ class Players extends Component {
 
         this.setState({
             playerArray
+        }, () => {
+            this.setState({
+                allUsernamesSubmitted: this.state.playerArray.every(this.allUsernamesSubmitted)
+            })
         })
     }
 
-    nextPlayer = () => {
+    allUsernamesSubmitted = (playerArray) => {
+        return playerArray.usernameSubmit
+    }
+
+    nextPlayer = (i) => {
         this.setState({
             position: this.state.position - 100
         })
@@ -114,26 +122,32 @@ class Players extends Component {
                                 }
 
                                 <h2>{player.playerNumber}</h2>
-                                <form action="" className={"usernameForm"}>
+                                <form action="" className="labelContainer">
 
-                                    <input className={"enterUsername"} aria-label="enter your username" onChange={this.handleChange} id={this.state.playerArray.indexOf(player)} type="text" placeholder="username"></input>
+                                    <div className="playerForm">
+                                    
+                                        <input className={"enterUsername"} aria-label="enter your username" onChange={this.handleChange} id={this.state.playerArray.indexOf(player)} type="text" placeholder="username"></input>
 
-                                    <input className={"submitUsername"} onClick={this.submitUsername} id={this.state.playerArray.indexOf(player)} type="submit"></input>
+                                        <input className="label" onClick={(e) => {this.submitUsername(e, i)}} id={this.state.playerArray.indexOf(player)} type="submit"></input>
+
+                                    </div>
+
+                                    <div className="avatar">
+                                        {player.usernameSubmit
+                                            ? <img src={`https://robohash.org/${player.username}.png`}></img>
+                                            : null
+                                        }
+                                    </div>
 
                                 </form>
 
-                                <div className="avatar">
-                                    {player.usernameSubmit 
-                                    ? <img src={`https://robohash.org/${player.username}.png`}></img>
-                                    : null
-                                    }
-                                </div>
+                                
 
                                 {i !== this.state.playerArray.length - 1 ?
                                 
                                 <button 
-                                className={"changePlayer nextPlayer"}
-                                onClick={(e) => {this.nextPlayer()}}>
+                                    className={"changePlayer nextPlayer"}
+                                    onClick={(e) => {this.nextPlayer(e, i)}}>
                                     <Icon icon={"rightArrow"} />
                                 </button>
 
@@ -143,19 +157,25 @@ class Players extends Component {
 
                                 </div>
 
+
+                                {this.state.allUsernamesSubmitted ?
+
+                                    <Link to="/choice" >
+                                        <button
+                                            className="btn submitUsers"
+                                            onClick={() => { this.props.addPlayers(this.state.playerArray) }}>Submit Users
+                    </button>
+                                    </Link>
+
+                                    : null}
+
                             </Section>
                         )
                     })}
                 
                     </div>
-
-                {/* sending the info onClick so that  */}
-                <Link to="/choice" >
-                    <button 
-                        className={"submitUsers"}
-                        onClick={() => { this.props.addPlayers(this.state.playerArray) }}>Submit Users
-                    </button>
-                </Link>
+                
+                
 
                 </div>
 

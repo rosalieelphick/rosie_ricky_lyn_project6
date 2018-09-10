@@ -60,8 +60,7 @@ class Questions extends Component {
             chosenAnswer: e.target.value
         })
     }
-    // clong the array of players 
-    // going through each player and setting answerSubmitted to false 
+
     resetSubmit = () => {
         const arrayClone = Array.from(this.props.players);
         arrayClone.forEach((player) => {
@@ -105,7 +104,7 @@ class Questions extends Component {
                                 className={`player player${i + 1}`}
                                 style={{left: `${this.state.position[i]}%`}}
                                 >
-                                <img src={`https://robohash.org/${player.username}.png`} alt=""/>
+                                <img src={`https://robohash.org/${player.username}.png`} alt="" />
                                 <h2>{player.username}</h2>
 
                                 {this.props.questions[0]
@@ -134,14 +133,14 @@ class Questions extends Component {
                     })}
                 </div>
 
-            {this.state.allAnswersSubmitted 
-                ? <Link to="/results" >
-                    <button onClick={() => {this.resetSubmit()}}>Submit All</button>
-                </Link>
-                : null
-            }
-             
-            </Section>
+                {this.state.allAnswersSubmitted 
+                    ? <Link to="/results" >
+                        <button onClick={() => {this.resetSubmit()}}>Submit All</button>
+                    </Link>
+                    : null
+                }
+                
+                </Section>
 
             </Container>
         );
