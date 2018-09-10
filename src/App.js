@@ -53,7 +53,7 @@ class App extends Component {
 
     axios.get("https://opentdb.com/api.php?", {
       params: {
-        amount: 50,
+        amount: 10,
         category: category,
         difficulty: difficulty,
         // type: "multiple"
@@ -77,6 +77,11 @@ class App extends Component {
       const doubleQuoteRegex = /(&quot;)+|(&ldquo)+|(&rdquo;)/g;
       const singleQuoteRegex = /(&#039;)/g;
       const ampersandRegex = /(&amp;)/g;
+      const nRegex = /(&ntilde;)/g;
+      const aRegex = /(&aacute;)/g;
+      const eRegex = /(&eacute;)/g;
+      const periodRegex = /(&hellip;)/g; 
+
 
       // cloning and then mapping through each question 
       const clonedArayOne = Array.from(this.state.questions)
@@ -88,7 +93,13 @@ class App extends Component {
       eachQuestion.forEach((item) => {
         filtredQuestionsOne = item.replace(doubleQuoteRegex, '"');
         filtredQuestionsOne = filtredQuestionsOne.replace(singleQuoteRegex, "'");
-        filtredQuestionsOne = filtredQuestionsOne.replace(ampersandRegex, "&")
+        filtredQuestionsOne = filtredQuestionsOne.replace(ampersandRegex, "&");
+        filtredQuestionsOne = filtredQuestionsOne.replace(nRegex, "n");
+        filtredQuestionsOne = filtredQuestionsOne.replace(aRegex, "a");
+        filtredQuestionsOne = filtredQuestionsOne.replace(eRegex, "e");
+        filtredQuestionsOne = filtredQuestionsOne.replace(periodRegex, ".");
+
+
         filteredArrayOne.push(filtredQuestionsOne)
       })
 
@@ -107,6 +118,11 @@ class App extends Component {
         filteredCorrectOne = item.replace(doubleQuoteRegex, '"');
         filteredCorrectOne = filteredCorrectOne.replace(singleQuoteRegex, "'");
         filteredCorrectOne = filteredCorrectOne.replace(ampersandRegex, "&");
+        filteredCorrectOne = filteredCorrectOne.replace(nRegex, "n");
+        filteredCorrectOne = filteredCorrectOne.replace(aRegex, "a");
+        filteredCorrectOne = filteredCorrectOne.replace(eRegex, "e");
+        filteredCorrectOne = filteredCorrectOne.replace(periodRegex, ".");
+
         filtereCorrectAnswer.push(filteredCorrectOne)
       })
 
@@ -231,11 +247,14 @@ class App extends Component {
       // REGEX FILTERING ANSWER
       // ==============
 
-      // const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
       const doubleQuoteRegex = /(&quot;)+|(&ldquo)+|(&rdquo;)/g;
       const singleQuoteRegex = /(&#039;)/g;
       const ampersandRegex = /(&amp;)/g;
-      
+      const nRegex = /(&ntilde;)/g;
+      const aRegex = /(&aacute;)/g;
+      const eRegex = /(&eacute;)/g;
+      const periodRegex = /(&hellip;)/g; 
+
       // filtering through double quotes
       let filteredAnswers = [];
       let filteredEachAnswer;
@@ -243,6 +262,10 @@ class App extends Component {
         filteredEachAnswer = item.replace(doubleQuoteRegex, '"');
         filteredEachAnswer = filteredEachAnswer.replace(singleQuoteRegex, "'");
         filteredEachAnswer = filteredEachAnswer.replace(ampersandRegex, "&");
+        filteredEachAnswer = filteredEachAnswer.replace(nRegex, "n");
+        filteredEachAnswer = filteredEachAnswer.replace(aRegex, "a");
+        filteredEachAnswer = filteredEachAnswer.replace(eRegex, "e");
+        filteredEachAnswer = filteredEachAnswer.replace(periodRegex, ".");
         filteredAnswers.push(filteredEachAnswer)
       })
 
@@ -271,8 +294,7 @@ class App extends Component {
 
       // replacing each question's allChoices with the filtered answers  
         question.allChoices = filteredAnswers
-
-       
+      
     
       return question;
     })

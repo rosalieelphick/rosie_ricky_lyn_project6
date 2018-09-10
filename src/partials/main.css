@@ -129,10 +129,12 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  color: white; }
 
 h1, p, button, label {
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  color: white; }
 
 h1 {
   font-size: 4rem;
@@ -172,7 +174,6 @@ button {
   transition: 0.3s; }
 
 .player {
-  float: left;
   position: relative;
   text-align: center; }
 
@@ -213,51 +214,64 @@ button {
   width: 60%;
   left: 20%; }
 
-header {
-  background-image: url(./../assets/roboHostEdit2.png);
-  background-repeat: no-repeat;
-  height: 100vh;
-  background-size: 40%;
-  background-color: #9ad4e6;
-  padding: 1px;
+.questionsPageContainer {
+  text-align: center;
+  margin: 0 auto; }
+
+.hostQuestion img {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 40%; }
+
+.hostQuestion p {
+  margin: 0 auto;
+  padding: 40px;
+  border: 2px solid white;
+  width: 50%;
+  border-radius: 3.4em;
   position: relative; }
 
-.hostQuestion {
-  margin-bottom: 20px; }
-  .hostQuestion img {
-    width: 40%; }
-  .hostQuestion p {
-    margin: 0 auto;
-    padding: 25px;
-    border: 1px solid black;
-    width: 40%;
-    border-radius: 20px; }
+.hostQuestion p:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 31px solid transparent;
+  border-right-color: white;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -12.5px;
+  margin-left: -31px; }
 
-.player {
-  float: left; }
+.playerAnswers {
+  display: inline-block;
+  margin: 0 auto; }
 
-.playerSubmit {
-  display: inline-block; }
+.players {
+  position: relative;
+  height: 75vh;
+  overflow: hidden; }
 
-.playerSubmit h2 {
-  margin: 20px auto; }
+.player1 {
+  transition: 0.3s; }
 
-.playerSubmit img {
-  border: 2px solid black;
-  border-radius: 50%; }
+.player2 {
+  top: -220px;
+  left: 100%;
+  transition: 0.3s; }
 
-.playerSubmit button {
-  display: block;
-  text-align: center;
-  margin: 10px auto; }
+.player3 {
+  right: -200%; }
+
+.player4 {
+  right: -300%; }
 
 .answers {
-  margin: 0 auto;
-  width: 20%;
-  height: 50px;
-  border: 1px solid black; }
+  padding: 20px; }
   .answers:hover {
-    font-weight: 800;
     color: #ed1a1e; }
 
 .answers input[type="radio"] {
@@ -272,9 +286,23 @@ header {
   font-weight: 800;
   color: #ed1a1e; }
 
+.playerSubmit {
+  display: inline-block; }
+  .playerSubmit h2 {
+    text-transform: capitalize; }
+  .playerSubmit img {
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 40%; }
+  .playerSubmit button {
+    display: block;
+    margin: 0 auto; }
+
+.btn {
+  clear: both; }
+
 .wrapper {
-  margin: 0 auto;
-  widows: 800px; }
+  margin: 0 auto; }
 
 body {
   background-color: #9ad4e6; }

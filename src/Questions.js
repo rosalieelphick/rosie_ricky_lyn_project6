@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom"; 
 import './questions.css'
 import posed from 'react-pose';
-import Typing from "react-typing-animation"
+import Typing from "react-typing-animation" 
 
 const Container = posed.div({
     enter: { staggerChildren: 50 }
@@ -22,7 +22,7 @@ class Questions extends Component {
         this.state = {
             questionNumber: 0,
             chosenAnswer: "",
-            position: [0, 100, 200, 300],
+            position: [10, 100, 200, 300],
         }
     }
 
@@ -76,7 +76,7 @@ class Questions extends Component {
     nextPlayer = (player) => {
         const arrayClone = Array.from(this.state.position);
         arrayClone[player] = -100;
-        arrayClone[player + 1] = 0;
+        arrayClone[player + 1] = 10;
 
         this.setState({
             position: arrayClone
@@ -85,14 +85,14 @@ class Questions extends Component {
 
     render() {
         return (
-            <Container className="questionsPage">
-                <header className="questionsHeader">
+            <Container className="questionsPageContainer">
+                {/* <header className="questionsHeader"> */}
                     <h1>Here are your questions</h1>
                 
 
                 <Section>
                 <div className="hostQuestion">
-                    {/* <img src={require("./assets/roboHostEdit2.png")} alt="" /> */}
+                    <img src={require("./assets/roboHostEdit2.png")} alt="" />
                     
                     {this.props.questions[0]
                         ? <p>
@@ -103,10 +103,14 @@ class Questions extends Component {
                 <div className="players">
                     {this.props.players.map((player, i) => {
                         return(
-                            <div>
+                            <div className="questionsContainer"
+                            className={`player player${i + 1}`}
+                            style={{left: `${this.state.position[i]}%`}}
+                            >
                                 <form key={player.username} 
-                                    className={`player player${i + 1}`}
-                                    style={{left: `${this.state.position[i]}%`}}
+                                    className="playerAnswers"
+                                    // className={`player player${i + 1}`}
+                                    // style={{left: `${this.state.position[i]}%`}}
                                     >
                                     {this.props.questions[0]
                                         ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
@@ -127,7 +131,10 @@ class Questions extends Component {
                                         })
                                     : null}
                                 </form>
-                                <div className="playerSubmit">
+                                <div className="playerSubmit" 
+                                    // className={`player${i + 1}`}
+                                    // style={{ left: `${this.state.position[i]}%` }}
+                                >
                                     <h2>{player.username}</h2>
                                     <img src={`https://robohash.org/${player.username}.png`} alt="" />
                                     <button className="btn" id={player.username} onClick={(e) => {
@@ -148,7 +155,7 @@ class Questions extends Component {
             }
              
             </Section>
-            </header>
+            {/* </header> */}
             </Container>
         );
     }

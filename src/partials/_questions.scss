@@ -1,74 +1,127 @@
 
 // HEADER 
 
-header {
-    background-image: url(./../assets/roboHostEdit2.png);
-    background-repeat: no-repeat;
-    height: 100vh;
-    background-size: 40%;
-    background-color: $lightBlue;
-    padding: 1px;
-    position: relative;
-}
-
 // HOST AND QUESTION
 
+// .questionsPage {
+//     max-width: 800px;
+// }
+
+// .questionsHeader {
+//     margin: 0 auto; 
+// }
+
+.questionsPageContainer {
+    // margin-top: -300px;
+    // margin-left: -200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
 .hostQuestion {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     img {
+        position: absolute;
+        left: 0;
+        top: 50px;
         width: 40%;
+        // float: left;
     }
     p {
+        // margin
+        // margin: 40px auto;
+        // margin-left: -50px;
         margin: 0 auto;
-        padding: 25px;
-        border: 1px solid black;
-        width: 40%;
-        border-radius: 20px;
+        padding: 40px;
+        border: 2px solid white;
+        width: 50%;
+        border-radius: 3.4em;
+        // border-radius: 100px;
+        position: relative;
+        // float: left;
+    }
+
+    p:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 31px solid transparent;
+        border-right-color: white;
+        border-left: 0;
+        border-bottom: 0;
+        margin-top: -12.5px;
+        margin-left: -31px;
     }
 }
 
-// NEED TO FIGURE OUT FLOATS  
 
-.player {
-    float: left
-    // display: inline;
-}
 
-.playerSubmit {
-    // float: left
+// ANSWERS FORM 
+
+// .players {
+//     height: 75vh;
+//     overflow: hidden;
+//     position: relative; 
+//     // clear: both;
+//     // margin-top: -250px;
+//     // clear: both;
+//     // text-align: center;
+//     // display: inline-block;
+//     // margin-top: 20px;
+//     // width: 100%;
+// }
+
+.playerAnswers {
+    // margin-top: -px;
     display: inline-block;
+    margin: 0 auto;
 }
 
-// END OF FIGURING OUT FLOATS 
-
-// PLAYER SUBMIT DIV 
-
-.playerSubmit {
-
-    h2 {
-
-        margin: 20px auto;
-    }
-    img {
-        border: 2px solid black;
-        border-radius: 50%;
-    }
-    button {
-        display: block;
-        text-align: center;
-        margin: 10px auto;
-    }
+.players {
+    position: relative; 
+    height: 75vh;
+    overflow: hidden;
 }
 
-// ANSWERS STYLE 
+// form.player {
+//     // width: 100%;
+//     // position: absolute;
+//     top: 0;
+// }
+
+.player1 {
+    transition: 0.3s;
+}
+
+.player2 {
+    // position: absolute;
+    top: -220px;
+    left: 100%;
+    transition: 0.3s;
+}
+
+.player3 {
+    // top: 0;
+    right: -200%;
+}
+
+.player4 {
+    right: -300%;
+}
 
 .answers {
-    margin: 0 auto;
-    width: 20%;
-    height: 50px; 
-    border: 1px solid black;
+    // margin: 0 auto;
+    // margin
+    padding: 20px;
+
+    // width: 20%;
+    // height: 75px; 
+    // border: 1px solid white;
     &:hover {
-        font-weight: 800;
+        // font-weight: 800;
         color: $red;
     }
 }
@@ -88,3 +141,58 @@ header {
     color: $red;
 }
 
+// PLAYER SUBMIT DIV WITH NAME IMG AND SUBMIT BUTTON 
+
+.playerSubmit {
+    // float: left;
+    display: inline-block;
+    h2 {
+        // margin: 20px auto;
+        text-transform: capitalize;
+    }
+    img {
+        border: 1px solid white;
+        border-radius: 50%;
+        width: 40%;
+    }
+    button {
+        display: block;
+        // clear: both;
+        // width: 100px;
+        // width: 40%;
+        // text-align: center;
+        margin: 0 auto;
+    }
+}
+
+.btn {
+    clear: both;
+    // display: block;
+}
+
+// rickys stuff 
+
+// .players {
+//     position: relative; 
+//     height: 75vh;
+//     overflow: hidden;
+// }
+
+// form.player {
+//     // width: 100%;
+//     // position: absolute;
+//     top: 0;
+//     transition: 0.3s;
+// }
+
+// form.player2 {
+//     // position: absolute;
+//     left: 100%;
+// }
+
+// form.player3 {
+//     right: -200%;
+// }
+// form.player4 {
+//     right: -300%;
+// }
