@@ -60,8 +60,7 @@ class Questions extends Component {
             chosenAnswer: e.target.value
         })
     }
-    // clong the array of players 
-    // going through each player and setting answerSubmitted to false 
+
     resetSubmit = () => {
         const arrayClone = Array.from(this.props.players);
         arrayClone.forEach((player) => {
@@ -86,9 +85,10 @@ class Questions extends Component {
     render() {
         return (
             <Container className="questionsPage">
+
                 <header className="questionsHeader">
                     <h1>Here are your questions</h1>
-                
+                </header>
 
                 <Section>
                 <div className="hostQuestion">
@@ -103,52 +103,49 @@ class Questions extends Component {
                 <div className="players">
                     {this.props.players.map((player, i) => {
                         return(
-                            <div>
-                                <form key={player.username} 
-                                    className={`player player${i + 1}`}
-                                    style={{left: `${this.state.position[i]}%`}}
-                                    >
-                                    {this.props.questions[0]
-                                        ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
-                                            return(answer && (
-                                                    <div className="answers">
-                                                        <label className="answerLabel" htmlFor={`${player.username}${j}`} key={j} > {choice[j]}: {answer} </label>
-                                                        <input 
-                                                            id={`${player.username}${j}`} 
-                                                            // style={{ display: 'block' }}
-                                                            type="radio" 
-                                                            name={`multipleChoice${i}`}
-                                                            onChange={this.handleChange}
-                                                            value={answer}
-                                                            className="eachChoice"
-                                                        />  
-                                                    </div>
-                                            )) 
-                                        })
-                                    : null}
-                                </form>
-                                <div className="playerSubmit">
-                                    <h2>{player.username}</h2>
-                                    <img src={`https://robohash.org/${player.username}.png`} alt="" />
-                                    <button className="btn" id={player.username} onClick={(e) => {
-                                        this.checkAnswer(e, i);
-                                        this.nextPlayer(i);
-                                    }}>Submit</button>
-                                </div>
-                            </div> 
+                            
+                            <form key={player.username} 
+                                className={`player player${i + 1}`}
+                                style={{left: `${this.state.position[i]}%`}}
+                                >
+                                <img src={`https://robohash.org/${player.username}.png`} alt="" />
+                                <h2>{player.username}</h2>
+
+                                {this.props.questions[0]
+                                    ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
+                                        return(answer && (
+                                            <div className="choice">
+                                                <label htmlFor={`${player.username}${j}`} key={j}> {choice[j]}: {answer} </label>
+                                                <input 
+                                                    id={`${player.username}${j}`} 
+                                                    type="radio" 
+                                                    name={`multipleChoice${i}`}
+                                                    onChange={this.handleChange}
+                                                    value={answer}
+                                                />
+                                            </div>
+                                        )) 
+                                    })
+                                : null}
+
+                                <button id={player.username} onClick={(e) => {
+                                    this.checkAnswer(e, i);
+                                    this.nextPlayer(i);
+                                }}>Submit</button>
+                            </form>
                         )
                     })}
                 </div>
 
-            {this.state.allAnswersSubmitted 
-                ? <Link to="/results" >
-                    <button className="btn" onClick={() => {this.resetSubmit()}}>Submit All</button>
-                </Link>
-                : null
-            }
-             
-            </Section>
-            </header>
+                {this.state.allAnswersSubmitted 
+                    ? <Link to="/results" >
+                        <button onClick={() => {this.resetSubmit()}}>Submit All</button>
+                    </Link>
+                    : null
+                }
+                
+                </Section>
+
             </Container>
         );
     }

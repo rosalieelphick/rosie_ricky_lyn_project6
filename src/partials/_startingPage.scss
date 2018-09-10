@@ -1,0 +1,26 @@
+body {
+    text-align: center;
+}
+
+.startingPageContainer .labelContainer {
+    width: 300px;
+}
+
+h1 {
+    color: $lightBlue;
+    font-size: 2.5rem;
+}
+
+.landingPage .labelContainer {
+    width: 90%;
+}
+
+.landingPage .label {
+    margin: 20px 10px 0 10px;
+    width: calc(50% - 20px);
+    display: inline-block;
+}
+
+.labelContainer .label:hover {
+    letter-spacing: 2px;
+}
