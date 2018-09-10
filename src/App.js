@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './styles/styles.css'
 import axios from "axios"; 
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 

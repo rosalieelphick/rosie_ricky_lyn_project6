@@ -8,7 +8,8 @@ class Questions extends Component {
         super();
         this.state = {
             questionNumber: 0,
-            chosenAnswer: ""
+            chosenAnswer: "",
+            position: 0,
         }
     }
 
@@ -60,10 +61,16 @@ class Questions extends Component {
         })
     }
 
+    nextPlayer = () => {
+        this.setState({
+            position: this.state.position - 100
+        })
+    }
+
     render() {
         return (
             <div>
-                <h1>Questions</h1>
+                <h1>Question #{this.props.questionProgress + 1}</h1>
                 {/* first question is the first question in the array with [0] index */}
                 {/* keeping track of which questionw we're on */}
                 {/* checking if there are questions in array then display question if there are */}
@@ -79,29 +86,38 @@ class Questions extends Component {
                 {/* mapping through the possible answers: if answer isn't undefined then you can show an answer */}
                 {/* undefined error if you don't check to see if we have the answer bc the answer will render first if we don't have the actual.*/}
                 {/* making sure we have all the info the the API before it's rendered on the page  */}
-                {this.props.players.map((player, i) => {
-                    return( 
-                        <form key={player.username}>
-                            {this.props.questions[0]
-                                ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
-                                    return(answer && (
-                                        <div className="choice">
-                                            <label htmlFor={`${player.username}${j}`} key={j}> {choice[j]}: {answer} </label>
-                                            <input 
-                                                id={`${player.username}${j}`} 
-                                                type="radio" 
-                                                name={`multipleChoice${i}`}
-                                                onChange={this.handleChange}
-                                                value={answer}
-                                            />
-                                        </div>
-                                    )) 
-                                })
-                            : null}
-                             <button id={player.username} onClick={(e) => this.checkAnswer(e, i)}>Submit</button>
-                        </form>
-                      )
-                })}
+                <div className="players" style={{left: `${this.state.position}%`}}>
+                    {this.props.players.map((player, i) => {
+                        return( 
+                            <form key={player.username} className={`player${i} player`}>
+                                <img src={`https://robohash.org/${player.username}.png`} alt=""/>
+                                <h2>{player.username}</h2>
+                                {this.props.questions[0]
+                                    ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
+                                        return(answer && (
+                                            <div className="choice">
+                                                <label htmlFor={`${player.username}${j}`} key={j}> {choice[j]}: {answer} </label>
+                                                <input 
+                                                    id={`${player.username}${j}`} 
+                                                    type="radio" 
+                                                    name={`multipleChoice${i}`}
+                                                    onChange={this.handleChange}
+                                                    value={answer}
+                                                />
+                                            </div>
+                                        )) 
+                                    })
+                                : null}
+                                 <button id={player.username} 
+                                    onClick={(e) => { 
+                                        this.checkAnswer(e, i);
+                                        this.nextPlayer();
+                                    }}>
+                                Submit</button>
+                            </form>
+                          )
+                    })}
+                </div>
 
 
             {this.state.allAnswersSubmitted 
