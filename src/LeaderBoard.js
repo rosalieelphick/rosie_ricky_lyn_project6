@@ -14,7 +14,7 @@ class LeaderBoard extends Component {
     }
 
     componentDidMount() {
-        const dbRef = firebase.database().ref();
+        const dbRef = firebase.database().ref("users");
 
         dbRef.on("value", (snapshot) => {
             // console.log(snapshot.val());
@@ -48,11 +48,10 @@ class LeaderBoard extends Component {
                     {this.state.users.map((user, i) => {
                         return (
                             <div className="badges">
-                                <h3>#{i + 1}. {user[0]}</h3>
-                                <img src={`https://robohash.org/${user[0]}.png`} alt=""/>
-                                {user[1].map((badge) => {
-                                    return <p>{badge}</p>
-                                })}
+                                <h3>#{i + 1}. {user[1][1]}</h3>
+                                <img src={`https://robohash.org/${user[1][1]}.png`} alt=""/>
+                                <p>Score: {user[1][0]}</p>
+                                
                             </div>                            
                         )
                     })}
