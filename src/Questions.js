@@ -84,18 +84,22 @@ class Questions extends Component {
 
     render() {
         return (
-            <Container>
+            <Container className="questionsPage">
 
-                <h1>Questions</h1>
+                <header className="questionsHeader">
+                    <h1>Here are your questions</h1>
+                </header>
 
                 <Section>
-  
+                <div className="hostQuestion">
+                    {/* <img src={require("./assets/roboHostEdit2.png")} alt="" /> */}
+                    
                     {this.props.questions[0]
                         ? <p>
                             {this.props.questions[this.props.questionProgress].question}
                         </p>
                     : null}
-
+                </div>
                 <div className="players">
                     {this.props.players.map((player, i) => {
                         return(

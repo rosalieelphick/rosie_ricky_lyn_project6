@@ -1,4 +1,4 @@
-@import "partials/setup";
+@import "partials/setup"; 
 
 
 * {
@@ -26,7 +26,54 @@
         transform: translateX(-50%);
         display: block;
     }
-    
+
+    .player {
+        // position: relative;
+        float: none;
+        margin: auto 0;
+        overflow: hidden;
+        display: inline-block;
+        width: 300px;
+        text-align: center;
+        .wrongAnimation {
+            position: absolute;
+            right: -90px;
+            top: 0px;
+            animation: wrench 1.5s infinite linear;
+            transform: rotate(0)
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            animation: wrongOverlay 1.5s infinite;
+        }
+        .correct, .wrong {
+            position: absolute;
+            top: 80%;
+            right: 50%;
+            transform: translateX(50%);
+            font-size: 40px;
+            font-weight: 700;
+            text-shadow: 1px 1px 9px #000;
+            margin: 0;
+        }
+        .wrong {
+            color: red;
+            
+        }
+        .correct {
+            color: green;
+        }
+    }
+    .avatar {
+        // width: 200px;
+        position: relative;
+        transition: 0.3s;
+        overflow: hidden;
+    }    
 }
 
 .confetti {
@@ -35,56 +82,6 @@
     width: 8px;
     height: 16px;
 }
-
-.avatar {
-    // width: 200px;
-    position: relative;
-    transition: 0.3s;
-    overflow: hidden;
-}
-
-.player {
-    // position: relative;
-    margin: auto 0;
-    overflow: hidden;
-    display: inline-block;
-    width: 300px;
-    text-align: center;
-    .wrongAnimation {
-        position: absolute;
-        right: -90px;
-        top: 0px;
-        animation: wrench 1.5s infinite linear;
-        transform: rotate(0)
-    }
-    .overlay {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        animation: wrongOverlay 1.5s infinite;
-    }
-    .correct, .wrong {
-        position: absolute;
-        top: 80%;
-        right: 50%;
-        transform: translateX(50%);
-        font-size: 40px;
-        font-weight: 700;
-        text-shadow: 1px 1px 9px #000;
-        margin: 0;
-    }
-    .wrong {
-        color: red;
-        
-    }
-    .correct {
-        color: green;
-    }
-}
-
-
 
 
 @keyframes wrench {

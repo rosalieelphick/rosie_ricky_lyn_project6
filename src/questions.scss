@@ -1,11 +1,16 @@
-@import "partials/setup";
+@import "partials/setup"; 
 
 // * {
 //     margin: 0;
 //     padding: 0;
 // }
 
-// // Questions Page Styling //
+.questionsPage {
+    text-align: center;
+}
+
+// players
+
 .players {
     position: relative; 
     height: 75vh;
@@ -30,3 +35,4 @@ form.player2 {
 // form.player4 {
 //     right: -300%;
 // }
+
