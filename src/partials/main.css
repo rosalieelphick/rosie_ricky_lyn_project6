@@ -22,9 +22,6 @@ a:focus {
 a:active, a:hover {
   outline: 0; }
 
-h1 {
-  font-size: 2em; }
-
 abbr[title] {
   border-bottom: 1px dotted; }
 
@@ -131,11 +128,21 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-h1, p, button {
+html {
+  font-size: 62.5%; }
+
+h1, p, button, label {
   font-family: 'Montserrat', sans-serif; }
 
 h1 {
+  font-size: 4rem;
   text-transform: uppercase; }
+
+h2 {
+  font-size: 2rem; }
+
+p, label {
+  font-size: 1.5rem; }
 
 button {
   font-weight: 600; }
@@ -147,7 +154,8 @@ button {
     margin-top: 125px; }
   .landingPage img {
     border-bottom: 4px solid black;
-    margin-top: -50px; }
+    margin-top: -50px;
+    width: 60%; }
 
 .container {
   position: relative;
@@ -204,6 +212,65 @@ button {
   left: 0;
   width: 60%;
   left: 20%; }
+
+header {
+  background-image: url(./../assets/roboHostEdit2.png);
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: 40%;
+  background-color: #9ad4e6;
+  padding: 1px;
+  position: relative; }
+
+.hostQuestion {
+  margin-bottom: 20px; }
+  .hostQuestion img {
+    width: 40%; }
+  .hostQuestion p {
+    margin: 0 auto;
+    padding: 25px;
+    border: 1px solid black;
+    width: 40%;
+    border-radius: 20px; }
+
+.player {
+  float: left; }
+
+.playerSubmit {
+  display: inline-block; }
+
+.playerSubmit h2 {
+  margin: 20px auto; }
+
+.playerSubmit img {
+  border: 2px solid black;
+  border-radius: 50%; }
+
+.playerSubmit button {
+  display: block;
+  text-align: center;
+  margin: 10px auto; }
+
+.answers {
+  margin: 0 auto;
+  width: 20%;
+  height: 50px;
+  border: 1px solid black; }
+  .answers:hover {
+    font-weight: 800;
+    color: #ed1a1e; }
+
+.answers input[type="radio"] {
+  position: fixed;
+  opacity: 0; }
+
+.answers:focus-within {
+  font-weight: 800;
+  color: #ed1a1e; }
+
+.answers:focus + label {
+  font-weight: 800;
+  color: #ed1a1e; }
 
 .wrapper {
   margin: 0 auto;

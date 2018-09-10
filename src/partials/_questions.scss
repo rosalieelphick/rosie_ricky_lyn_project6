@@ -1,0 +1,90 @@
+
+// HEADER 
+
+header {
+    background-image: url(./../assets/roboHostEdit2.png);
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: 40%;
+    background-color: $lightBlue;
+    padding: 1px;
+    position: relative;
+}
+
+// HOST AND QUESTION
+
+.hostQuestion {
+    margin-bottom: 20px;
+    img {
+        width: 40%;
+    }
+    p {
+        margin: 0 auto;
+        padding: 25px;
+        border: 1px solid black;
+        width: 40%;
+        border-radius: 20px;
+    }
+}
+
+// NEED TO FIGURE OUT FLOATS  
+
+.player {
+    float: left
+    // display: inline;
+}
+
+.playerSubmit {
+    // float: left
+    display: inline-block;
+}
+
+// END OF FIGURING OUT FLOATS 
+
+// PLAYER SUBMIT DIV 
+
+.playerSubmit {
+
+    h2 {
+
+        margin: 20px auto;
+    }
+    img {
+        border: 2px solid black;
+        border-radius: 50%;
+    }
+    button {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+    }
+}
+
+// ANSWERS STYLE 
+
+.answers {
+    margin: 0 auto;
+    width: 20%;
+    height: 50px; 
+    border: 1px solid black;
+    &:hover {
+        font-weight: 800;
+        color: $red;
+    }
+}
+
+.answers input[type="radio"]{
+    position: fixed;
+    opacity: 0;
+}
+
+.answers:focus-within {
+    font-weight: 800;
+    color: $red;
+}
+
+.answers:focus + label {
+    font-weight: 800;
+    color: $red;
+}
+
