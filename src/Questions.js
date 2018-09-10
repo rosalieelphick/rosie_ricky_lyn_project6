@@ -103,30 +103,30 @@ class Questions extends Component {
                 <div className="players">
                     {this.props.players.map((player, i) => {
                         return(
-                            
-                            <form key={player.username} 
-                                className={`player player${i + 1}`}
-                                style={{left: `${this.state.position[i]}%`}}
-                                >
-
-                                {this.props.questions[0]
-                                    ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
-                                        return(answer && (
-                                                <div className="answers">
-                                                    <label className="answerLabel" htmlFor={`${player.username}${j}`} key={j} > {choice[j]}: {answer} </label>
-                                                    <input 
-                                                        id={`${player.username}${j}`} 
-                                                        // style={{ display: 'block' }}
-                                                        type="radio" 
-                                                        name={`multipleChoice${i}`}
-                                                        onChange={this.handleChange}
-                                                        value={answer}
-                                                        className="eachChoice"
-                                                    />  
-                                                </div>
-                                        )) 
-                                    })
-                                : null}
+                            <div>
+                                <form key={player.username} 
+                                    className={`player player${i + 1}`}
+                                    style={{left: `${this.state.position[i]}%`}}
+                                    >
+                                    {this.props.questions[0]
+                                        ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
+                                            return(answer && (
+                                                    <div className="answers">
+                                                        <label className="answerLabel" htmlFor={`${player.username}${j}`} key={j} > {choice[j]}: {answer} </label>
+                                                        <input 
+                                                            id={`${player.username}${j}`} 
+                                                            // style={{ display: 'block' }}
+                                                            type="radio" 
+                                                            name={`multipleChoice${i}`}
+                                                            onChange={this.handleChange}
+                                                            value={answer}
+                                                            className="eachChoice"
+                                                        />  
+                                                    </div>
+                                            )) 
+                                        })
+                                    : null}
+                                </form>
                                 <div className="playerSubmit">
                                     <h2>{player.username}</h2>
                                     <img src={`https://robohash.org/${player.username}.png`} alt="" />
@@ -135,7 +135,7 @@ class Questions extends Component {
                                         this.nextPlayer(i);
                                     }}>Submit</button>
                                 </div>
-                            </form>
+                            </div> 
                         )
                     })}
                 </div>
