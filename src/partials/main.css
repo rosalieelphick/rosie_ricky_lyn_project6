@@ -177,9 +177,15 @@ a {
   text-decoration: none; }
 
 .labelContainer {
+  margin: 20px auto;
+  padding: 20px;
+  padding-top: 0;
   border-radius: 7px;
   box-shadow: inset rgba(0, 0, 0, 0.7) 0px 1px 3px, grey 0 1px 5px;
   background-color: rgba(0, 0, 0, 0.2); }
+
+.labelContainer .label:hover {
+  letter-spacing: 2px; }
 
 .landingPage {
   text-align: center;
@@ -188,10 +194,27 @@ a {
     margin: 0;
     margin: 60px;
     font-size: 5rem; }
-  .landingPage img {
+  .landingPage .robotsEight,
+  .landingPage .robotsFour {
     border-bottom: 4px solid black;
     margin-top: -50px;
     width: 60%; }
+  .landingPage .labelContainer {
+    width: 90%; }
+  .landingPage .robotsFour {
+    display: none; }
+  .landingPage .label {
+    margin: 20px 10px 0 10px;
+    width: calc(50% - 20px);
+    display: inline-block; }
+  @media (max-width: 600px) {
+    .landingPage .label {
+      width: calc(100% - 20px); }
+    .landingPage .robotsEight {
+      display: none; }
+    .landingPage .robotsFour {
+      display: block;
+      margin: 0 auto; } }
 
 .container {
   position: relative;
@@ -285,25 +308,17 @@ body {
   text-align: center; }
 
 .startingPageContainer .labelContainer {
-  width: 300px; }
+  width: 300px;
+  padding-top: 10px;
+  margin-top: 50px; }
 
 h1 {
   color: #9ad4e6;
   font-size: 2.5rem; }
 
-.landingPage .labelContainer {
-  width: 90%; }
-
-.landingPage .label {
-  margin: 20px 10px 0 10px;
-  width: calc(50% - 20px);
-  display: inline-block; }
-
-.labelContainer .label:hover {
-  letter-spacing: 2px; }
-
 .choiceContainer .labelContainer {
-  margin: 0;
+  margin: 10px;
+  margin-top: 50px;
   padding: 0;
   padding-top: 0; }
 
@@ -328,14 +343,6 @@ h1 {
   width: calc(100% - 22px);
   float: left;
   margin: 10px; }
-
-.labelContainer {
-  margin: 20px auto;
-  padding: 20px;
-  padding-top: 0;
-  border-radius: 7px;
-  box-shadow: inset rgba(0, 0, 0, 0.7) 0px 1px 3px, grey 0 1px 5px;
-  background-color: rgba(0, 0, 0, 0.2); }
 
 .hostQuestion {
   margin-bottom: 20px; }
@@ -392,7 +399,9 @@ h1 {
   widows: 800px; }
 
 body {
-  background-color: dimgrey; }
+  background-color: dimgrey;
+  background-color: #c4c4c4;
+  background-color: grey; }
 
 h2 {
   color: #9ad4e6; }
@@ -457,37 +466,3 @@ h2 {
   visibility: hidden;
   width: 1px;
   height: 1px; }
-
-.label {
-  display: block;
-  width: 100%;
-  padding: 20px 0;
-  background: dimgrey;
-  border: 1px solid black;
-  background-image: linear-gradient(to bottom, darkgrey 50%, #2d2f33 60%);
-  border-radius: 7px;
-  text-align: center;
-  text-transform: uppercase;
-  color: white;
-  box-shadow: inset dimgrey 0px 1px 4px 0px, inset #1f2124 0px 13px 72px 0px, inset #2d2f33  1px 2px 81px 0px, #2d2f33 0px 0px 16px;
-  font-size: 2rem;
-  color: #9ad4e6;
-  text-shadow: black 2px 2px 16px;
-  transition: all 0.3s; }
-
-.label:hover {
-  color: aqua;
-  box-shadow: inset dimgrey 0px 1px 4px 0px, inset black 0px 13px 72px 0px, inset black 1px 2px 81px 0px, aqua 0px -6px 44px -15px, aqua 0px 6px 44px -15px;
-  letter-spacing: 3px; }
-
-.labelContainer input:checked + label {
-  color: aqua;
-  box-shadow: inset dimgrey 0px 1px 4px 0px, inset black 0px 13px 72px 0px, inset black 1px 2px 81px 0px, aqua 0px -6px 44px -15px, aqua 0px 6px 44px -15px; }
-
-a {
-  text-decoration: none; }
-
-.labelContainer {
-  border-radius: 7px;
-  box-shadow: inset rgba(0, 0, 0, 0.7) 0px 1px 3px, grey 0 1px 5px;
-  background-color: rgba(0, 0, 0, 0.2); }

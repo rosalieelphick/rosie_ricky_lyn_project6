@@ -1,6 +1,7 @@
 
 .choiceContainer .labelContainer {
-    margin: 0;
+    margin: 10px;
+    margin-top: 50px;
     padding: 0;
     padding-top: 0;
 }
@@ -31,13 +32,4 @@
     width: calc(100% - 22px);
     float: left;
     margin: 10px;
-}
-
-.labelContainer {
-    margin: 20px auto;
-    padding: 20px;
-    padding-top: 0;
-    border-radius: 7px;
-    box-shadow: inset rgba(black, 0.7) 0px 1px 3px, grey 0 1px 5px;
-    background-color: rgba(black, 0.2);
 }

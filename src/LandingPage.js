@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Typing from "react-typing-animation"
 
-
 class LandingPage extends Component {
     render() {
         return (
@@ -10,7 +9,9 @@ class LandingPage extends Component {
                 <Typing speed={130}>
                     <h1>Robot Trivia</h1>
                 </Typing>
-                <img src={require("./assets/robotsEight.png")} alt=""/>
+
+                <img className="robotsEight" src={require("./assets/robotsEight.png")} alt=""/>
+                <img className="robotsFour" src={require("./assets/robotsFour.png")} alt="" />
                 <div className="labelContainer">
                     <Link to="/start">
                         <button className="label">Start Playing</button>

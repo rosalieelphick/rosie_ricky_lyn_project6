@@ -7,11 +7,40 @@
         margin: 60px;
         font-size: 5rem;
     }
-    img {
+
+    .robotsEight,
+    .robotsFour {
         border-bottom: 4px solid black;
         margin-top: -50px;
         width: 60%;
     }
 
-}
+    .labelContainer {
+        width: 90%;
+    }
 
+    .robotsFour {
+        display: none;
+    }
+
+    .label {
+        margin: 20px 10px 0 10px;
+        width: calc(50% - 20px);
+        display: inline-block;
+    }
+
+    @media (max-width: 600px) {
+        .label {
+            width: calc(100% - 20px)
+        }
+
+        .robotsEight {
+            display: none;
+        }
+
+        .robotsFour {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
