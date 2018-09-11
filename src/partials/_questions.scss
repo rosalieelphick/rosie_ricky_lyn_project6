@@ -1,25 +1,18 @@
-
 // HOST AND QUESTION
-
 
 .questionsPageContainer {
     text-align: center;
     margin: 0 auto;
-    overflow: hidden;
-    // padding: 10px;
-    // overflow-y: hidden;
-    // width: 1000px;
+    overflow-x: hidden;
 }
 
 .hostQuestion {
-    // height: 20%;
     img {
         position: absolute;
         left: 12%;
         top: 10%;
         width: 15%;
         border: 2px solid black;
-        // float: left;
     }
     p {
         color: black;
@@ -84,10 +77,6 @@
 .answers .label {
     width: 100%;
     font-weight: 600;
-    // display: block;
-    // display: inline-block;
-    // float: left;;
-    // padding: 10px;
     letter-spacing: none;
 }
 
@@ -112,19 +101,10 @@
 // PLAYER SUBMIT DIV WITH NAME IMG AND SUBMIT BUTTON 
 // PLUS ANIMATIONS
 
-.playerAnswers {
-    // margin-top: 50px;
-    // margin-right: 50px;
-    // display: inline-block;
-    // margin: 0 auto;
-    // margin: 
-}
-
-
 .players {
     position: relative; 
-    height: 60vh;
-    overflow: hidden;
+    height: 67vh;
+    overflow-x: hidden;
     margin-top: -20px;
     // z-index: -10;
     .player {
@@ -170,57 +150,27 @@
     }
 }
 
-.submitAnswerBtn {
-    // background-color: #fff;
-    // z-index: 10;
-    // margin-top: -300px;
-    // position: absolute;
-    // top: -50%;
+
+@media (max-width: 500px) {
+  .playerSubmit {
+    width: 70%;
+  }
+
+.playerAnswers {
+    width: 100%;
+    margin: 0 auto;
+
 }
 
+.answers {
+    padding: 0;
+    margin-left: 10px;
+    float: left;
+    width: 22%;
+}
 
-// EXTRA STUFF  
-
-// .players {
-//     position: relative; 
-//     height: 75vh;
-//     overflow: hidden;
-// }
-
-// form.player {
-//     // width: 100%;
-//     // position: absolute;
-//     top: 0;
-//     transition: 0.3s;
-// }
-
-// form.player2 {
-//     // position: absolute;
-//     left: 100%;
-// }
-
-// form.player3 {
-//     right: -200%;
-// }
-// form.player4 {
-//     right: -300%;
-// }
-
-// .players {
-//     height: 75vh;
-//     overflow: hidden;
-//     position: relative; 
-//     // clear: both;
-//     // margin-top: -250px;
-//     // clear: both;
-//     // text-align: center;
-//     // display: inline-block;
-//     // margin-top: 20px;
-//     // width: 100%;
-// }
-
-// form.player {
-//     // width: 100%;
-//     // position: absolute;
-//     top: 0;
-// }
+  .answers .label {
+      height: 75px;
+      margin: 0 auto;
+  }
+}
