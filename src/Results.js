@@ -40,9 +40,9 @@ class Results extends Component {
     componentDidMount(){
         this.addUser();
         this.getBadges();
+        
 
         if (this.props.questionProgress === 9){
-            this.updateScore()
             this.setState({
                 endOfGame: true
             })
@@ -72,11 +72,13 @@ class Results extends Component {
                 if (!duplicate) {
                     userDbRef.push({
                         username: player.username,
-                        score: 0,
+                        score: player.score,
                     });
                 }
             })
         });
+
+        this.updateScore()
     }
 
     getBadges = () => {
@@ -129,19 +131,16 @@ class Results extends Component {
         });
         
         this.props.players.forEach((player) => {
-            let scoreUpdated = false;
-
             for(const user in databaseUsers) {
                 const dbUsername = databaseUsers[user].username;
                 
-                if (dbUsername === player.username && !scoreUpdated) {
+                if (dbUsername === player.username && player.correct) {
                     
                     const thisUserDbRef = firebase.database().ref(`users/${[user]}`);
                     thisUserDbRef.set({
                         username: player.username,
-                        score: databaseUsers[user].score + player.score,
+                        score: databaseUsers[user].score + 1,
                     })
-                    scoreUpdated = true;
                 }
             }
         
