@@ -61,6 +61,9 @@ class Choice extends Component {
                     <form className="clearfix" action="">
                         <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="27" id="animals"/>
                         <label className="label" htmlFor="animals">Animals</label>
+
+                        <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="9" id="general" />
+                        <label className="label" htmlFor="general">General</label>
         
                         <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="18" id="mythology"/>
                         <label className="label" htmlFor="mythology">Computers</label>

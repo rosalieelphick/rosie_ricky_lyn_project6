@@ -21,7 +21,8 @@ const categoryNames = {
     23: "history",
     18: "computers",
     24: "politics",
-    27: "animals"
+    27: "animals",
+    9: "general"
 }
 
 const userDbRef = firebase.database().ref("users");
@@ -78,12 +79,6 @@ class Results extends Component {
             })
         });
     }
-
-        
-        
-    // checking if we're done the questions in the array 
-    // if it is then show another button that goes back to the landing page or go to ending page 
-
 
     getBadges = () => {
         const difficulty = this.props.difficulty;
@@ -183,13 +178,16 @@ class Results extends Component {
                 {this.props.players.map((player, i) => {
                     return(
                         <div className={`player player${i + 1}`}>
+
+                            <div className="labelContainer">
                             <h3>{player.username}</h3>
+
                             <div className="avatar">
                                 <img src={`https://robohash.org/${player.username}.png`} alt="" />
                                 
                                 {player.correct 
                                     ? <div>
-                                        <p className="correct">CORRECT</p>
+                                        {/* <p className="correct">CORRECT</p> */}
                                         {this.state.confetti.map((eachConfetti, i) => {
                                             return <div className={`confetti confetti${i}`}></div>
                                         })}
@@ -197,11 +195,13 @@ class Results extends Component {
                                     : <div>
                                         <img src={wrongImg} alt="" className="wrongAnimation"/>
                                         <div className="overlay"></div>
-                                        <p className="wrong">WRONG</p>
+                                        {/* <p className="wrong">WRONG</p> */}
                                     </div>
                                 }
                             </div>
                             <p>{`your score is currently ${player.score}`}</p>
+
+                            </div>
                         </div>
                     )
                 })}

@@ -13,6 +13,10 @@ class LeaderBoard extends Component {
         }
     }
 
+    // display only first 9 
+    // filter through so it only gives me the first 9 top people 
+    // 
+
     componentDidMount() {
         const dbRef = firebase.database().ref("users");
 
@@ -22,6 +26,8 @@ class LeaderBoard extends Component {
             users = users.filter(user => user[1].score > 0)
                 .map(user => user[1])
                 .sort((a, b) => b.score - a.score);
+                
+                // return only top 9 
             
             this.setState({ users });
         })
@@ -31,11 +37,11 @@ class LeaderBoard extends Component {
         return (
             <div className="leaderBoard">
                 <h1>Leader Board</h1>
-                <h2>User</h2>
+                {/* <h2>User</h2> */}
                 <div className="userStats">
                     {this.state.users.map((user, i) => {
-                        return (
-                            <div className="badges">
+                        return(i < 12 ? 
+                            <div className="badges labelContainer">
                                     <h3>#{i + 1}. {user.username}</h3>
                                 <div className="leaderboardAvatar">
                                     <img src={`https://robohash.org/${user.username}.png`} alt=""/>
@@ -44,11 +50,13 @@ class LeaderBoard extends Component {
                                     <p>Score: {user.score}</p>
                                     {user.badge && <p>Badges: {user.badge}</p>}
                                 </div>
-                            </div>                            
-                        )
-                    })}
+                            </div> : null)
+                        })}
+                        <Link to="/start">
+                            <button className="btn">Start playing</button>
+                        </Link> 
+                    </div>     
                 </div>
-            </div>
         );
     }
 };

@@ -3,44 +3,83 @@
 // Leaderboard Styling // 
 
 .leaderBoard {
+    max-width: 1200px;
     text-align: center;
-    .leaderboardAvatar, .scoreBadge {
-        // float: left
-        // display: inline-block;
-    }
+    margin: 0 auto;
     .leaderboardAvatar {
         // clear: both;
         display: inline-block;
     }
 
     .scoreBadge {
-        display: inline-block;
-        padding: 10px;
-        vertical-align: top;
+        // display: inline-block;
+        display: block;
+        // padding: 10px;
+        margin-left: 9px;
+        // vertical-align: top;
         // clear: both;
     }
 
     img {
         width: 100px;
+        // width: 20%;
+        margin: 0 auto;
+        // width: 20%;
+        // width: 20%;
         // display: inline-block;
         display: block;
         border: 1px solid black;
         border-radius: 50%;
-        background-color: lightgrey;
+        background-color: #c4c4c4;
+        box-shadow: inset 0px 0px 83px #fefefe;
+
     }
     h3 {
-        text-align: left;
+        text-align: center;
+        font-size: 1.7rem;
+        color: #9ad4e6;
     }
     .badges {
         display: inline-block;
-        width: 30%;
-        text-align: left;
+        width: 28%;
+        // text-align: left;
+        // padding: 20px 40px;
+        height: 220px;
+        vertical-align: top;
         // display: block;
     }
     .badges p {
         // display: inline-block;
+        text-align: center;
         line-height: 10px;
         display: block;
     }
+
+    .labelContainer {
+        margin: 10px;
+        padding: 5px;
+    }
+
+    .btn {
+        margin: 10px auto; 
+        display: block;
+        margin-bottom: 10px;
+    }
 }
 
+@media (max-width: 700px) {
+ .leaderBoard {
+     .badges {
+         width: 40%;
+     }
+  }
+    
+}
+
+@media (max-width: 430px) {
+.leaderBoard {
+     .badges {
+         width: 70%;
+     }
+  }
+}

@@ -1,6 +1,12 @@
 
+.choiceContainer .btn {
+    width: 300px;
+    margin: 0 auto;
+}
+
 .choiceContainer .labelContainer {
-    margin: 0;
+    margin: 10px;
+    margin-top: 50px;
     padding: 0;
     padding-top: 0;
 }
@@ -20,24 +26,34 @@
     margin: 50px 0 100px 0;
 }
 
-
 .categorySection .label {
-    width: calc(50% - 22px);
+    width: calc(50% - 20px);
     float: left;
     margin: 10px;
 }
 
 .difficultySection .label {
-    width: calc(100% - 22px);
+    width: calc(100% - 20px);
     float: left;
     margin: 10px;
 }
 
-.labelContainer {
-    margin: 20px auto;
-    padding: 20px;
-    padding-top: 0;
-    border-radius: 7px;
-    box-shadow: inset rgba(black, 0.7) 0px 1px 3px, grey 0 1px 5px;
-    background-color: rgba(black, 0.2);
+@media (max-width: 700px) {
+
+    .choiceContainer .labelContainer {
+        margin: 50px 0 20px 0;
+    }
+
+    .categorySection,
+    .difficultySection {
+        width: 100%;
+    }
+}
+
+@media (max-width: 430px) {
+ 
+    .choiceContainer .btn {
+        width: 100%;
+    }
+
 }
