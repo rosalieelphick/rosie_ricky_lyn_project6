@@ -18,7 +18,7 @@
         // clear: both;
     }
 
-    img {
+    .leaderboardAvatar img {
         width: 100px;
         // width: 20%;
         margin: 0 auto;
@@ -42,7 +42,7 @@
         width: 28%;
         // text-align: left;
         // padding: 20px 40px;
-        height: 220px;
+        height: 250px;
         vertical-align: top;
         // display: block;
     }
@@ -55,14 +55,21 @@
 
     .labelContainer {
         margin: 10px;
-        padding: 5px;
+        padding: 10px;
     }
 
     .btn {
         margin: 10px auto; 
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 50px;
     }
+
+    .badgeImage {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+
 }
 
 @media (max-width: 700px) {

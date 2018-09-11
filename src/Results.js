@@ -107,7 +107,8 @@ class Results extends Component {
                         thisUserDbRef.set({
                             score: user.score,
                             username: user.username,
-                            badge: categoryNames[this.props.category]
+                            badge: [categoryNames[this.props.category]]
+
                         })
                     }
                 })
@@ -162,7 +163,13 @@ class Results extends Component {
         return (
             <Container className="results">
                 
-                <h1>Results</h1>
+                {this.state.endOfGame 
+                
+                ? <h1>Final Results</h1>
+                : <h1>Results</h1>
+                
+                }
+                      
                 <Section>
                 {this.props.questions[0]
                     ? <p>
@@ -198,17 +205,23 @@ class Results extends Component {
                                     </div>
                                 }
                             </div>
-                            <p>{`Current score : ${player.score}`}</p>
+
+                            {this.state.endOfGame
+
+                            ? <p>{`Final score : ${player.score}`}</p>
+
+                            : <p>{`Current score : ${player.score}`}</p>
+
+                            }
 
                             </div>
                         </div>
                     )
                 })}
      
-                {/* if it's end of the gamedo this, if it's not go to the next question */}
                 {this.state.endOfGame 
                     ? <Link to="/">
-                        <button onClick={() => {this.props.resetQuestions()}}>Play Again</button>
+                        <button className="btn" onClick={() => {this.props.resetQuestions()}}>Play Again</button>
                     </Link> 
 
                     : <Link to="/questions">
