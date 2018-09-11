@@ -1,13 +1,8 @@
-@import "partials/setup";
-
 // Leaderboard Styling // 
 
 .leaderBoard {
     text-align: center;
-    .leaderboardAvatar, .scoreBadge {
-        // float: left
-        // display: inline-block;
-    }
+
     .leaderboardAvatar {
         // clear: both;
         display: inline-block;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import './styles/styles.css'
 import './partials/main.css'
-import './questions.css'
 import axios from "axios"; 
 import { BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 import posed, { PoseGroup } from 'react-pose';
