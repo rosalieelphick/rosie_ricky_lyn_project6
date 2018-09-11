@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import './styles/styles.css'
-// import './App.css';
-// import './styles/partials/main.css'
 import './partials/main.css'
 import './questions.css'
 import axios from "axios"; 
@@ -28,9 +26,6 @@ const RouteContainer = posed.div({
 
 class App extends Component {
 
-  // setting state for the questions we get, the number of players, a promise, the players where each player is an object with their own stats, and the progress for each question 
-  // what is the promise doing?
-  // we can take out the difficulty and category state, right?
   constructor(){
     super();
     this.state = {
@@ -45,7 +40,6 @@ class App extends Component {
     }
   }
 
-  // getting data from our API 
   getQuestions = (category, difficulty) => {
 
     this.setState({
@@ -222,7 +216,6 @@ class App extends Component {
 // FILTER THROUGH COMBINED CHOICES
   combineChoices = (questions) => {
 
-    // big loop, looping through questions
       const newQuestions = questions.map((question) => {
       const allChoices = Array.from(question.incorrect_answers); 
       allChoices.push(question.correct_answer);

@@ -109,26 +109,42 @@ class Players extends Component {
 
                                 <div className="containerWrapper">  
 
-                                {i !== 0 ?
+                                <div className="playerName">
+                                    {i !== 0 ?
 
-                                <button
-                                    className={"changePlayer previousPlayer"}
-                                    onClick={(e) => { this.previousPlayer() }}>
-                                    <Icon icon={"leftArrow"} />
-                                </button>
+                                        <button
+                                            className={"changePlayer previousPlayer"}
+                                            onClick={(e) => { this.previousPlayer() }}>
+                                            <Icon icon={"leftArrow"} />
+                                        </button>
+
+                                        : null
+
+                                    }
+
+                                    <h2>{player.playerNumber}</h2>
+
+                                    {i !== this.state.playerArray.length - 1 ?
+
+                                        <button
+                                            className={"changePlayer nextPlayer"}
+                                            onClick={(e) => { this.nextPlayer(e, i) }}>
+                                            <Icon icon={"rightArrow"} />
+                                        </button>
+
+                                        : null
+
+                                    }
+                                    
+                                </div>
                                 
-                                : null
-
-                                }
-
-                                <h2>{player.playerNumber}</h2>
                                 <form action="" className="labelContainer">
 
                                     <div className="playerForm">
                                     
                                         <input className={"enterUsername"} aria-label="enter your username" onChange={this.handleChange} id={this.state.playerArray.indexOf(player)} type="text" placeholder="username"></input>
 
-                                        <input className="label" onClick={(e) => {this.submitUsername(e, i)}} id={this.state.playerArray.indexOf(player)} type="submit"></input>
+                                        <input className="label" onClick={(e) => {this.submitUsername(e, i)}} id={this.state.playerArray.indexOf(player)} type="submit" value="submit username"></input>
 
                                     </div>
 
@@ -140,20 +156,6 @@ class Players extends Component {
                                     </div>
 
                                 </form>
-
-                                
-
-                                {i !== this.state.playerArray.length - 1 ?
-                                
-                                <button 
-                                    className={"changePlayer nextPlayer"}
-                                    onClick={(e) => {this.nextPlayer(e, i)}}>
-                                    <Icon icon={"rightArrow"} />
-                                </button>
-
-                                : null
-                                    
-                                }
 
                                 </div>
 

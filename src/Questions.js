@@ -26,6 +26,10 @@ class Questions extends Component {
         }
     }
 
+    componentDidMount = () => {
+        console.log(this.props.questions)
+    }
+
     checkAnswer = (e, i) => {
         e.preventDefault();
         const answer = this.props.questions[this.props.questionProgress].correct_answer;

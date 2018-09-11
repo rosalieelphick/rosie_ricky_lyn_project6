@@ -21,7 +21,8 @@ const categoryNames = {
     23: "history",
     18: "computers",
     24: "politics",
-    27: "animals"
+    27: "animals",
+    9: "general"
 }
 
 const userDbRef = firebase.database().ref("users");
