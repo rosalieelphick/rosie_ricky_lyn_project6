@@ -1,0 +1,22 @@
+// Questions Page Styling //
+
+.players {
+    position: relative; 
+    height: 65vh;
+}
+
+form.player {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+form.player1 {
+    right: -100%;
+}
+form.player2 {
+    right: -200%;
+}
+form.player3 {
+    right: -300%;
+}

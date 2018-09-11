@@ -24,6 +24,8 @@ const categoryNames = {
     27: "animals"
 }
 
+const userDbRef = firebase.database().ref("users");
+
 class Results extends Component {
 
     constructor(){
@@ -36,9 +38,11 @@ class Results extends Component {
 
     // if the end is reached change questionProgress to 0 
     componentDidMount(){
+        this.addUser();
         this.getBadges();
 
         if (this.props.questionProgress === 9){
+            this.updateScore()
             this.setState({
                 endOfGame: true
             })
@@ -51,6 +55,32 @@ class Results extends Component {
         this.celebrate();
     }
 
+    addUser = () => {
+        userDbRef.once("value").then((snapshot) => {
+            const databaseUsers = snapshot.val();
+
+            this.props.players.forEach((player) => {
+                let duplicate = false;
+                
+                for(const user in databaseUsers) {
+                    const dbUsername = databaseUsers[user].username;
+                        
+                    if (dbUsername === player.username) {
+                        duplicate = true;
+                    }
+                }
+                if (!duplicate) {
+                    userDbRef.push({
+                        username: player.username,
+                        score: 0,
+                    });
+                }
+            })
+        });
+    }
+
+        
+        
     // checking if we're done the questions in the array 
     // if it is then show another button that goes back to the landing page or go to ending page 
 
@@ -58,55 +88,68 @@ class Results extends Component {
     getBadges = () => {
         const difficulty = this.props.difficulty;
         const arrayClone = Array.from(this.props.players)
-        console.log(difficulty)
 
         arrayClone.forEach((player) => {
+            // Badge Decider
             if (difficulty === "hard" && player.score === 10) {
                 this.firebaseCheck(player);
             }    
         }) 
     }
 
-
     firebaseCheck = (player) => {
-        const dbRef = firebase.database().ref();
+        const dbRef = firebase.database().ref("users");
         dbRef.on("value", (snapshot) => {
+            const users = Object.values(snapshot.val());
+            const keys = Object.keys(snapshot.val())
+            
+            const duplicateBadge = users.find(user => user.badge === this.props.category);
 
-            console.log(snapshot.val())
-            console.log(player)
-            console.log(player.username)
-
-            if (snapshot.hasChild(player.username)) {
-                // if the user name already exists in the database, check for duplicates
-
-                const userRef = firebase.database().ref(player.username)
-
-                userRef.on("value", (snapshot) => {
-                    console.log(snapshot.val())
-
-                    const array = Object.entries(snapshot.val())
-                    console.log(array)
-
-                    let duplicate = false;
-
-                    array.forEach((badge) => {
-                        if (badge[1] === `${categoryNames[this.props.category]} badge`) {
-                            duplicate = true
-                        }
-                    })
-
-                    if (duplicate != true) {
-                        userRef.push(`${categoryNames[this.props.category]} badge`)
+            if (!duplicateBadge) {
+                users.forEach((user, i) => {
+                    if (user.username === player.username) {
+                        const thisUserDbRef = firebase.database().ref(`users/${[keys[i]]}`);
+    
+                        thisUserDbRef.set({
+                            score: user.score,
+                            username: user.username,
+                            badge: categoryNames[this.props.category]
+                        })
                     }
                 })
-
-            } else {
-                // if the name does not exist, just push the new badge 
-                
-                const userRef = firebase.database().ref(player.username)
-                userRef.push(`${categoryNames[this.props.category]} badge`)
             }
+            console.log(snapshot.val());
+            
+        })
+    }
 
+    updateScore = () => {
+        console.log("update score")
+        const dbRef = firebase.database().ref("users");
+        let databaseUsers;
+
+        dbRef.on("value", (snapshot) => {
+            databaseUsers = snapshot.val();
+            
+        });
+        
+        this.props.players.forEach((player) => {
+            let scoreUpdated = false;
+
+            for(const user in databaseUsers) {
+                const dbUsername = databaseUsers[user].username;
+                
+                if (dbUsername === player.username && !scoreUpdated) {
+                    
+                    const thisUserDbRef = firebase.database().ref(`users/${[user]}`);
+                    thisUserDbRef.set({
+                        username: player.username,
+                        score: databaseUsers[user].score + player.score,
+                    })
+                    scoreUpdated = true;
+                }
+            }
+        
         })
     }
 
