@@ -3,81 +3,143 @@
 
 // HOST AND QUESTION
 
-// .questionsPage {
-//     max-width: 800px;
-// }
-
-// .questionsHeader {
-//     margin: 0 auto; 
-// }
-
 .questionsPageContainer {
-    // margin-top: -300px;
-    // margin-left: -200px;
     text-align: center;
     margin: 0 auto;
+    // width: 1000px;
 }
 
 .hostQuestion {
-    // margin-bottom: 20px;
     img {
         position: absolute;
-        left: 0;
-        top: 50px;
-        width: 40%;
+        left: 16%;
+        top: 10%;
+        width: 20%;
+        border: 2px solid black;
         // float: left;
     }
     p {
-        // margin
-        // margin: 40px auto;
-        // margin-left: -50px;
-        margin: 0 auto;
-        padding: 40px;
-        border: 2px solid white;
-        width: 50%;
-        border-radius: 3.4em;
-        // border-radius: 100px;
-        position: relative;
-        // float: left;
-    }
-
-    p:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 0;
-        height: 0;
-        border: 31px solid transparent;
-        border-right-color: white;
-        border-left: 0;
-        border-bottom: 0;
-        margin-top: -12.5px;
-        margin-left: -31px;
+        color: black;
     }
 }
 
+// SPEECH BUBBLE 
 
+.speechBubble {
+    position: relative;
+    margin: 50px auto;
+    margin-left: 410px;
+    padding: 60px 20px;
+    width: 55%;
+    height: 100%;
+    border-radius: 10px;
+    transform: rotate(0deg) rotateY(-5deg);
+    background: black;
+    text-align: center;
+}
+
+.speechBubble:before, .speechBubble:after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+}
+
+.speechBubble:after {
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  border-radius: inherit;
+  transform: rotate(1.5deg) translate(.35em, -.15em) scale(1.02);
+  background: #f4fbfe;
+}
+
+/* THIS IS THE TRIANGLE AT THE BOTTOM */
+.speechBubble:before {
+  border: solid 0 transparent;
+  border-right: solid 3.5em #f4fbfe;
+  border-bottom: solid .25em black;
+  bottom: .25em; left: 1.25em;
+  width: 0; height: 1em;
+  transform: rotate(110deg) skewX(75deg);
+}
 
 // ANSWERS FORM 
 
-// .players {
-//     height: 75vh;
-//     overflow: hidden;
-//     position: relative; 
-//     // clear: both;
-//     // margin-top: -250px;
-//     // clear: both;
-//     // text-align: center;
-//     // display: inline-block;
-//     // margin-top: 20px;
-//     // width: 100%;
-// }
+// here's how we float 
+.answersContainer {
+    width: 800px;
+    text-align: center;
+    // margin-top: 100px;
+}
 
 .playerAnswers {
-    // margin-top: -px;
     display: inline-block;
-    margin: 0 auto;
+    margin-right: 30%;
+}
+
+.playerSubmit {
+    display: inline-block;
+}
+// end of floats 
+
+.answers .label {
+    width: 200%;
+    // display: block;
+    // display: inline-block;
+    // float: left;;
+    // padding: 10px;
+    // letter-spacing: none;
+}
+
+.answers .label:hover {
+    letter-spacing: normal;
+}
+
+.answers {
+    width: 200%;
+    // margin-right: 100px;
+    // display: inline-block;
+    display: block;
+    // margin: 0 auto;
+    // margin
+    // padding: 20px;
+    // margin-right: 100px;
+    // margin: 10px;
+    // width: 20%;
+    // height: 80px; 
+    // border: 1px solid white;
+    padding: 10px;
+    &:hover {
+        // font-weight: 800;
+        color: $red;
+    }
+}
+
+.answers input[type="radio"]{
+    position: fixed;
+    opacity: 0;
+}
+
+// .answers:focus-within {
+//     font-weight: 800;
+//     color: $red;
+// }
+
+// .answers:focus + label {
+//     font-weight: 800;
+//     color: $red;
+// }
+
+// PLAYER SUBMIT DIV WITH NAME IMG AND SUBMIT BUTTON 
+// PLUS ANIMATIONS
+
+.playerAnswers {
+    // margin-top: 50px;
+    // margin-right: 50px;
+    // display: inline-block;
+    // margin: 0 auto;
+    // margin: 
 }
 
 .players {
@@ -86,19 +148,14 @@
     overflow: hidden;
 }
 
-// form.player {
-//     // width: 100%;
-//     // position: absolute;
-//     top: 0;
-// }
-
 .player1 {
     transition: 0.3s;
 }
 
 .player2 {
     // position: absolute;
-    top: -220px;
+    top: -350px;
+    // top: 0;
     left: 100%;
     transition: 0.3s;
 }
@@ -112,65 +169,48 @@
     right: -300%;
 }
 
-.answers {
-    // margin: 0 auto;
-    // margin
-    padding: 20px;
-
-    // width: 20%;
-    // height: 75px; 
-    // border: 1px solid white;
-    &:hover {
-        // font-weight: 800;
-        color: $red;
-    }
-}
-
-.answers input[type="radio"]{
-    position: fixed;
-    opacity: 0;
-}
-
-.answers:focus-within {
-    font-weight: 800;
-    color: $red;
-}
-
-.answers:focus + label {
-    font-weight: 800;
-    color: $red;
-}
-
-// PLAYER SUBMIT DIV WITH NAME IMG AND SUBMIT BUTTON 
 
 .playerSubmit {
     // float: left;
-    display: inline-block;
+    // display: inline-block;
+    // margin-top: -20px;
     h2 {
         // margin: 20px auto;
         text-transform: capitalize;
+        color: black;
     }
     img {
-        border: 1px solid white;
+        border: 2px solid black;
         border-radius: 50%;
-        width: 40%;
+        width: 65%;
     }
     button {
         display: block;
         // clear: both;
         // width: 100px;
-        // width: 40%;
+        width: 55%;
+        // height: 30px;
+        // height: 40px;
         // text-align: center;
         margin: 0 auto;
+        margin-top: 15px;
     }
 }
 
+.submitAnswerBtn {
+    z-index: 10;
+    margin-top: -300px;
+    // position: absolute;
+    // top: -50%;
+}
+
 .btn {
-    clear: both;
+    // clear: both;
     // display: block;
 }
 
-// rickys stuff 
+
+// EXTRA STUFF  
 
 // .players {
 //     position: relative; 
@@ -195,4 +235,23 @@
 // }
 // form.player4 {
 //     right: -300%;
+// }
+
+// .players {
+//     height: 75vh;
+//     overflow: hidden;
+//     position: relative; 
+//     // clear: both;
+//     // margin-top: -250px;
+//     // clear: both;
+//     // text-align: center;
+//     // display: inline-block;
+//     // margin-top: 20px;
+//     // width: 100%;
+// }
+
+// form.player {
+//     // width: 100%;
+//     // position: absolute;
+//     top: 0;
 // }

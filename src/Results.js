@@ -36,9 +36,11 @@ class Results extends Component {
 
     // if the end is reached change questionProgress to 0 
     componentDidMount(){
+        this.addUser();
         this.getBadges();
 
         if (this.props.questionProgress === 9){
+            this.updateScore()
             this.setState({
                 endOfGame: true
             })
@@ -51,6 +53,35 @@ class Results extends Component {
         this.celebrate();
     }
 
+    addUser = () => {
+        // See if user 
+        const dbRef = firebase.database().ref("users");
+        let databaseUsers;
+
+        dbRef.on("value", (snapshot) => {
+            databaseUsers = snapshot.val();
+        });
+
+        this.props.players.forEach((player) => {
+            let duplicate = false;
+
+            for(const user in databaseUsers) {
+                const dbUsername = databaseUsers[user].username;
+                
+                if (dbUsername === player.username) {
+                    console.log(`Duplicates found. db:${dbUsername} local:${player.username}`);
+                    duplicate = true;
+                }
+            }
+            if (!duplicate) {
+                dbRef.push({
+                    username: player.username,
+                    score: player.score,
+                    badges: [],
+                });
+            }
+        })
+    }
     // checking if we're done the questions in the array 
     // if it is then show another button that goes back to the landing page or go to ending page 
 
@@ -58,9 +89,10 @@ class Results extends Component {
     getBadges = () => {
         const difficulty = this.props.difficulty;
         const arrayClone = Array.from(this.props.players)
-        console.log(difficulty)
+        // console.log(difficulty)
 
         arrayClone.forEach((player) => {
+            // Badge Decider
             if (difficulty === "hard" && player.score === 10) {
                 this.firebaseCheck(player);
             }    
@@ -101,13 +133,46 @@ class Results extends Component {
                 })
 
             } else {
-                // if the name does not exist, just push the new badge 
+                // if the name does not exist, just push the new badge and update score
                 
                 const userRef = firebase.database().ref(player.username)
                 userRef.push(`${categoryNames[this.props.category]} badge`)
             }
 
         })
+    }
+
+    updateScore = () => {
+        console.log("update score")
+        const dbRef = firebase.database().ref("users");
+        let databaseUsers;
+
+        dbRef.on("value", (snapshot) => {
+            databaseUsers = snapshot.val();
+            
+        });
+        
+
+        this.props.players.forEach((player) => {
+            let scoreUpdated = false;
+
+            for(const user in databaseUsers) {
+                const dbUsername = databaseUsers[user].username;
+                
+                if (dbUsername === player.username && !scoreUpdated) {
+                    const thisUserDbRef = firebase.database().ref(`users/${[user]}`);
+                    thisUserDbRef.set({
+                        username: player.username,
+                        score: databaseUsers[user].score + player.score,
+                    })
+                    scoreUpdated = true;
+                }
+            }
+        
+        })
+
+        console.log(databaseUsers);
+
     }
 
     celebrate = () => {

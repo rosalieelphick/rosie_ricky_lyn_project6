@@ -7,18 +7,17 @@ class LandingPage extends Component {
     render() {
         return (
             <div className="landingPage">
-                <Typing speed={90}>
-                    <h1>Welcome to Robot Trivia</h1>
+                <Typing speed={130}>
+                    <h1>Robot Trivia</h1>
                 </Typing>
                 <img src={require("./assets/robotsEight.png")} alt=""/>
-                {/* link that goies to start page */}
-                <div>
+                <div className="labelContainer">
                     <Link to="/start">
-                        <button className="btn">Start Playing</button>
+                        <button className="label">Start Playing</button>
                     </Link>
-                    {/* link that goes to leaderboard page */}
+
                     <Link to="/leaderboard">
-                            <button className="btn">Leaderboard</button>
+                        <button className="label">Leaderboard</button>
                     </Link> 
                 </div>
             </div>      

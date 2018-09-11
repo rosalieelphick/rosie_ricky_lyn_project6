@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './App.css';
+import './styles/styles.css'
 // import './App.css';
 // import './styles/partials/main.css'
 import './partials/main.css'

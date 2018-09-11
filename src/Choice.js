@@ -50,54 +50,59 @@ class Choice extends Component {
 
     render(){
         return(
-            <Container>
+            <Container className="choiceContainer">
+
+                <div className="containerWrapper">
 
                 <h1>Trivia Options</h1>
 
-                <Section>
-                    <h2>Choose a category</h2>                    
-                    <form action="">
+                <Section className="categorySection labelContainer clearfix">
+                    <h2>Category</h2>                    
+                    <form className="clearfix" action="">
+                        <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="27" id="animals"/>
+                        <label className="label" htmlFor="animals">Animals</label>
+        
+                        <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="18" id="mythology"/>
+                        <label className="label" htmlFor="mythology">Computers</label>
 
-                        {/* <input type="radio" name="category" value="770" id="music" class="category">
-                            <label for="music"><i class="fas fa-music"></i> Pop Music</label> */}
-                        <label htmlFor="animals">Animals</label>
-                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="27" id="animals"/>
+                        <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="23" id="history"/>
+                        <label className="label" htmlFor="history">History</label>
 
-                        <label htmlFor="mythology">Computers</label>
-                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="18" id="mythology"/>
+                        <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="11" id="sports"/>
+                        <label className="label" htmlFor="sports">Film</label>
 
-                        <label htmlFor="history">History</label>
-                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="23" id="history"/>
-
-                        <label htmlFor="sports">Film</label>
-                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="11" id="sports"/>
-
-                        <label htmlFor="politics">Politics</label>
-                        <input onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="24" id="politics"/>
+                        <input className="visuallyHidden" onChange={this.handleChangeCategory} name="categoryChoice" type="radio" value="24" id="politics"/>
+                        <label className="label" htmlFor="politics">Politics</label>
                     </form>
 
-                </Section>
+                </Section>                
                 
-                <Section>
-                    <h2>Choose your difficulty level</h2>
+                <Section className="difficultySection labelContainer clearfix">
+                    <h2>Difficulty Level</h2>
 
-                    <form action="">
+                        <form className="clearfix" action="">
+                        <input className="visuallyHidden" onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="easy" id="easy"/>
+                        <label className="label" htmlFor="easy">Easy</label>
 
-                        <label htmlFor="easy">Easy</label>
-                        <input onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="easy" id="easy"/>
+                        <input className="visuallyHidden" onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="medium" id="medium"/>
+                        <label className="label" htmlFor="medium">Medium</label>
 
-                        <label htmlFor="medium">Medium</label>
-                        <input onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="medium" id="medium"/>
-
-                        <label htmlFor="hard">Hard</label>
-                        <input onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="hard" id="hard"/>
+                        <input className="visuallyHidden" onChange={this.handleChangeDifficulty} name="valueChoice" type="radio" value="hard" id="hard"/>
+                        <label className="label" htmlFor="hard">Hard</label>
                     </form>
 
                 </Section>
+
+                {this.state.difficultyValue ? 
 
                 <Link to="/questions">
-                    <button onClick={() => {this.handleSubmit()}}>Submit</button>
+                    <button className="btn" onClick={() => {this.handleSubmit()}}>Submit</button>
                 </Link>
+
+                : null }
+
+                </div>
+
             </Container>
         );
     }
