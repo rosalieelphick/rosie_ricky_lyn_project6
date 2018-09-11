@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom"; 
 import './questions.css'
 import posed from 'react-pose';
-import Typing from "react-typing-animation"
+import Typing from "react-typing-animation" 
 
 const Container = posed.div({
     enter: { staggerChildren: 50 }
@@ -22,7 +22,7 @@ class Questions extends Component {
         this.state = {
             questionNumber: 0,
             chosenAnswer: "",
-            position: [0, 100, 200, 300],
+            position: [50, 150, 250, 350],
         }
     }
 
@@ -79,7 +79,7 @@ class Questions extends Component {
     nextPlayer = (player) => {
         const arrayClone = Array.from(this.state.position);
         arrayClone[player] = -100;
-        arrayClone[player + 1] = 0;
+        arrayClone[player + 1] = 50;
 
         this.setState({
             position: arrayClone
@@ -88,68 +88,91 @@ class Questions extends Component {
 
     render() {
         return (
-            <Container className="questionsPage">
-
-                <header className="questionsHeader">
-                    <h1>Here are your questions</h1>
-                </header>
-
+            <Container className="questionsPageContainer">
+                {/* <header className="questionsHeader"> */}
+                
+                    <h1>Here's your question</h1>
+                {/* </header> */}
+                
+            
                 <Section>
+                    
                 <div className="hostQuestion">
                     {/* <img src={require("./assets/roboHostEdit2.png")} alt="" /> */}
                     
                     {this.props.questions[0]
-                        ? <p>
+                            ? <Typing speed={35}><p className="speechBubble">
                             {this.props.questions[this.props.questionProgress].question}
-                        </p>
+                        </p></Typing>
                     : null}
+                    {this.state.allAnswersSubmitted
+                        ? <Link to="/results" >
+                            <button className="btn submitAnswerBtn" onClick={() => { this.resetSubmit() }}>Submit All</button>
+                        </Link>
+                        : null
+                    }
                 </div>
                 <div className="players">
                     {this.props.players.map((player, i) => {
                         return(
-                            
-                            <form key={player.username} 
-                                className={`player player${i + 1}`}
-                                style={{left: `${this.state.position[i]}%`}}
+                            <div className="answersContainer"
+                            className={`player player${i + 1}`}
+                            // className={`player${i + 1}`}
+                            style={{left: `${this.state.position[i]}%`}}
+                            >
+                                <form key={player.username} 
+                                    className="playerAnswers"
+                                    // className={`player player${i + 1}`}
+                                    // style={{left: `${this.state.position[i]}%`}}
+                                    >
+                                    {this.props.questions[0]
+                                        ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
+                                            return(answer && (
+                                                    <div className="answers">
+                                                        <input 
+                                                            id={`${player.username}${j}`} 
+                                                            // style={{ display: 'block' }}
+                                                            type="radio" 
+                                                            name={`multipleChoice${i}`}
+                                                            onChange={this.handleChange}
+                                                            value={answer}
+                                                            className="eachChoice"
+                                                        />  
+                                                        <label className="label" htmlFor={`${player.username}${j}`} key={j} > 
+                                                        {/* {choice[j]}:  */}
+                                                        {answer} 
+                                                        </label>
+                                                    </div>
+                                            )) 
+                                        })
+                                    : null}
+                                </form>
+                                
+                                <div className="playerSubmit" 
+                                    // className={`player${i + 1}`}
+                                    // style={{ left: `${this.state.position[i]}%` }}
                                 >
-                                <img src={`https://robohash.org/${player.username}.png`} alt="" />
-                                <h2>{player.username}</h2>
-
-                                {this.props.questions[0]
-                                    ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
-                                        return(answer && (
-                                            <div className="choice">
-                                                <label htmlFor={`${player.username}${j}`} key={j}> {choice[j]}: {answer} </label>
-                                                <input 
-                                                    id={`${player.username}${j}`} 
-                                                    type="radio" 
-                                                    name={`multipleChoice${i}`}
-                                                    onChange={this.handleChange}
-                                                    value={answer}
-                                                />
-                                            </div>
-                                        )) 
-                                    })
-                                : null}
-
-                                <button id={player.username} onClick={(e) => {
-                                    this.checkAnswer(e, i);
-                                    this.nextPlayer(i);
-                                }}>Submit</button>
-                            </form>
+                                    <h2>{player.username}</h2>
+                                    <img src={`https://robohash.org/${player.username}.png`} alt="" />
+                                    <button className="btn" id={player.username} onClick={(e) => {
+                                        this.checkAnswer(e, i);
+                                        this.nextPlayer(i);
+                                    }}>Submit</button>
+                                </div>
+                            </div> 
                         )
                     })}
                 </div>
 
-                {this.state.allAnswersSubmitted 
-                    ? <Link to="/results" >
-                        <button onClick={() => {this.resetSubmit()}}>Submit All</button>
-                    </Link>
-                    : null
-                }
-                
-                </Section>
-
+            {/* {this.state.allAnswersSubmitted 
+                ? <Link to="/results" >
+                    <button className="btn submitAnswerBtn" onClick={() => {this.resetSubmit()}}>Submit All</button>
+                </Link>
+                : null
+            } */}
+             
+            </Section>
+            {/* </header> */}
             </Container>
         );
     }

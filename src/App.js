@@ -71,8 +71,13 @@ class App extends Component {
       // ===============
 
       const doubleQuoteRegex = /(&quot;)+|(&ldquo)+|(&rdquo;)/g;
-      const singleQuoteRegex = /(&#039;)/g;
+      const singleQuoteRegex = /(&#039;)+|(&rsquo;)/g;
       const ampersandRegex = /(&amp;)/g;
+      const nRegex = /(&ntilde;)/g;
+      const aRegex = /(&aacute;)/g;
+      const eRegex = /(&eacute;)/g;
+      const periodRegex = /(&hellip;)/g; 
+
 
       // cloning and then mapping through each question 
       const clonedArayOne = Array.from(this.state.questions)
@@ -84,7 +89,13 @@ class App extends Component {
       eachQuestion.forEach((item) => {
         filtredQuestionsOne = item.replace(doubleQuoteRegex, '"');
         filtredQuestionsOne = filtredQuestionsOne.replace(singleQuoteRegex, "'");
-        filtredQuestionsOne = filtredQuestionsOne.replace(ampersandRegex, "&")
+        filtredQuestionsOne = filtredQuestionsOne.replace(ampersandRegex, "&");
+        filtredQuestionsOne = filtredQuestionsOne.replace(nRegex, "n");
+        filtredQuestionsOne = filtredQuestionsOne.replace(aRegex, "a");
+        filtredQuestionsOne = filtredQuestionsOne.replace(eRegex, "e");
+        filtredQuestionsOne = filtredQuestionsOne.replace(periodRegex, ".");
+
+
         filteredArrayOne.push(filtredQuestionsOne)
       })
 
@@ -103,6 +114,11 @@ class App extends Component {
         filteredCorrectOne = item.replace(doubleQuoteRegex, '"');
         filteredCorrectOne = filteredCorrectOne.replace(singleQuoteRegex, "'");
         filteredCorrectOne = filteredCorrectOne.replace(ampersandRegex, "&");
+        filteredCorrectOne = filteredCorrectOne.replace(nRegex, "n");
+        filteredCorrectOne = filteredCorrectOne.replace(aRegex, "a");
+        filteredCorrectOne = filteredCorrectOne.replace(eRegex, "e");
+        filteredCorrectOne = filteredCorrectOne.replace(periodRegex, ".");
+
         filtereCorrectAnswer.push(filteredCorrectOne)
       })
 
@@ -113,87 +129,10 @@ class App extends Component {
         clonedArayOne[i].correct_answer = filtereCorrectAnswer[i]
       }
 
-      // console.log('correct answers object ');
-      // console.log(clonedArayOne)
-      
-
-      // // // replace the correct answer in the questions object
-      // let clonedRightAnswer = Array.from(this.state.questions)
-      // for (let i = 0; i <= (clonedRightAnswer.length - 1); i++){
-      //   clonedRightAnswer[i].correct_answer = filteredCorrectAnd[i]
-      // }
-
-
-      // console.log("filtered individual correct answers oject")
-      // console.log(clonedArayOne);
-      
-
-      // filtering through for single quotes
-      // let filteredArrayTwo = [];
-      // let filtredQuestionsTwo;
-      // filteredArrayOne.forEach((item) => {
-      //   filtredQuestionsTwo = item.replace(singleQuoteRegex, "'")
-      //   filteredArrayTwo.push(filtredQuestionsTwo)
-      // })
-
-      // filtering through for &ampersands&
-      // let filteredArrayThree = [];
-      // let filtredQuestionsThree;
-      // filteredArrayTwo.forEach((item) => {
-      //   filtredQuestionsThree = item.replace(ampersandRegex, "&")
-      //   filteredArrayThree.push(filtredQuestionsThree)
-      // })
-
-      // putting the filtered questions back 
-      // let clonedArray = Array.from(this.state.questions);      
-      // for (let i = 0; i <= (clonedArray.length - 1); i++){
-      //   clonedArray[i].question = filteredArrayOne[i]
-      // }
-
-      // FILTER THROUGH CORRECT ANSWER 
-
       this.setState({
         questions: clonedArayOne
       })
       
-      
-      // // FILTERIGN RIGHT ANSWER
-      // const clonedForRightAnswer = Array.from(this.state.questions);      
-      // const eachCorrectAnswer = clonedForRightAnswer.map(answer => answer.correct_answer);
-    
-      
-      // let filtereCorrectAnswer = [];
-      // let filteredCorrectOne; 
-      // eachCorrectAnswer.forEach((item) => {
-      //   filteredCorrectOne = item.replace(doubleQuoteRegex, '"');
-      //   filtereCorrectAnswer.push(filteredCorrectOne)
-      // })
-
-      // let filteredCorrectSingle =[];
-      // let filteredCorrectTwo;
-      // filtereCorrectAnswer.forEach((item) => {
-      //   filteredCorrectTwo = item.replace(singleQuoteRegex, "'");
-      //   filteredCorrectSingle.push(filteredCorrectTwo)
-      // })
-
-      // // filtering through for &ampersands&
-      // let filteredCorrectAnd = [];
-      // let filtredCorrectThree;
-      // filteredCorrectSingle.forEach((item) => {
-      //   filtredCorrectThree = item.replace(ampersandRegex, "&")
-      //   filteredCorrectAnd.push(filtredCorrectThree)
-      // })
-
-      // // // replace the correct answer in the questions object
-      // let clonedRightAnswer = Array.from(this.state.questions)
-      // for (let i = 0; i <= (clonedRightAnswer.length - 1); i++){
-      //   clonedRightAnswer[i].correct_answer = filteredCorrectAnd[i]
-      // }
-
-      this.setState({
-        // questions: clonedRightAnswer
-      })
-
     })
   }
 
@@ -226,11 +165,14 @@ class App extends Component {
       // REGEX FILTERING ANSWER
       // ==============
 
-      // const doubleQuoteRegex = /(&quot;)+|(&ldquo)/g;
       const doubleQuoteRegex = /(&quot;)+|(&ldquo)+|(&rdquo;)/g;
-      const singleQuoteRegex = /(&#039;)/g;
+      const singleQuoteRegex = /(&#039;)+|(&rsquo;)/g;
       const ampersandRegex = /(&amp;)/g;
-      
+      const nRegex = /(&ntilde;)/g;
+      const aRegex = /(&aacute;)/g;
+      const eRegex = /(&eacute;)/g;
+      const periodRegex = /(&hellip;)/g; 
+
       // filtering through double quotes
       let filteredAnswers = [];
       let filteredEachAnswer;
@@ -238,6 +180,10 @@ class App extends Component {
         filteredEachAnswer = item.replace(doubleQuoteRegex, '"');
         filteredEachAnswer = filteredEachAnswer.replace(singleQuoteRegex, "'");
         filteredEachAnswer = filteredEachAnswer.replace(ampersandRegex, "&");
+        filteredEachAnswer = filteredEachAnswer.replace(nRegex, "n");
+        filteredEachAnswer = filteredEachAnswer.replace(aRegex, "a");
+        filteredEachAnswer = filteredEachAnswer.replace(eRegex, "e");
+        filteredEachAnswer = filteredEachAnswer.replace(periodRegex, ".");
         filteredAnswers.push(filteredEachAnswer)
       })
 
@@ -266,8 +212,7 @@ class App extends Component {
 
       // replacing each question's allChoices with the filtered answers  
         question.allChoices = filteredAnswers
-
-       
+      
     
       return question;
     })

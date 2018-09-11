@@ -3,12 +3,12 @@ $lightBlue: #9ad4e6;
 $red: #ed1a1e;
 $grey: #c4c4c4;
 
-@mixin breakPoint($point) {
-  @if $point == medium {
-      @media (min-width: 620px) { @content; }
-  } 
+// @mixin breakPoint($point) {
+//   @if $point == medium {
+//       @media (min-width: 620px) { @content; }
+//   } 
   
-  @else if $point == large {
-      @media (min-width: 800px) { @content; }
-  } 
-}
+//   @else if $point == large {
+//       @media (min-width: 800px) { @content; }
+//   } 
+// }

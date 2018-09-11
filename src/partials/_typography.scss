@@ -6,15 +6,19 @@
 
 html {
     font-size: 62.5%;
+    color: white;
 }
 
 h1, p, button, label {
     font-family: 'Montserrat', sans-serif;
+    color: white;
 }
 
 h1 {
     font-size: 4rem;
     text-transform: uppercase;
+    color: $lightBlue;
+    text-shadow: 1px 1px 3px black;
 }
 
 h2 {
