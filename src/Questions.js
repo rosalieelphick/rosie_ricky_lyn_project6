@@ -86,18 +86,28 @@ class Questions extends Component {
         return (
             <Container className="questionsPageContainer">
                 {/* <header className="questionsHeader"> */}
-                    <h1>Here are your questions</h1>
+                
+                    <h1>Here's your question</h1>
                 {/* </header> */}
+                
+                
 
                 <Section>
+                    
                 <div className="hostQuestion">
-                    <img src={require("./assets/roboHostEdit2.png")} alt="" />
+                    {/* <img src={require("./assets/roboHostEdit2.png")} alt="" /> */}
                     
                     {this.props.questions[0]
-                            ? <p className="speechBubble">
+                            ? <Typing speed={35}><p className="speechBubble">
                             {this.props.questions[this.props.questionProgress].question}
-                        </p>
+                        </p></Typing>
                     : null}
+                    {this.state.allAnswersSubmitted
+                        ? <Link to="/results" >
+                            <button className="btn submitAnswerBtn" onClick={() => { this.resetSubmit() }}>Submit All</button>
+                        </Link>
+                        : null
+                    }
                 </div>
                 <div className="players">
                     {this.props.players.map((player, i) => {
@@ -116,7 +126,6 @@ class Questions extends Component {
                                         ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
                                             return(answer && (
                                                     <div className="answers">
-                                                        <label className="label" htmlFor={`${player.username}${j}`} key={j} > {choice[j]}: {answer} </label>
                                                         <input 
                                                             id={`${player.username}${j}`} 
                                                             // style={{ display: 'block' }}
@@ -126,11 +135,16 @@ class Questions extends Component {
                                                             value={answer}
                                                             className="eachChoice"
                                                         />  
+                                                        <label className="label" htmlFor={`${player.username}${j}`} key={j} > 
+                                                        {/* {choice[j]}:  */}
+                                                        {answer} 
+                                                        </label>
                                                     </div>
                                             )) 
                                         })
                                     : null}
                                 </form>
+                                
                                 <div className="playerSubmit" 
                                     // className={`player${i + 1}`}
                                     // style={{ left: `${this.state.position[i]}%` }}
@@ -147,12 +161,12 @@ class Questions extends Component {
                     })}
                 </div>
 
-            {this.state.allAnswersSubmitted 
+            {/* {this.state.allAnswersSubmitted 
                 ? <Link to="/results" >
                     <button className="btn submitAnswerBtn" onClick={() => {this.resetSubmit()}}>Submit All</button>
                 </Link>
                 : null
-            }
+            } */}
              
             </Section>
             {/* </header> */}

@@ -17,6 +17,8 @@ h1, p, button, label {
 h1 {
     font-size: 4rem;
     text-transform: uppercase;
+    color: $lightBlue;
+    text-shadow: 1px 1px 3px black;
 }
 
 h2 {
