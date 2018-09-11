@@ -43,7 +43,8 @@ button {
   box-shadow: inset dimgrey 0px 1px 4px 0px, inset black 0px 13px 72px 0px, inset black 1px 2px 81px 0px, aqua 0px -6px 44px -15px, aqua 0px 6px 44px -15px;
   letter-spacing: 3px; }
 
-.labelContainer input:checked + label, .answers input:checked + label {
+.labelContainer input:checked + label,
+.answers input:checked + label {
   color: aqua;
   box-shadow: inset dimgrey 0px 1px 4px 0px, inset black 0px 13px 72px 0px, inset black 1px 2px 81px 0px, aqua 0px -6px 44px -15px, aqua 0px 6px 44px -15px; }
 
@@ -80,9 +81,10 @@ a {
 .playerContainer {
   position: absolute;
   transition: 0.3s; }
+  .playerContainer .player {
+    float: left; }
 
 .player {
-  float: left;
   position: relative;
   text-align: center; }
 
@@ -211,14 +213,10 @@ h1 {
   box-shadow: inset rgba(0, 0, 0, 0.7) 0px 1px 3px, grey 0 1px 5px;
   background-color: rgba(0, 0, 0, 0.2); }
 
-body {
-  overflow-y: hidden; }
-
 .questionsPageContainer {
   text-align: center;
   margin: 0 auto;
-  overflow: hidden;
-  padding: 10px; }
+  overflow: hidden; }
 
 .hostQuestion img {
   position: absolute;
@@ -233,8 +231,8 @@ body {
 .speechBubble {
   position: relative;
   margin: 40px auto;
-  padding: 40px 20px;
-  width: 50%;
+  padding: 30px 20px;
+  width: 80%;
   border-radius: 10px;
   transform: rotate(0deg) rotateY(-5deg);
   background: black;
@@ -252,16 +250,16 @@ body {
   left: 0;
   border-radius: inherit;
   transform: rotate(1.5deg) translate(10px, -1px) scale(1.02);
-  background: #f4fbfe; }
+  background: #f4fbfe;
+  border: 1px solid black; }
 
-/* THIS IS THE TRIANGLE AT THE BOTTOM */
 .answersContainer {
   width: 500px;
   text-align: center; }
 
 .playerAnswers {
   display: inline-block;
-  width: 25%; }
+  min-width: 25%; }
 
 .answers {
   display: block; }
@@ -271,6 +269,7 @@ body {
 
 .answers .label {
   width: 100%;
+  font-weight: 600;
   letter-spacing: none; }
 
 .answers .label:hover {
@@ -286,25 +285,20 @@ body {
 
 .players {
   position: relative;
-  height: 75vh;
+  height: 60vh;
   overflow: hidden;
   margin-top: -20px; }
-
-.player1 {
-  transition: 0.3s; }
-
-.player2 {
-  top: -75%;
-  left: 100%;
-  transition: 0.3s; }
-
-.player3 {
-  top: -160%;
-  left: 200%; }
-
-.player4 {
-  top: -240%;
-  left: 400%; }
+  .players .player {
+    position: absolute;
+    transition: 0.3s;
+    transform: translateX(-50%);
+    width: 100%; }
+  .players .player2 {
+    left: 100%; }
+  .players .player3 {
+    left: 200%; }
+  .players .player4 {
+    left: 400%; }
 
 .playerSubmit h2 {
   text-transform: capitalize;
@@ -315,7 +309,8 @@ body {
   border: 2px solid black;
   border-radius: 50%;
   width: 65%;
-  background-color: #c4c4c4; }
+  background-color: #c4c4c4;
+  box-shadow: inset 0px 0px 83px #fefefe; }
 
 .playerSubmit button {
   display: block;

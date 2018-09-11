@@ -40,7 +40,9 @@
             right: -90px;
             top: 0px;
             animation: wrench 1.5s infinite linear;
-            transform: rotate(0)
+            transform: rotate(0);
+            width: auto;
+            height: auto;
         }
         .overlay {
             position: absolute;

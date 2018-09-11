@@ -1,15 +1,12 @@
 
 // HOST AND QUESTION
 
-body {
-    overflow-y: hidden;
-}
 
 .questionsPageContainer {
     text-align: center;
     margin: 0 auto;
     overflow: hidden;
-    padding: 10px;
+    // padding: 10px;
     // overflow-y: hidden;
     // width: 1000px;
 }
@@ -31,24 +28,12 @@ body {
 
 // SPEECH BUBBLE 
 
-// .speechBubble {
-//     width: 50%;
-//     height: 100px;
-//     padding: 35px 0 ;
-//     border: 1px solid black;
-//     margin: 0 auto;
-// }
-
 .speechBubble {
     position: relative;
     margin: 40px auto;
+    padding: 30px 20px;
+    width: 80%;
 
-    // margin-left: 410px;
-    padding: 40px 20px;
-    width: 50%;
-    // height: 100vh;
-    // height: 50px;
-    // height: 70%;
     border-radius: 10px;
     transform: rotate(0deg) rotateY(-5deg);
     background: black;
@@ -69,41 +54,22 @@ body {
   border-radius: inherit;
 //   transform: rotate(1.5deg) translate(.35em, -.15em) scale(1.02);
     transform: rotate(1.5deg) translate(10px, -1px) scale(1.02);
-  background: #f4fbfe;
+    background: #f4fbfe;
+    border: 1px solid black;
 }
-
-/* THIS IS THE TRIANGLE AT THE BOTTOM */
-// .speechBubble:before {
-//   border: solid 0 transparent;
-// //   border-right: solid 3.5em #f4fbfe;
-//     border-right: solid 50px #f4fbfe;
-//     border-bottom: solid 10px black;
-
-// //   border-bottom: solid .25em black;
-//     bottom: 10px;
-//     // bottom: .25em; 
-//     // left: 1.25em;
-//     left: 20px;
-//     // width: 0; 
-// //   height: 1em;
-//     height: 20%;
-//     transform: rotate(110deg) skewX(75deg);
-// }
 
 // ANSWERS FORM 
 
-// here's how we float 
 .answersContainer {
     width: 500px;
     text-align: center;
-    // margin: 0 auto;
-    // margin-top: 100px;
+
 }
 
 .playerAnswers {
     display: inline-block;
     // margin-right: 20%;
-    width: 25%;
+    min-width: 25%;
 }
 
 .answers {
@@ -117,6 +83,7 @@ body {
 
 .answers .label {
     width: 100%;
+    font-weight: 600;
     // display: block;
     // display: inline-block;
     // float: left;;
@@ -128,9 +95,7 @@ body {
 
 .answers .label:hover {
     letter-spacing: normal;
-    // color: aqua;
-    // box-shadow: inset dimgrey 0px 1px 4px 0px, inset black 0px 13px 72px 0px, inset black 1px 2px 81px 0px, aqua 0px -6px 44px -15px, aqua 0px 6px 44px -15px;
-    // letter-spacing: 3px;
+
 }
 
 .answers {
@@ -155,49 +120,36 @@ body {
     // margin: 
 }
 
+
 .players {
     position: relative; 
-    height: 75vh;
+    height: 60vh;
     overflow: hidden;
     margin-top: -20px;
     // z-index: -10;
-}
+    .player {
+        position: absolute;
+        transition: 0.3s;
+        transform: translateX(-50%);
+        width: 100%;
+    }
 
-.player1 {
-    transition: 0.3s;
-}
+    .player2 {
+        left: 100%;
+    }
+    
+    .player3 {
+        left: 200%;
+    }
+    
+    .player4 {
+        left: 400%;
+    }
 
-.player2 {
-    // position: absolute;
-    // top: -350px;
-    top: -75%;
-    // top: 0;
-    left: 100%;
-    transition: 0.3s;
 }
-
-.player3 {
-    // top: -350px;
-    // top: -150%;
-    top: -160%;
-    // top: 0;
-    // right: -200%;
-    left: 200%;
-}
-
-.player4 {
-    // right: -300%;
-    // top: -350px;
-    top: -240%;
-    left: 400%;
-}
-
 
 .playerSubmit {
-    // float: left;
-    // display: inline-block;
-    // margin-top: -20px;
-    // background-color: red;
+
     h2 {
         text-transform: capitalize;
         color: white;
@@ -208,6 +160,7 @@ body {
         border-radius: 50%;
         width: 65%;
         background-color: $grey;
+        box-shadow: inset 0px 0px 83px #fefefe;
     }
     button {
         display: block;

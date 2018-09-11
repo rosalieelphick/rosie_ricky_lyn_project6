@@ -22,7 +22,7 @@ class Questions extends Component {
         this.state = {
             questionNumber: 0,
             chosenAnswer: "",
-            position: [0, 100, 200, 300],
+            position: [50, 150, 250, 350],
         }
     }
 
@@ -75,7 +75,7 @@ class Questions extends Component {
     nextPlayer = (player) => {
         const arrayClone = Array.from(this.state.position);
         arrayClone[player] = -100;
-        arrayClone[player + 1] = 0;
+        arrayClone[player + 1] = 50;
 
         this.setState({
             position: arrayClone
@@ -90,8 +90,7 @@ class Questions extends Component {
                     <h1>Here's your question</h1>
                 {/* </header> */}
                 
-                
-
+            
                 <Section>
                     
                 <div className="hostQuestion">
