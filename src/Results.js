@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import firebase from './firebase';
 import posed from 'react-pose';
 import Typing from "react-typing-animation"
-import './Results.css'
 import wrongImg from './assets/wrench.png'
 
 const Container = posed.div({
@@ -110,7 +109,8 @@ class Results extends Component {
                         thisUserDbRef.set({
                             score: user.score,
                             username: user.username,
-                            badge: categoryNames[this.props.category]
+                            badge: [categoryNames[this.props.category]]
+
                         })
                     }
                 })
@@ -162,7 +162,13 @@ class Results extends Component {
         return (
             <Container className="results">
                 
-                <h1>Results</h1>
+                {this.state.endOfGame 
+                
+                ? <h1>Final Results</h1>
+                : <h1>Results</h1>
+                
+                }
+                      
                 <Section>
                 {this.props.questions[0]
                     ? <p>
@@ -171,7 +177,7 @@ class Results extends Component {
                 : null}
 
                 <Typing speed={35}>
-                    <h2>The answer is: {this.props.questions[this.props.questionProgress].correct_answer}</h2>
+                    <h2>{this.props.questions[this.props.questionProgress].correct_answer}</h2>
                 </Typing>
 
                 {this.props.players.map((player, i) => {
@@ -182,37 +188,43 @@ class Results extends Component {
                             <h3>{player.username}</h3>
 
                             <div className="avatar">
-                                <img src={`https://robohash.org/${player.username}.png`} alt="" />
+                                <img className="avatarImage" src={`https://robohash.org/${player.username}.png`} alt="" />
                                 
                                 {player.correct 
-                                    ? <div>
-                                        {/* <p className="correct">CORRECT</p> */}
+                                    ? <div className="animationContainer">
+                                        <p className="correct">RIGHT</p>
                                         {this.state.confetti.map((eachConfetti, i) => {
                                             return <div className={`confetti confetti${i}`}></div>
                                         })}
                                     </div>
-                                    : <div>
+                                    : <div className="animationContainer">
                                         <img src={wrongImg} alt="" className="wrongAnimation"/>
                                         <div className="overlay"></div>
-                                        {/* <p className="wrong">WRONG</p> */}
+                                        <p className="wrong">WRONG</p>
                                     </div>
                                 }
                             </div>
-                            <p>{`your score is currently ${player.score}`}</p>
+
+                            {this.state.endOfGame
+
+                            ? <p>{`Final score : ${player.score}`}</p>
+
+                            : <p>{`Current score : ${player.score}`}</p>
+
+                            }
 
                             </div>
                         </div>
                     )
                 })}
      
-                {/* if it's end of the gamedo this, if it's not go to the next question */}
                 {this.state.endOfGame 
                     ? <Link to="/">
-                        <button onClick={() => {this.props.resetQuestions()}}>Play Again</button>
+                        <button className="btn" onClick={() => {this.props.resetQuestions()}}>Play Again</button>
                     </Link> 
 
                     : <Link to="/questions">
-                        <button onClick={() => { this.props.nextQuestion() }}>Next Question</button>
+                        <button className="btn" onClick={() => { this.props.nextQuestion() }}>Next Question</button>
                     </Link>
                 }
                 </Section>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import './styles/styles.css'
 import './partials/main.css'
-import './questions.css'
 import axios from "axios"; 
 import { BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 import posed, { PoseGroup } from 'react-pose';
@@ -77,6 +76,7 @@ class App extends Component {
       const aRegex = /(&aacute;)/g;
       const eRegex = /(&eacute;)/g;
       const periodRegex = /(&hellip;)/g; 
+      const uRegex = /(&uuml;)/g;
 
 
       // cloning and then mapping through each question 
@@ -94,6 +94,8 @@ class App extends Component {
         filtredQuestionsOne = filtredQuestionsOne.replace(aRegex, "a");
         filtredQuestionsOne = filtredQuestionsOne.replace(eRegex, "e");
         filtredQuestionsOne = filtredQuestionsOne.replace(periodRegex, ".");
+        filtredQuestionsOne = filtredQuestionsOne.replace(uRegex, ".");
+
 
 
         filteredArrayOne.push(filtredQuestionsOne)
@@ -172,6 +174,7 @@ class App extends Component {
       const aRegex = /(&aacute;)/g;
       const eRegex = /(&eacute;)/g;
       const periodRegex = /(&hellip;)/g; 
+      const uRegex = /(&uuml;)/g;
 
       // filtering through double quotes
       let filteredAnswers = [];
@@ -184,6 +187,10 @@ class App extends Component {
         filteredEachAnswer = filteredEachAnswer.replace(aRegex, "a");
         filteredEachAnswer = filteredEachAnswer.replace(eRegex, "e");
         filteredEachAnswer = filteredEachAnswer.replace(periodRegex, ".");
+        filteredEachAnswer = filteredEachAnswer.replace(uRegex, ".");
+
+
+        
         filteredAnswers.push(filteredEachAnswer)
       })
 

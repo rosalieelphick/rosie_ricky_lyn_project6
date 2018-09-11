@@ -10,13 +10,15 @@
 
     .robotsEight,
     .robotsFour {
-        border-bottom: 4px solid black;
-        margin-top: -50px;
         width: 60%;
+        display: block;
+        margin: 0 auto;
+        margin-top: -50px;
     }
 
     .labelContainer {
         width: 90%;
+        margin-top: 0;
     }
 
     .robotsFour {

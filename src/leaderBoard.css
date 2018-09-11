@@ -129,25 +129,47 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 .leaderBoard {
-  text-align: center; }
+  max-width: 1200px;
+  text-align: center;
+  margin: 0 auto; }
   .leaderBoard .leaderboardAvatar {
     display: inline-block; }
   .leaderBoard .scoreBadge {
-    display: inline-block;
-    padding: 10px;
-    vertical-align: top; }
+    display: block;
+    margin-left: 9px; }
   .leaderBoard img {
     width: 100px;
+    margin: 0 auto;
     display: block;
     border: 1px solid black;
     border-radius: 50%;
-    background-color: lightgrey; }
+    background-color: #c4c4c4;
+    box-shadow: inset 0px 0px 83px #fefefe; }
   .leaderBoard h3 {
-    text-align: left; }
+    text-align: center;
+    font-size: 1.7rem;
+    color: #9ad4e6; }
   .leaderBoard .badges {
     display: inline-block;
-    width: 30%;
-    text-align: left; }
+    width: 28%;
+    height: 220px;
+    vertical-align: top; }
   .leaderBoard .badges p {
+    text-align: center;
     line-height: 10px;
     display: block; }
+  .leaderBoard .labelContainer {
+    margin: 10px;
+    padding: 5px; }
+  .leaderBoard .btn {
+    margin: 10px auto;
+    display: block;
+    margin-bottom: 10px; }
+
+@media (max-width: 700px) {
+  .leaderBoard .badges {
+    width: 40%; } }
+
+@media (max-width: 430px) {
+  .leaderBoard .badges {
+    width: 70%; } }
