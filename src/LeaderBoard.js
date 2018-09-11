@@ -17,24 +17,12 @@ class LeaderBoard extends Component {
         const dbRef = firebase.database().ref("users");
 
         dbRef.on("value", (snapshot) => {
-            // console.log(snapshot.val());
-            // Change object into array
-            // Display array onto screen
-                // Display name and badges 
-
             let users = Object.entries(snapshot.val());
-            console.log(users);
 
-            users = users.map((user) => {
-                const newArray = user;
-                newArray[1] = Object.values(user[1]);
-
-                return newArray;                
-            })
+            users = users.filter(user => user[1].score > 0)
+                .map(user => user[1])
+                .sort((a, b) => b.score - a.score);
             
-            console.log(users);
-            
-
             this.setState({ users });
         })
     }
@@ -48,10 +36,14 @@ class LeaderBoard extends Component {
                     {this.state.users.map((user, i) => {
                         return (
                             <div className="badges">
-                                <h3>#{i + 1}. {user[1][1]}</h3>
-                                <img src={`https://robohash.org/${user[1][1]}.png`} alt=""/>
-                                <p>Score: {user[1][0]}</p>
-                                
+                                    <h3>#{i + 1}. {user.username}</h3>
+                                <div className="leaderboardAvatar">
+                                    <img src={`https://robohash.org/${user.username}.png`} alt=""/>
+                                </div>
+                                <div className="scoreBadge">
+                                    <p>Score: {user.score}</p>
+                                    {user.badge && <p>Badges: {user.badge}</p>}
+                                </div>
                             </div>                            
                         )
                     })}
