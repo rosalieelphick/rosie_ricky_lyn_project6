@@ -25,18 +25,23 @@
     text-align: center;
 }
 
+.playerName {
+    position: relative;
+}
+
 .previousPlayer,
 .nextPlayer {
     border: 0;
     position: absolute;
-    background-color: dimgrey;
+    background-color: grey;
     fill: $lightBlue;
-    padding-top: 5px;
+    padding-top: 3px;
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    box-shadow: #2d2f33 0px 0px 20px;
+    box-shadow: dimgrey 0px 0px 20px;
     transition: all 0.5s;
+    top: -6px;
     &:hover {
         fill: aqua;
         box-shadow: black 0px 0px 20px;
@@ -44,13 +49,11 @@
 }
 
 .previousPlayer {
-    left: 100px;
-    top: 115px;
+    left: 0;
 }
 
 .nextPlayer {
-    right: 100px;
-    top: 115px;
+    right: 0;
 }
 
 // FORM 
@@ -62,16 +65,9 @@
 .submitUsername,
 .enterUsername,
 .submitUsers {
-    width: 100%;
     margin: 0 auto;
     margin: 5px 0;
     padding: 15px;
-}
-
-.submitUsername,
-.submitUsers {
-    border: 0;
-    background-color: gainsboro;
 }
 
 .player .labelContainer {
@@ -105,4 +101,43 @@
 
 .avatar {
     width: 100%;
+}
+
+
+// @media (max-width: 1040px) {
+//     .previousPlayer,
+//     .nextPlayer {
+//         top: 10px;
+//     }
+
+//     .nextPlayer {
+//         right: 30%;
+//     }
+
+//     .previousPlayer {
+//         left: 30%;
+//     }
+    
+
+// }
+
+@media (max-width: 720px) {
+
+    .player .label,
+    .player .enterUsername {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 430px) {
+    .avatar img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .submitUsers {
+        width: 70%;
+    }
+
 }

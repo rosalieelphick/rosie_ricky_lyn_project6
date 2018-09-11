@@ -1,6 +1,5 @@
 @import "partials/setup"; 
 
-
 * {
     font-family: 'Montserrat', 
 }
@@ -10,7 +9,6 @@
     section {
         text-align: center;
     }
-    
     
     h1 {
         text-align: center;
@@ -30,10 +28,10 @@
     .player {
         // position: relative;
         float: none;
-        margin: auto 0;
+        margin: auto 20px;
         overflow: hidden;
         display: inline-block;
-        width: 300px;
+        width: 350px;
         text-align: center;
         .wrongAnimation {
             position: absolute;
@@ -46,6 +44,7 @@
         }
         .overlay {
             position: absolute;
+            border-radius: 50%;
             top: 0;
             right: 0;
             bottom: 0;
@@ -71,10 +70,18 @@
         }
     }
     .avatar {
-        // width: 200px;
+        text-align: center;
+        width: 100%;
+        height: 300px;
         position: relative;
         transition: 0.3s;
         overflow: hidden;
+        border-radius: 50%;
+
+        img {
+            margin: 0 auto;
+        }
+
     }    
 }
 
