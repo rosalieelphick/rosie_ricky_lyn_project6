@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom"; 
-import './questions.css'
 import posed from 'react-pose';
 import Typing from "react-typing-animation" 
 

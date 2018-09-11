@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import firebase from "firebase";
-import "./leaderBoard.css"; 
+// import "./leaderBoard.css"; 
 
 
 class LeaderBoard extends Component {

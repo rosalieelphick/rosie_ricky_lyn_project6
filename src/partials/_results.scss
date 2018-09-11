@@ -1,10 +1,3 @@
-@import "partials/setup"; 
-
-* {
-    font-family: 'Montserrat', 
-}
-// Results Page Styling // 
-
 .results {
     section {
         text-align: center;
@@ -13,26 +6,38 @@
     h1 {
         text-align: center;
     }
+
+    h2 {
+        text-shadow: black 1px 1px 3px;
+        text-transform: uppercase;
+    }
+
+    p {
+        padding: 25px;
+    }
     
     img {
         display: block;
     }
-    
-    button {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+
+    .btn {
         display: block;
+        margin: 50px auto 100px auto;
     }
+    
 
     .player {
-        // position: relative;
-        float: none;
-        margin: auto 20px;
+        margin: 20px;
         overflow: hidden;
         display: inline-block;
         width: 350px;
         text-align: center;
+
+        h3 {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+
         .wrongAnimation {
             position: absolute;
             right: -90px;
@@ -44,19 +49,19 @@
         }
         .overlay {
             position: absolute;
-            border-radius: 50%;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
             animation: wrongOverlay 1.5s infinite;
         }
+
         .correct, .wrong {
             position: absolute;
-            top: 80%;
+            top: 65%;
             right: 50%;
             transform: translateX(50%);
-            font-size: 40px;
+            font-size: 30px;
             font-weight: 700;
             text-shadow: 1px 1px 9px #000;
             margin: 0;
@@ -66,23 +71,38 @@
             
         }
         .correct {
-            color: green;
+            color: lime;
         }
     }
+
     .avatar {
         text-align: center;
-        width: 100%;
-        height: 300px;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
         position: relative;
         transition: 0.3s;
         overflow: hidden;
         border-radius: 50%;
 
-        img {
+        .avatarImage {
+            border-radius: 50%;
+            margin: 0;
+            background-color: #c4c4c4;
+        }
+    } 
+
+    @media (max-width: 420px) {
+        .player {
+            max-width: 300px;
             margin: 0 auto;
         }
 
-    }    
+        .avatar img {
+            width: 250px;
+            height: 250px;
+        }
+    }
 }
 
 .confetti {
@@ -115,12 +135,6 @@
     }
 }
 
-// @keyframes drop {
-//     to {
-//         top: 100%;
-//         // left: random(500) * 1px;
-//     }
-// }
 
 @for $i from 0 through 49 {
     .confetti#{$i} {
