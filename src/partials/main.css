@@ -311,7 +311,7 @@ a {
 .questionsPageContainer {
   text-align: center;
   margin: 0 auto;
-  overflow: hidden; }
+  overflow-x: hidden; }
 
 .hostQuestion img {
   position: absolute;
@@ -380,8 +380,8 @@ a {
 
 .players {
   position: relative;
-  height: 60vh;
-  overflow: hidden;
+  height: 67vh;
+  overflow-x: hidden;
   margin-top: -20px; }
   .players .player {
     position: absolute;
@@ -412,6 +412,20 @@ a {
   width: 55%;
   margin: 0 auto;
   margin-top: 15px; }
+
+@media (max-width: 500px) {
+  .playerSubmit {
+    width: 70%; }
+  .playerAnswers {
+    width: 100%;
+    margin: 0 auto; }
+  .answers {
+    padding: 0;
+    margin-left: 10px;
+    float: left;
+    width: 22%; }
+  .answers .label {
+    height: 75px; } }
 
 .wrapper {
   margin: 0 auto; }

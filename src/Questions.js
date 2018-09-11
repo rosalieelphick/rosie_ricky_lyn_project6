@@ -91,7 +91,7 @@ class Questions extends Component {
             <Container className="questionsPageContainer">
                 {/* <header className="questionsHeader"> */}
                 
-                    <h1>Here's your question</h1>
+                    <h1>question #{this.props.questionProgress + 1}</h1>
                 {/* </header> */}
                 
             
@@ -101,7 +101,7 @@ class Questions extends Component {
                     {/* <img src={require("./assets/roboHostEdit2.png")} alt="" /> */}
                     
                     {this.props.questions[0]
-                            ? <Typing speed={35}><p className="speechBubble">
+                            ? <Typing speed={10}><p className="speechBubble">
                             {this.props.questions[this.props.questionProgress].question}
                         </p></Typing>
                     : null}
@@ -115,51 +115,52 @@ class Questions extends Component {
                 <div className="players">
                     {this.props.players.map((player, i) => {
                         return(
-                            <div className="answersContainer"
-                            className={`player player${i + 1}`}
-                            // className={`player${i + 1}`}
-                            style={{left: `${this.state.position[i]}%`}}
-                            >
-                                <form key={player.username} 
-                                    className="playerAnswers"
-                                    // className={`player player${i + 1}`}
-                                    // style={{left: `${this.state.position[i]}%`}}
-                                    >
-                                    {this.props.questions[0]
-                                        ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
-                                            return(answer && (
-                                                    <div className="answers">
-                                                        <input 
-                                                            id={`${player.username}${j}`} 
-                                                            // style={{ display: 'block' }}
-                                                            type="radio" 
-                                                            name={`multipleChoice${i}`}
-                                                            onChange={this.handleChange}
-                                                            value={answer}
-                                                            className="eachChoice"
-                                                        />  
-                                                        <label className="label" htmlFor={`${player.username}${j}`} key={j} > 
-                                                        {/* {choice[j]}:  */}
-                                                        {answer} 
-                                                        </label>
-                                                    </div>
-                                            )) 
-                                        })
-                                    : null}
-                                </form>
-                                
-                                <div className="playerSubmit" 
-                                    // className={`player${i + 1}`}
-                                    // style={{ left: `${this.state.position[i]}%` }}
+                            <div className="answersContainer">
+                                <div className={`player player${i + 1}`}
+                                // className={`player${i + 1}`}
+                                style={{left: `${this.state.position[i]}%`}}
                                 >
-                                    <h2>{player.username}</h2>
-                                    <img src={`https://robohash.org/${player.username}.png`} alt="" />
-                                    <button className="btn" id={player.username} onClick={(e) => {
-                                        this.checkAnswer(e, i);
-                                        this.nextPlayer(i);
-                                    }}>Submit</button>
-                                </div>
-                            </div> 
+                                    <form key={player.username} 
+                                        className="playerAnswers"
+                                        // className={`player player${i + 1}`}
+                                        // style={{left: `${this.state.position[i]}%`}}
+                                        >
+                                        {this.props.questions[0]
+                                            ? this.props.questions[this.props.questionProgress].allChoices.map((answer, j) => { 
+                                                return(answer && (
+                                                        <div className="answers">
+                                                            <input 
+                                                                id={`${player.username}${j}`} 
+                                                                // style={{ display: 'block' }}
+                                                                type="radio" 
+                                                                name={`multipleChoice${i}`}
+                                                                onChange={this.handleChange}
+                                                                value={answer}
+                                                                className="eachChoice"
+                                                            />  
+                                                            <label className="label" htmlFor={`${player.username}${j}`} key={j} > 
+                                                            {/* {choice[j]}:  */}
+                                                            {answer} 
+                                                            </label>
+                                                        </div>
+                                                )) 
+                                            })
+                                        : null}
+                                    </form>
+                                    
+                                    <div className="playerSubmit" 
+                                        // className={`player${i + 1}`}
+                                        // style={{ left: `${this.state.position[i]}%` }}
+                                    >
+                                        <h2>{player.username}</h2>
+                                        <img src={`https://robohash.org/${player.username}.png`} alt="" />
+                                        <button className="btn" id={player.username} onClick={(e) => {
+                                            this.checkAnswer(e, i);
+                                            this.nextPlayer(i);
+                                        }}>Submit</button>
+                                    </div>
+                                </div> 
+                            </div>
                         )
                     })}
                 </div>
