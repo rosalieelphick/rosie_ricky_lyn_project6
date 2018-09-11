@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import firebase from "firebase";
-import "./leaderBoard.css";
-
 
 class LeaderBoard extends Component {
 
@@ -36,10 +34,14 @@ class LeaderBoard extends Component {
                     {this.state.users.map((user, i) => {
                         return (
                             <div className="badges">
-                                <h3>#{i + 1}. {user.username}</h3>
-                                <img src={`https://robohash.org/${user.username}.png`} alt=""/>
-                                <p>Score: {user.score}</p>
-                                {user.badge && <p>Badges: {user.badge}</p>}
+                                    <h3>#{i + 1}. {user.username}</h3>
+                                <div className="leaderboardAvatar">
+                                    <img src={`https://robohash.org/${user.username}.png`} alt=""/>
+                                </div>
+                                <div className="scoreBadge">
+                                    <p>Score: {user.score}</p>
+                                    {user.badge && <p>Badges: {user.badge}</p>}
+                                </div>
                             </div>                            
                         )
                     })}

@@ -1,4 +1,4 @@
-// @import "_setup.scss";
+@import "_setup.scss";
 @import "_utils.scss";
 @import "_typography.scss"; 
 @import "_labels.scss";
@@ -8,6 +8,7 @@
 @import "_startingPage.scss";
 @import "_choice.scss";
 @import "_questions.scss";
+@import "_leaderboard.scss";
 
 .wrapper {
     margin: 0 auto;
