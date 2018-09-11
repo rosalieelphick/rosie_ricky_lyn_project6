@@ -130,18 +130,3 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 .questionsPage {
   text-align: center; }
-
-.players {
-  position: relative;
-  height: 75vh;
-  overflow: hidden; }
-
-form.player {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  transition: 0.3s; }
-
-form.player2 {
-  position: absolute;
-  left: 100%; }
