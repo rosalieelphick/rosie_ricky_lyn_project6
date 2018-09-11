@@ -48,7 +48,7 @@ class App extends Component {
 
     axios.get("https://opentdb.com/api.php?", {
       params: {
-        amount: 10,
+        amount: 50,
         category: category,
         difficulty: difficulty,
         // type: "multiple"
@@ -77,6 +77,8 @@ class App extends Component {
       const eRegex = /(&eacute;)/g;
       const periodRegex = /(&hellip;)/g; 
       const uRegex = /(&uuml;)/g;
+      const allRegex = /<\/?[\w\s="/.':;#-\/\?]+>|[\/\\:+="#]+|(&shy;)/gi;
+
 
 
       // cloning and then mapping through each question 
@@ -94,8 +96,8 @@ class App extends Component {
         filtredQuestionsOne = filtredQuestionsOne.replace(aRegex, "a");
         filtredQuestionsOne = filtredQuestionsOne.replace(eRegex, "e");
         filtredQuestionsOne = filtredQuestionsOne.replace(periodRegex, ".");
-        filtredQuestionsOne = filtredQuestionsOne.replace(uRegex, ".");
-
+        filtredQuestionsOne = filtredQuestionsOne.replace(uRegex, "u");
+        filtredQuestionsOne = filtredQuestionsOne.replace(allRegex, "");
 
 
         filteredArrayOne.push(filtredQuestionsOne)
@@ -120,6 +122,9 @@ class App extends Component {
         filteredCorrectOne = filteredCorrectOne.replace(aRegex, "a");
         filteredCorrectOne = filteredCorrectOne.replace(eRegex, "e");
         filteredCorrectOne = filteredCorrectOne.replace(periodRegex, ".");
+        filteredCorrectOne = filteredCorrectOne.replace(uRegex, "u");
+        filteredCorrectOne = filteredCorrectOne.replace(allRegex, "");
+
 
         filtereCorrectAnswer.push(filteredCorrectOne)
       })
@@ -175,8 +180,10 @@ class App extends Component {
       const eRegex = /(&eacute;)/g;
       const periodRegex = /(&hellip;)/g; 
       const uRegex = /(&uuml;)/g;
+      // const allRegex = /<\/?[\w\s="/.':;#-\/\?]+>|[\/\\:+="#]+|(&shy;)/gi;
+        const allRegex = /(;)+|(&shy;)/gi;
 
-      // filtering through double quotes
+
       let filteredAnswers = [];
       let filteredEachAnswer;
       allChoices.forEach((item) => {
@@ -187,37 +194,12 @@ class App extends Component {
         filteredEachAnswer = filteredEachAnswer.replace(aRegex, "a");
         filteredEachAnswer = filteredEachAnswer.replace(eRegex, "e");
         filteredEachAnswer = filteredEachAnswer.replace(periodRegex, ".");
-        filteredEachAnswer = filteredEachAnswer.replace(uRegex, ".");
-
-
+        filteredEachAnswer = filteredEachAnswer.replace(uRegex, "u");
+        filteredEachAnswer = filteredEachAnswer.replace(allRegex, "");
         
         filteredAnswers.push(filteredEachAnswer)
       })
-
-      // console.log("filtered choices")
-      // console.log(filteredAnswers);
-      
-
-      // filtering through single quotes 
-      // let filteredAnswerSingle = [];
-      // let filteredAnswerTwo;
-      // filteredAnswerDouble.forEach((item) => {
-      //   filteredAnswerTwo = item.replace(singleQuoteRegex, "'");
-      //   filteredAnswerSingle.push(filteredAnswerTwo)
-      // })
-
-      // let filteredAnswerAnd = [];
-      // let filteredAnswerThree;
-      //   filteredAnswerSingle.forEach((item) => {
-      //     filteredAnswerThree = item.replace(ampersandRegex, "&");
-      //     filteredAnswerAnd.push(filteredAnswerThree)
-      //   })
-
-        // console.log("filteredAnswer")
-        // console.log(filteredAnswerAnd);
         
-
-      // replacing each question's allChoices with the filtered answers  
         question.allChoices = filteredAnswers
       
     
