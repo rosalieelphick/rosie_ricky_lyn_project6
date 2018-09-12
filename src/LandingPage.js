@@ -7,7 +7,7 @@ class LandingPage extends Component {
         return (
             <div className="landingPage">
                 <Typing speed={130}>
-                    <h1>Robot Trivia</h1>
+                    <h1>Robo Trivia</h1>
                 </Typing>
 
                 <img className="robotsEight" src={require("./assets/robotsEight.png")} alt=""/>
