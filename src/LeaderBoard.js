@@ -13,10 +13,6 @@ class LeaderBoard extends Component {
         }
     }
 
-    // display only first 9 
-    // filter through so it only gives me the first 9 top people 
-    // 
-
     componentDidMount() {
         const dbRef = firebase.database().ref("users");
 
@@ -28,7 +24,7 @@ class LeaderBoard extends Component {
                 .sort((a, b) => b.score - a.score);
                 
                 // return only top 9 
-            
+
             this.setState({ users });
         })
     }
@@ -37,7 +33,6 @@ class LeaderBoard extends Component {
         return (
             <div className="leaderBoard">
                 <h1>Leader Board</h1>
-                {/* <h2>User</h2> */}
                 <div className="userStats">
                     {this.state.users.map((user, i) => {
                         return(i < 12 ? 
@@ -48,7 +43,18 @@ class LeaderBoard extends Component {
                                 </div>
                                 <div className="scoreBadge">
                                     <p>Score: {user.score}</p>
-                                    {user.badge && <p>Badges: {user.badge}</p>}
+                                    {/* {user.badge && <p>Badges: {user.badge}</p>} */}
+
+                                    {user.badge ?
+
+                                        <div>
+                                            {user.badge.map((badge) => {
+                                                return <img className="badgeImage" src={require("./assets/badge.png")}/>  
+                                            })}
+                                        </div>   
+                                        
+                                    : null }
+
                                 </div>
                             </div> : null)
                         })}
