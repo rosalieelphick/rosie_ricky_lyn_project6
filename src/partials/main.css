@@ -384,703 +384,703 @@ a {
 
 .confetti0 {
   animation: drop0 linear 3s infinite;
-  animation-delay: 1.6s;
-  left: 194px;
-  background-color: #66ffcf;
-  transform: rotate(105deg) rotateY(320deg);
+  animation-delay: 4.1s;
+  left: 408px;
+  background-color: #fcff66;
+  transform: rotate(252deg) rotateY(152deg);
   transition: 0.3s; }
 
 @keyframes drop0 {
   to {
     top: calc(100%);
-    left: 15px;
-    transform: rotate(34deg); } }
+    left: 30px;
+    transform: rotate(279deg); } }
 
 .confetti1 {
   animation: drop1 linear 3s infinite;
-  animation-delay: 2.5s;
-  left: 402px;
-  background-color: #66ffcf;
-  transform: rotate(91deg) rotateY(19deg);
+  animation-delay: 1.8s;
+  left: 391px;
+  background-color: #ff66b8;
+  transform: rotate(234deg) rotateY(267deg);
   transition: 0.3s; }
 
 @keyframes drop1 {
   to {
     top: calc(100%);
-    left: 281px;
-    transform: rotate(311deg); } }
+    left: 40px;
+    transform: rotate(21deg); } }
 
 .confetti2 {
   animation: drop2 linear 3s infinite;
-  animation-delay: 4.1s;
-  left: 42px;
-  background-color: #66ff85;
-  transform: rotate(31deg) rotateY(287deg);
+  animation-delay: 0.8s;
+  left: 198px;
+  background-color: #ab66ff;
+  transform: rotate(296deg) rotateY(133deg);
   transition: 0.3s; }
 
 @keyframes drop2 {
   to {
     top: calc(100%);
-    left: 195px;
-    transform: rotate(215deg); } }
+    left: 226px;
+    transform: rotate(22deg); } }
 
 .confetti3 {
   animation: drop3 linear 3s infinite;
-  animation-delay: 3.4s;
-  left: 389px;
-  background-color: #ff66b0;
-  transform: rotate(178deg) rotateY(104deg);
+  animation-delay: 4.2s;
+  left: 364px;
+  background-color: #ff8c66;
+  transform: rotate(132deg) rotateY(270deg);
   transition: 0.3s; }
 
 @keyframes drop3 {
   to {
     top: calc(100%);
-    left: 413px;
-    transform: rotate(140deg); } }
+    left: 133px;
+    transform: rotate(62deg); } }
 
 .confetti4 {
   animation: drop4 linear 3s infinite;
-  animation-delay: 1.7s;
-  left: 220px;
-  background-color: #66ff80;
-  transform: rotate(10deg) rotateY(283deg);
+  animation-delay: 2.1s;
+  left: 125px;
+  background-color: #ffc466;
+  transform: rotate(10deg) rotateY(346deg);
   transition: 0.3s; }
 
 @keyframes drop4 {
   to {
     top: calc(100%);
-    left: 129px;
-    transform: rotate(355deg); } }
+    left: 397px;
+    transform: rotate(113deg); } }
 
 .confetti5 {
   animation: drop5 linear 3s infinite;
-  animation-delay: 4.2s;
-  left: 55px;
-  background-color: #edff66;
-  transform: rotate(234deg) rotateY(92deg);
+  animation-delay: 0.3s;
+  left: 120px;
+  background-color: #6682ff;
+  transform: rotate(189deg) rotateY(58deg);
   transition: 0.3s; }
 
 @keyframes drop5 {
   to {
     top: calc(100%);
-    left: 305px;
-    transform: rotate(30deg); } }
+    left: 344px;
+    transform: rotate(226deg); } }
 
 .confetti6 {
   animation: drop6 linear 3s infinite;
-  animation-delay: 4.2s;
-  left: 448px;
-  background-color: #66ff87;
-  transform: rotate(115deg) rotateY(84deg);
+  animation-delay: 3s;
+  left: 103px;
+  background-color: #9666ff;
+  transform: rotate(84deg) rotateY(84deg);
   transition: 0.3s; }
 
 @keyframes drop6 {
   to {
     top: calc(100%);
-    left: 395px;
-    transform: rotate(219deg); } }
+    left: 131px;
+    transform: rotate(313deg); } }
 
 .confetti7 {
   animation: drop7 linear 3s infinite;
-  animation-delay: 2.6s;
-  left: 333px;
-  background-color: #ff66ba;
-  transform: rotate(15deg) rotateY(213deg);
+  animation-delay: 4.3s;
+  left: 42px;
+  background-color: #ffba66;
+  transform: rotate(66deg) rotateY(358deg);
   transition: 0.3s; }
 
 @keyframes drop7 {
   to {
     top: calc(100%);
-    left: 103px;
-    transform: rotate(136deg); } }
+    left: 480px;
+    transform: rotate(323deg); } }
 
 .confetti8 {
   animation: drop8 linear 3s infinite;
-  animation-delay: 4.4s;
-  left: 383px;
-  background-color: #66ff8c;
-  transform: rotate(324deg) rotateY(67deg);
+  animation-delay: 3.8s;
+  left: 251px;
+  background-color: #e866ff;
+  transform: rotate(135deg) rotateY(216deg);
   transition: 0.3s; }
 
 @keyframes drop8 {
   to {
     top: calc(100%);
-    left: 53px;
-    transform: rotate(88deg); } }
+    left: 116px;
+    transform: rotate(79deg); } }
 
 .confetti9 {
   animation: drop9 linear 3s infinite;
-  animation-delay: 4.6s;
-  left: 271px;
-  background-color: #66fcff;
-  transform: rotate(281deg) rotateY(137deg);
+  animation-delay: 5s;
+  left: 95px;
+  background-color: #66ffcc;
+  transform: rotate(269deg) rotateY(239deg);
   transition: 0.3s; }
 
 @keyframes drop9 {
   to {
     top: calc(100%);
-    left: 380px;
-    transform: rotate(208deg); } }
+    left: 415px;
+    transform: rotate(318deg); } }
 
 .confetti10 {
   animation: drop10 linear 3s infinite;
-  animation-delay: 4.5s;
-  left: 43px;
-  background-color: #66ff94;
-  transform: rotate(345deg) rotateY(66deg);
+  animation-delay: 1.7s;
+  left: 490px;
+  background-color: #8566ff;
+  transform: rotate(40deg) rotateY(177deg);
   transition: 0.3s; }
 
 @keyframes drop10 {
   to {
     top: calc(100%);
-    left: 151px;
-    transform: rotate(187deg); } }
+    left: 468px;
+    transform: rotate(152deg); } }
 
 .confetti11 {
   animation: drop11 linear 3s infinite;
-  animation-delay: 1.8s;
-  left: 7px;
-  background-color: #66b3ff;
-  transform: rotate(53deg) rotateY(56deg);
+  animation-delay: 2.6s;
+  left: 414px;
+  background-color: #e6ff66;
+  transform: rotate(175deg) rotateY(205deg);
   transition: 0.3s; }
 
 @keyframes drop11 {
   to {
     top: calc(100%);
-    left: 412px;
-    transform: rotate(326deg); } }
+    left: 246px;
+    transform: rotate(349deg); } }
 
 .confetti12 {
   animation: drop12 linear 3s infinite;
-  animation-delay: 0.4s;
-  left: 343px;
-  background-color: #66ffbd;
-  transform: rotate(37deg) rotateY(198deg);
+  animation-delay: 0.2s;
+  left: 274px;
+  background-color: #66a1ff;
+  transform: rotate(284deg) rotateY(310deg);
   transition: 0.3s; }
 
 @keyframes drop12 {
   to {
     top: calc(100%);
-    left: 372px;
-    transform: rotate(47deg); } }
+    left: 333px;
+    transform: rotate(188deg); } }
 
 .confetti13 {
   animation: drop13 linear 3s infinite;
-  animation-delay: 2.6s;
-  left: 421px;
-  background-color: #ff66a3;
-  transform: rotate(37deg) rotateY(188deg);
+  animation-delay: 4.5s;
+  left: 186px;
+  background-color: #ffe066;
+  transform: rotate(20deg) rotateY(269deg);
   transition: 0.3s; }
 
 @keyframes drop13 {
   to {
     top: calc(100%);
-    left: 323px;
-    transform: rotate(118deg); } }
+    left: 396px;
+    transform: rotate(186deg); } }
 
 .confetti14 {
   animation: drop14 linear 3s infinite;
-  animation-delay: 2.8s;
-  left: 130px;
-  background-color: #ff66db;
-  transform: rotate(309deg) rotateY(132deg);
+  animation-delay: 0.3s;
+  left: 349px;
+  background-color: #66ffad;
+  transform: rotate(285deg) rotateY(264deg);
   transition: 0.3s; }
 
 @keyframes drop14 {
   to {
     top: calc(100%);
-    left: 59px;
-    transform: rotate(92deg); } }
+    left: 380px;
+    transform: rotate(137deg); } }
 
 .confetti15 {
   animation: drop15 linear 3s infinite;
-  animation-delay: 1.3s;
-  left: 201px;
-  background-color: #66ccff;
-  transform: rotate(271deg) rotateY(124deg);
+  animation-delay: 0.2s;
+  left: 323px;
+  background-color: #66ffb5;
+  transform: rotate(100deg) rotateY(355deg);
   transition: 0.3s; }
 
 @keyframes drop15 {
   to {
     top: calc(100%);
-    left: 83px;
-    transform: rotate(360deg); } }
+    left: 467px;
+    transform: rotate(18deg); } }
 
 .confetti16 {
   animation: drop16 linear 3s infinite;
-  animation-delay: 4.4s;
-  left: 105px;
-  background-color: #66bfff;
-  transform: rotate(253deg) rotateY(39deg);
+  animation-delay: 4.9s;
+  left: 107px;
+  background-color: #ff9466;
+  transform: rotate(32deg) rotateY(204deg);
   transition: 0.3s; }
 
 @keyframes drop16 {
   to {
     top: calc(100%);
-    left: 364px;
-    transform: rotate(252deg); } }
+    left: 39px;
+    transform: rotate(23deg); } }
 
 .confetti17 {
   animation: drop17 linear 3s infinite;
-  animation-delay: 0.1s;
-  left: 192px;
-  background-color: #ffff66;
-  transform: rotate(56deg) rotateY(154deg);
+  animation-delay: 0.9s;
+  left: 8px;
+  background-color: #ff6696;
+  transform: rotate(284deg) rotateY(211deg);
   transition: 0.3s; }
 
 @keyframes drop17 {
   to {
     top: calc(100%);
-    left: 468px;
-    transform: rotate(304deg); } }
+    left: 399px;
+    transform: rotate(196deg); } }
 
 .confetti18 {
   animation: drop18 linear 3s infinite;
-  animation-delay: 2.9s;
-  left: 252px;
-  background-color: #ff66f5;
-  transform: rotate(138deg) rotateY(190deg);
+  animation-delay: 1.3s;
+  left: 356px;
+  background-color: #66ffa8;
+  transform: rotate(303deg) rotateY(298deg);
   transition: 0.3s; }
 
 @keyframes drop18 {
   to {
     top: calc(100%);
-    left: 3px;
-    transform: rotate(266deg); } }
+    left: 162px;
+    transform: rotate(328deg); } }
 
 .confetti19 {
   animation: drop19 linear 3s infinite;
-  animation-delay: 3.3s;
-  left: 415px;
-  background-color: #ffc266;
-  transform: rotate(301deg) rotateY(11deg);
+  animation-delay: 1.7s;
+  left: 213px;
+  background-color: #ff6669;
+  transform: rotate(9deg) rotateY(293deg);
   transition: 0.3s; }
 
 @keyframes drop19 {
   to {
     top: calc(100%);
-    left: 119px;
-    transform: rotate(169deg); } }
+    left: 432px;
+    transform: rotate(33deg); } }
 
 .confetti20 {
   animation: drop20 linear 3s infinite;
-  animation-delay: 0.2s;
-  left: 155px;
-  background-color: #66ff87;
-  transform: rotate(32deg) rotateY(143deg);
+  animation-delay: 4.3s;
+  left: 12px;
+  background-color: #66c7ff;
+  transform: rotate(76deg) rotateY(118deg);
   transition: 0.3s; }
 
 @keyframes drop20 {
   to {
     top: calc(100%);
-    left: 271px;
-    transform: rotate(225deg); } }
+    left: 385px;
+    transform: rotate(51deg); } }
 
 .confetti21 {
   animation: drop21 linear 3s infinite;
-  animation-delay: 1.9s;
-  left: 471px;
-  background-color: #c9ff66;
-  transform: rotate(276deg) rotateY(332deg);
+  animation-delay: 2.3s;
+  left: 146px;
+  background-color: #ff8a66;
+  transform: rotate(271deg) rotateY(113deg);
   transition: 0.3s; }
 
 @keyframes drop21 {
   to {
     top: calc(100%);
-    left: 16px;
-    transform: rotate(131deg); } }
+    left: 408px;
+    transform: rotate(190deg); } }
 
 .confetti22 {
   animation: drop22 linear 3s infinite;
-  animation-delay: 2.9s;
-  left: 132px;
-  background-color: #66ff70;
-  transform: rotate(179deg) rotateY(309deg);
+  animation-delay: 2.2s;
+  left: 163px;
+  background-color: #66d9ff;
+  transform: rotate(96deg) rotateY(221deg);
   transition: 0.3s; }
 
 @keyframes drop22 {
   to {
     top: calc(100%);
-    left: 438px;
-    transform: rotate(55deg); } }
+    left: 481px;
+    transform: rotate(235deg); } }
 
 .confetti23 {
   animation: drop23 linear 3s infinite;
-  animation-delay: 3.3s;
-  left: 447px;
-  background-color: #6669ff;
-  transform: rotate(311deg) rotateY(12deg);
+  animation-delay: 2.9s;
+  left: 208px;
+  background-color: #66fff2;
+  transform: rotate(314deg) rotateY(166deg);
   transition: 0.3s; }
 
 @keyframes drop23 {
   to {
     top: calc(100%);
-    left: 197px;
-    transform: rotate(330deg); } }
+    left: 81px;
+    transform: rotate(187deg); } }
 
 .confetti24 {
   animation: drop24 linear 3s infinite;
-  animation-delay: 3.3s;
-  left: 276px;
-  background-color: #ff8a66;
-  transform: rotate(129deg) rotateY(120deg);
+  animation-delay: 1.6s;
+  left: 409px;
+  background-color: #66c9ff;
+  transform: rotate(311deg) rotateY(357deg);
   transition: 0.3s; }
 
 @keyframes drop24 {
   to {
     top: calc(100%);
-    left: 473px;
-    transform: rotate(173deg); } }
+    left: 86px;
+    transform: rotate(230deg); } }
 
 .confetti25 {
   animation: drop25 linear 3s infinite;
-  animation-delay: 2.1s;
-  left: 421px;
-  background-color: #e8ff66;
-  transform: rotate(212deg) rotateY(77deg);
+  animation-delay: 0.2s;
+  left: 464px;
+  background-color: #b066ff;
+  transform: rotate(267deg) rotateY(81deg);
   transition: 0.3s; }
 
 @keyframes drop25 {
   to {
     top: calc(100%);
-    left: 232px;
-    transform: rotate(125deg); } }
+    left: 97px;
+    transform: rotate(290deg); } }
 
 .confetti26 {
   animation: drop26 linear 3s infinite;
-  animation-delay: 4.1s;
-  left: 500px;
-  background-color: #667aff;
-  transform: rotate(11deg) rotateY(230deg);
+  animation-delay: 1.6s;
+  left: 86px;
+  background-color: #9c66ff;
+  transform: rotate(290deg) rotateY(237deg);
   transition: 0.3s; }
 
 @keyframes drop26 {
   to {
     top: calc(100%);
-    left: 498px;
-    transform: rotate(165deg); } }
+    left: 16px;
+    transform: rotate(24deg); } }
 
 .confetti27 {
   animation: drop27 linear 3s infinite;
-  animation-delay: 2.3s;
-  left: 74px;
-  background-color: #78ff66;
-  transform: rotate(293deg) rotateY(85deg);
+  animation-delay: 3.6s;
+  left: 273px;
+  background-color: #66ffb3;
+  transform: rotate(143deg) rotateY(34deg);
   transition: 0.3s; }
 
 @keyframes drop27 {
   to {
     top: calc(100%);
-    left: 181px;
-    transform: rotate(84deg); } }
+    left: 406px;
+    transform: rotate(120deg); } }
 
 .confetti28 {
   animation: drop28 linear 3s infinite;
-  animation-delay: 3s;
-  left: 326px;
-  background-color: #6699ff;
-  transform: rotate(348deg) rotateY(170deg);
+  animation-delay: 1.3s;
+  left: 437px;
+  background-color: #ffe666;
+  transform: rotate(270deg) rotateY(93deg);
   transition: 0.3s; }
 
 @keyframes drop28 {
   to {
     top: calc(100%);
-    left: 243px;
-    transform: rotate(336deg); } }
+    left: 327px;
+    transform: rotate(309deg); } }
 
 .confetti29 {
   animation: drop29 linear 3s infinite;
-  animation-delay: 3.9s;
-  left: 33px;
-  background-color: #6682ff;
-  transform: rotate(55deg) rotateY(264deg);
+  animation-delay: 3.4s;
+  left: 179px;
+  background-color: #ffb866;
+  transform: rotate(207deg) rotateY(151deg);
   transition: 0.3s; }
 
 @keyframes drop29 {
   to {
     top: calc(100%);
-    left: 395px;
-    transform: rotate(334deg); } }
+    left: 84px;
+    transform: rotate(50deg); } }
 
 .confetti30 {
   animation: drop30 linear 3s infinite;
-  animation-delay: 1.1s;
-  left: 310px;
-  background-color: #ff66c4;
-  transform: rotate(293deg) rotateY(270deg);
+  animation-delay: 2.9s;
+  left: 480px;
+  background-color: #ffad66;
+  transform: rotate(136deg) rotateY(178deg);
   transition: 0.3s; }
 
 @keyframes drop30 {
   to {
     top: calc(100%);
-    left: 88px;
-    transform: rotate(231deg); } }
+    left: 367px;
+    transform: rotate(209deg); } }
 
 .confetti31 {
   animation: drop31 linear 3s infinite;
-  animation-delay: 1.3s;
-  left: 173px;
-  background-color: #d1ff66;
-  transform: rotate(356deg) rotateY(317deg);
+  animation-delay: 3.8s;
+  left: 483px;
+  background-color: #66ffa6;
+  transform: rotate(18deg) rotateY(153deg);
   transition: 0.3s; }
 
 @keyframes drop31 {
   to {
     top: calc(100%);
-    left: 466px;
-    transform: rotate(312deg); } }
+    left: 365px;
+    transform: rotate(342deg); } }
 
 .confetti32 {
   animation: drop32 linear 3s infinite;
-  animation-delay: 2.6s;
-  left: 131px;
-  background-color: #f566ff;
-  transform: rotate(84deg) rotateY(192deg);
+  animation-delay: 0.9s;
+  left: 471px;
+  background-color: #66ffab;
+  transform: rotate(150deg) rotateY(28deg);
   transition: 0.3s; }
 
 @keyframes drop32 {
   to {
     top: calc(100%);
-    left: 18px;
-    transform: rotate(344deg); } }
+    left: 455px;
+    transform: rotate(209deg); } }
 
 .confetti33 {
   animation: drop33 linear 3s infinite;
-  animation-delay: 3.2s;
-  left: 218px;
-  background-color: #66dbff;
-  transform: rotate(349deg) rotateY(162deg);
+  animation-delay: 0.9s;
+  left: 227px;
+  background-color: #80ff66;
+  transform: rotate(49deg) rotateY(41deg);
   transition: 0.3s; }
 
 @keyframes drop33 {
   to {
     top: calc(100%);
-    left: 48px;
-    transform: rotate(222deg); } }
+    left: 67px;
+    transform: rotate(195deg); } }
 
 .confetti34 {
   animation: drop34 linear 3s infinite;
-  animation-delay: 4.2s;
-  left: 105px;
-  background-color: #66ff7a;
-  transform: rotate(120deg) rotateY(151deg);
+  animation-delay: 4.9s;
+  left: 150px;
+  background-color: #66d4ff;
+  transform: rotate(280deg) rotateY(264deg);
   transition: 0.3s; }
 
 @keyframes drop34 {
   to {
     top: calc(100%);
-    left: 22px;
-    transform: rotate(263deg); } }
+    left: 327px;
+    transform: rotate(300deg); } }
 
 .confetti35 {
   animation: drop35 linear 3s infinite;
-  animation-delay: 3.5s;
-  left: 158px;
-  background-color: #ff6678;
-  transform: rotate(6deg) rotateY(18deg);
+  animation-delay: 3.6s;
+  left: 56px;
+  background-color: #ff66bf;
+  transform: rotate(148deg) rotateY(204deg);
   transition: 0.3s; }
 
 @keyframes drop35 {
   to {
     top: calc(100%);
-    left: 8px;
-    transform: rotate(223deg); } }
+    left: 439px;
+    transform: rotate(153deg); } }
 
 .confetti36 {
   animation: drop36 linear 3s infinite;
-  animation-delay: 1.1s;
-  left: 338px;
-  background-color: #ff66c2;
-  transform: rotate(221deg) rotateY(308deg);
+  animation-delay: 3.1s;
+  left: 94px;
+  background-color: #ff8566;
+  transform: rotate(87deg) rotateY(305deg);
   transition: 0.3s; }
 
 @keyframes drop36 {
   to {
     top: calc(100%);
-    left: 103px;
-    transform: rotate(227deg); } }
+    left: 178px;
+    transform: rotate(269deg); } }
 
 .confetti37 {
   animation: drop37 linear 3s infinite;
-  animation-delay: 3.3s;
-  left: 119px;
-  background-color: #8566ff;
-  transform: rotate(40deg) rotateY(300deg);
+  animation-delay: 1.1s;
+  left: 287px;
+  background-color: #66ffc4;
+  transform: rotate(18deg) rotateY(232deg);
   transition: 0.3s; }
 
 @keyframes drop37 {
   to {
     top: calc(100%);
-    left: 429px;
-    transform: rotate(337deg); } }
+    left: 282px;
+    transform: rotate(122deg); } }
 
 .confetti38 {
   animation: drop38 linear 3s infinite;
-  animation-delay: 4.7s;
-  left: 11px;
-  background-color: #66ffd6;
-  transform: rotate(57deg) rotateY(37deg);
+  animation-delay: 2.1s;
+  left: 239px;
+  background-color: #6682ff;
+  transform: rotate(174deg) rotateY(218deg);
   transition: 0.3s; }
 
 @keyframes drop38 {
   to {
     top: calc(100%);
-    left: 295px;
-    transform: rotate(163deg); } }
+    left: 361px;
+    transform: rotate(137deg); } }
 
 .confetti39 {
   animation: drop39 linear 3s infinite;
-  animation-delay: 1.6s;
-  left: 130px;
-  background-color: #66faff;
-  transform: rotate(228deg) rotateY(64deg);
+  animation-delay: 2.3s;
+  left: 334px;
+  background-color: #66ffe0;
+  transform: rotate(192deg) rotateY(339deg);
   transition: 0.3s; }
 
 @keyframes drop39 {
   to {
     top: calc(100%);
-    left: 259px;
-    transform: rotate(347deg); } }
+    left: 80px;
+    transform: rotate(310deg); } }
 
 .confetti40 {
   animation: drop40 linear 3s infinite;
-  animation-delay: 1.4s;
-  left: 335px;
-  background-color: #66ffd1;
-  transform: rotate(148deg) rotateY(280deg);
+  animation-delay: 5s;
+  left: 339px;
+  background-color: #ffe066;
+  transform: rotate(167deg) rotateY(44deg);
   transition: 0.3s; }
 
 @keyframes drop40 {
   to {
     top: calc(100%);
-    left: 117px;
-    transform: rotate(174deg); } }
+    left: 163px;
+    transform: rotate(307deg); } }
 
 .confetti41 {
   animation: drop41 linear 3s infinite;
-  animation-delay: 2.5s;
-  left: 326px;
-  background-color: #66fff0;
-  transform: rotate(59deg) rotateY(64deg);
+  animation-delay: 3.5s;
+  left: 200px;
+  background-color: #8c66ff;
+  transform: rotate(304deg) rotateY(354deg);
   transition: 0.3s; }
 
 @keyframes drop41 {
   to {
     top: calc(100%);
-    left: 461px;
-    transform: rotate(295deg); } }
+    left: 498px;
+    transform: rotate(109deg); } }
 
 .confetti42 {
   animation: drop42 linear 3s infinite;
-  animation-delay: 3.7s;
-  left: 202px;
-  background-color: #d6ff66;
-  transform: rotate(100deg) rotateY(286deg);
+  animation-delay: 2.5s;
+  left: 284px;
+  background-color: #66fffc;
+  transform: rotate(128deg) rotateY(183deg);
   transition: 0.3s; }
 
 @keyframes drop42 {
   to {
     top: calc(100%);
-    left: 222px;
-    transform: rotate(18deg); } }
+    left: 235px;
+    transform: rotate(156deg); } }
 
 .confetti43 {
   animation: drop43 linear 3s infinite;
-  animation-delay: 3.3s;
-  left: 102px;
-  background-color: #f5ff66;
-  transform: rotate(101deg) rotateY(278deg);
+  animation-delay: 4.7s;
+  left: 396px;
+  background-color: #666bff;
+  transform: rotate(148deg) rotateY(319deg);
   transition: 0.3s; }
 
 @keyframes drop43 {
   to {
     top: calc(100%);
-    left: 198px;
-    transform: rotate(79deg); } }
+    left: 459px;
+    transform: rotate(68deg); } }
 
 .confetti44 {
   animation: drop44 linear 3s infinite;
-  animation-delay: 1.3s;
-  left: 55px;
-  background-color: #66ffd6;
-  transform: rotate(348deg) rotateY(115deg);
+  animation-delay: 1.5s;
+  left: 147px;
+  background-color: #ff66b0;
+  transform: rotate(252deg) rotateY(17deg);
   transition: 0.3s; }
 
 @keyframes drop44 {
   to {
     top: calc(100%);
-    left: 416px;
-    transform: rotate(317deg); } }
+    left: 467px;
+    transform: rotate(44deg); } }
 
 .confetti45 {
   animation: drop45 linear 3s infinite;
-  animation-delay: 3s;
-  left: 356px;
-  background-color: #66ffff;
-  transform: rotate(238deg) rotateY(191deg);
+  animation-delay: 3.2s;
+  left: 409px;
+  background-color: #7866ff;
+  transform: rotate(13deg) rotateY(320deg);
   transition: 0.3s; }
 
 @keyframes drop45 {
   to {
     top: calc(100%);
-    left: 339px;
-    transform: rotate(158deg); } }
+    left: 232px;
+    transform: rotate(248deg); } }
 
 .confetti46 {
   animation: drop46 linear 3s infinite;
-  animation-delay: 1.4s;
-  left: 50px;
-  background-color: #f7ff66;
-  transform: rotate(218deg) rotateY(148deg);
+  animation-delay: 1.7s;
+  left: 226px;
+  background-color: #c266ff;
+  transform: rotate(153deg) rotateY(77deg);
   transition: 0.3s; }
 
 @keyframes drop46 {
   to {
     top: calc(100%);
-    left: 184px;
-    transform: rotate(194deg); } }
+    left: 200px;
+    transform: rotate(323deg); } }
 
 .confetti47 {
   animation: drop47 linear 3s infinite;
-  animation-delay: 3.3s;
-  left: 23px;
-  background-color: #ff666e;
-  transform: rotate(278deg) rotateY(114deg);
+  animation-delay: 3.7s;
+  left: 380px;
+  background-color: #7d66ff;
+  transform: rotate(358deg) rotateY(209deg);
   transition: 0.3s; }
 
 @keyframes drop47 {
   to {
     top: calc(100%);
-    left: 25px;
-    transform: rotate(281deg); } }
+    left: 363px;
+    transform: rotate(31deg); } }
 
 .confetti48 {
   animation: drop48 linear 3s infinite;
-  animation-delay: 3.1s;
-  left: 440px;
-  background-color: #ff66ad;
-  transform: rotate(281deg) rotateY(151deg);
+  animation-delay: 4.4s;
+  left: 46px;
+  background-color: #ff66eb;
+  transform: rotate(176deg) rotateY(145deg);
   transition: 0.3s; }
 
 @keyframes drop48 {
   to {
     top: calc(100%);
-    left: 42px;
-    transform: rotate(31deg); } }
+    left: 239px;
+    transform: rotate(145deg); } }
 
 .confetti49 {
   animation: drop49 linear 3s infinite;
-  animation-delay: 2.8s;
-  left: 55px;
-  background-color: #8266ff;
-  transform: rotate(354deg) rotateY(205deg);
+  animation-delay: 0.5s;
+  left: 415px;
+  background-color: #ff66e3;
+  transform: rotate(67deg) rotateY(226deg);
   transition: 0.3s; }
 
 @keyframes drop49 {
   to {
     top: calc(100%);
-    left: 450px;
-    transform: rotate(16deg); } }
+    left: 390px;
+    transform: rotate(124deg); } }
 
 .container {
   position: relative;
